@@ -1,0 +1,11 @@
+BasedOnStyle: Google
+
+AccessModifierOffset: -2
+IndentAccessModifiers: false
+EmptyLineBeforeAccessModifier: LogicalBlock
+
+AlignAfterOpenBracket: BlockIndent
+AllowAllParametersOfDeclarationOnNextLine: true
+BinPackParameters: true
+
+BinPackArguments: true

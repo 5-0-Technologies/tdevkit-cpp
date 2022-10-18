@@ -5,7 +5,7 @@
   - Tests if no data corruption occurred 
 */
 
-#include <qtNetworkClient.hpp>
+#include <twinzo/network/qt_client.hpp>
 
 #include <QApplication>
 #include <QJsonObject>
@@ -33,7 +33,9 @@ int main(int argc, char *argv[])
   client.connect();
 
   NetworkResponse response = client.get(request);
-  QJsonDocument outDoc = QJsonDocument::fromJson(QByteArray(reinterpret_cast<const char*>(response.payload.data()), response.payload.size()));
+  QJsonDocument outDoc = QJsonDocument::fromJson(
+    QByteArray(response.payload.c_str(), response.payload.size())
+  );
   QJsonObject outObj = outDoc.object();
   QJsonObject outArgs = outObj["args"].toObject();
   int outVal = outArgs["testQueryItem"].toString().toInt();
@@ -44,7 +46,9 @@ int main(int argc, char *argv[])
   request.query_items.push_back(NetworkQuery("testQueryItem", std::to_string(queryTest)));
 
   response = client.request(NetworkMethod::Get, request);
-  outDoc = QJsonDocument::fromJson(QByteArray(reinterpret_cast<const char*>(response.payload.data()), response.payload.size()));
+  outDoc = QJsonDocument::fromJson(
+    QByteArray(response.payload.c_str(), response.payload.size())
+  );
   outObj = outDoc.object();
   outArgs = outObj["args"].toObject();
   outVal = outArgs["testQueryItem"].toString().toInt();

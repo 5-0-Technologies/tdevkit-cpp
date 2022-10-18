@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 #include <tuple>
 #include <vector>
@@ -17,7 +19,7 @@ enum class NetworkMethod {
 using HttpVersion = std::tuple<int, int>;
 using NetworkHeader = std::pair<std::string, std::string>;
 using NetworkQuery = std::pair<std::string, std::string>;
-using NetworkPayload = std::vector<unsigned char>;
+using NetworkPayload = std::string;
 
 struct NetworkResponse {
   int status_code;
@@ -38,6 +40,10 @@ protected:
   std::string m_hostname;
   int m_port;
 
+  NetworkClient(std::string hostname, int port) {
+    m_hostname = hostname;
+    m_port = port;
+  };
   virtual ~NetworkClient() {};
 
   virtual auto connect() -> void = 0;
@@ -45,7 +51,7 @@ protected:
   virtual auto timeout(int) -> void = 0;
   virtual auto timeout() -> const int = 0;
   virtual auto request(
-      NetworkMethod, NetworkRequest&, NetworkPayload*
+      NetworkMethod, NetworkRequest&, NetworkPayload* = nullptr
   ) -> NetworkResponse = 0;
 
   virtual auto head(NetworkRequest&) -> NetworkResponse = 0;

@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+import "core.proto";
+
+/* NOTE: only used for deserialization purposes, should never be
+ * returned to user */
+message DeviceContractList {
+  repeated DeviceContract contracts = 1;
+}
+/* NOTE: only used for deserialization purposes, should never be
+ * returned to user */
+ message DeviceLocationContractList {
+  repeated DeviceLocationContract contracts = 1;
+}
+/* NOTE: only used for deserialization purposes, should never be
+ * returned to user */
+message LocationContractList {
+  repeated LocationContract contracts = 1;
+}
+/* NOTE: only used for deserialization purposes, should never be
+ * returned to user */
+ message DistanceContractList {
+  repeated DistanceContract contracts = 1;
+}
+/* NOTE: only used for deserialization purposes, should never be
+ * returned to user */
+ message LayerContractList {
+  repeated LayerContract contracts = 1;
+}
+/* NOTE: only used for deserialization purposes, should never be
+ * returned to user */
+ message AreaContractList {
+  repeated AreaContract contracts = 1;
+}

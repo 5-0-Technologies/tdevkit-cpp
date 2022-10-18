@@ -1,6 +1,6 @@
 #include <map>
 
-#include <NetworkClient.hpp>
+#include <twinzo/network/network_client.hpp>
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 #include <QNetworkReply>
@@ -11,7 +11,7 @@
 
 static std::map<NetworkMethod, QString> methodMap = {
     {NetworkMethod::Get, "GET"},
-    {NetworkMethod::Head, "HEAT"},
+    {NetworkMethod::Head, "HEAD"},
     {NetworkMethod::Post, "POST"},
     {NetworkMethod::Put, "PUT"},
     {NetworkMethod::Delete, "DELETE"},
