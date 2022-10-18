@@ -5,7 +5,7 @@
   - Tests if no data corruption occurred 
 */
 
-#include <qtNetworkClient.hpp>
+#include <twinzo/network/qt_client.hpp>
 
 #include <QApplication>
 #include <QJsonObject>
@@ -37,7 +37,9 @@ int main(int argc, char *argv[])
   client.connect();
   NetworkResponse response = client.post(request, new NetworkPayload(payload.begin(), payload.end()));
 
-  QJsonDocument outDoc = QJsonDocument::fromJson(QByteArray(reinterpret_cast<const char*>(response.payload.data()), response.payload.size()));
+  QJsonDocument outDoc = QJsonDocument::fromJson(
+    QByteArray(response.payload.c_str(), response.payload.size())
+  );
   QJsonObject outObj = outDoc.object();
   QJsonObject outArgs = QJsonDocument::fromJson(outObj["data"].toString().toUtf8()).object();
   int outVal = outArgs["testQueryItem"].toString().toInt();
@@ -49,7 +51,9 @@ int main(int argc, char *argv[])
   payload = doc.toJson();
 
   response = client.request(NetworkMethod::Post, request, new NetworkPayload(payload.begin(), payload.end()));
-  outDoc = QJsonDocument::fromJson(QByteArray(reinterpret_cast<const char*>(response.payload.data()), response.payload.size()));
+  outDoc = QJsonDocument::fromJson(
+    QByteArray(response.payload.c_str(), response.payload.size())
+  );
   outObj = outDoc.object();
   outArgs = QJsonDocument::fromJson(outObj["data"].toString().toUtf8()).object();
   outVal = outArgs["testQueryItem"].toString().toInt();

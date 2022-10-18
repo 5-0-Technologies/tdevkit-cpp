@@ -1,8 +1,9 @@
-#include "qtNetworkClient.hpp"
+#include <twinzo/network/qt_client.hpp>
 
-QtNetworkClient::QtNetworkClient(std::string hostname, int port){
-  m_hostname = hostname;
-  m_port = port;
+#include <QBuffer>
+
+QtNetworkClient::QtNetworkClient(std::string hostname, int port)
+    : NetworkClient(hostname, port) {
 
   m_manager = new QNetworkAccessManager();
 }
@@ -38,18 +39,17 @@ NetworkResponse QtNetworkClient::request(NetworkMethod method, NetworkRequest& r
             QByteArray(header.second.c_str(), header.second.length()));
 
     QEventLoop requestLoop;
-    QNetworkReply *reply;
-    if(payload == nullptr)
-      reply = m_manager->sendCustomRequest(
-          qRequest, 
-          methodMap.at(method).toUtf8()
-      );
-    else
-      reply = m_manager->sendCustomRequest(
-          qRequest, 
-          methodMap.at(method).toUtf8(),
-          QByteArray(reinterpret_cast<const char*>(payload->data()), payload->size())
-      );
+    
+    // Copy data to QBuffer (QIODevice) if any is available
+    std::unique_ptr<QBuffer> data;
+    if (payload != nullptr) {
+        data = std::make_unique<QBuffer>();
+        data->setData(payload->c_str(), payload->size());
+    }
+
+    auto reply = m_manager->sendCustomRequest(
+        qRequest, methodMap.at(method).toUtf8(), data.get()
+    );
     QObject::connect(reply, &QNetworkReply::finished, &requestLoop, &QEventLoop::quit);
     requestLoop.exec();
 
@@ -105,8 +105,7 @@ NetworkResponse QtNetworkClient::parseQtResponse(QNetworkReply* reply){
             std::string(headerPair.second.constData(), headerPair.second.length())));
     }
 
-    QByteArray payload = reply->readAll();
-    response.payload = std::vector<unsigned char>(payload.begin(), payload.end());
-    auto tmp = reply->error();
+    response.payload = reply->readAll().toStdString();
+
     return response;
 }

@@ -1,11 +1,11 @@
 /*
-  Test of PATCH reqest with Qt client
+  Test of PUT reqest with Qt client
   - Generates random integer as payload
   - Returns payload in response payload
   - Tests if no data corruption occurred 
 */
 
-#include <qtNetworkClient.hpp>
+#include <twinzo/network/qt_client.hpp>
 
 #include <QApplication>
 #include <QJsonObject>
@@ -13,7 +13,7 @@
 #include <QRandomGenerator>
 
 std::string host = "https://httpbin.org";
-std::string path = "/patch";
+std::string path = "/put";
 
 int main(int argc, char *argv[])
 {
@@ -35,9 +35,11 @@ int main(int argc, char *argv[])
   QByteArray payload = doc.toJson();
   
   client.connect();
-  NetworkResponse response = client.patch(request, new NetworkPayload(payload.begin(), payload.end()));
+  NetworkResponse response = client.put(request, new NetworkPayload(payload.begin(), payload.end()));
 
-  QJsonDocument outDoc = QJsonDocument::fromJson(QByteArray(reinterpret_cast<const char*>(response.payload.data()), response.payload.size()));
+  QJsonDocument outDoc = QJsonDocument::fromJson(
+    QByteArray(response.payload.c_str(), response.payload.size())
+  );
   QJsonObject outObj = outDoc.object();
   QJsonObject outArgs = QJsonDocument::fromJson(outObj["data"].toString().toUtf8()).object();
   int outVal = outArgs["testQueryItem"].toString().toInt();
@@ -48,8 +50,10 @@ int main(int argc, char *argv[])
   doc = QJsonDocument(obj);
   payload = doc.toJson();
 
-  response = client.request(NetworkMethod::Patch, request, new NetworkPayload(payload.begin(), payload.end()));
-  outDoc = QJsonDocument::fromJson(QByteArray(reinterpret_cast<const char*>(response.payload.data()), response.payload.size()));
+  response = client.request(NetworkMethod::Put, request, new NetworkPayload(payload.begin(), payload.end()));
+  outDoc = QJsonDocument::fromJson(
+    QByteArray(response.payload.c_str(), response.payload.size())
+  );
   outObj = outDoc.object();
   outArgs = QJsonDocument::fromJson(outObj["data"].toString().toUtf8()).object();
   outVal = outArgs["testQueryItem"].toString().toInt();

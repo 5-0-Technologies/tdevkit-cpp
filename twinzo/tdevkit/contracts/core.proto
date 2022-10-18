@@ -1,0 +1,264 @@
+syntax = "proto3";
+
+message DeviceContract {
+  int32 Id = 1;
+  string Mac = 2;
+  int32 BranchId = 3;
+  optional BranchContract Branch = 4;
+  optional int32 SectorId = 5;
+  optional SectorContract Sector = 6;
+  optional int32 ValidSectorId = 7;
+  string Title = 8;
+  string Note = 9;
+  optional int64 LastTimeOnline = 10;
+  optional int64 ValidLastTimeOnline = 11;
+  optional float X = 12;
+  optional float Y = 13;
+  optional float ValidX = 14;
+  optional float ValidY = 15;
+  string AppVersion = 16;
+  bool IsMoving = 17;
+  string FallStatus = 18;
+  optional float Battery = 19;
+  int32 DeviceTypeId = 20;
+  string DeviceType = 21;
+  string Login = 22;
+  bool Position = 23;
+  bool Geofence = 24;
+  optional uint32 GeofenceRange = 25;
+  string Password = 26;
+  repeated LayerContract Layers = 27;
+  string DeviceStatus = 28;
+  optional int64 Heartbeat = 29;
+}
+
+message SectorContract {
+  int32 Id = 1;
+  string Guid = 2;
+  int32 BranchId = 3;
+  optional BranchContract Branch = 4;
+  string Title = 5;
+  float BarrierHeight = 6;
+  float BarrierWidth = 7;
+  float SectorHeight = 8;
+  float SectorWidth = 9;
+  int64 Modified = 10;
+  repeated GpsItemContract GpsItems = 11;
+  repeated AreaContract Areas = 12;
+  repeated BarrierContract Barriers = 13;
+  repeated BeaconContract Beacons = 14;
+  repeated SensorContract Sensors = 15;
+  string Configuration = 16;
+  repeated PathContract Paths = 17;
+}
+
+message BranchContract {
+  int32 Id = 1;
+  string Title = 2;
+  string Guid = 3;
+  string TimeZone = 4;
+  float Latitude = 5;
+  float Longtitude = 6;
+  repeated SectorContract Sectors = 7;
+}
+
+message LayerContract {
+  int32 Id = 1;
+  string Title = 2;
+  string Icon = 3;
+  int32 BranchId = 4;
+  optional BranchContract Branch = 5;
+  bool Visible = 6;
+  bool Localization = 7;
+  int64 Created = 8;
+  int64 Updated = 9;
+  repeated AreaContract Areas = 10;
+  repeated DeviceContract Devices = 11;
+  bool IsNoGo = 12;
+  repeated PathContract Paths = 13;
+  repeated LayerContract Children = 14;
+}
+
+message PathContract {
+  int32 Id = 1;
+  string Guid = 2;
+  string Title = 3;
+  int32 SectorId = 4;
+  optional SectorContract Sector = 5;
+  int32 BranchId = 6;
+  optional BranchContract Branch = 7;
+  optional int32 LayerId = 8;
+  optional LayerContract Layer = 9;
+  string Color = 10;
+  repeated PathPointContract PathPoints = 11;
+  string Description = 12;
+  int64 Created = 13;
+  int64 Updated = 14;
+}
+
+message PathPointContract {
+  int32 Id = 1;
+  int32 PathId = 2;
+  optional PathContract Path = 3;
+  int32 BranchId = 4;
+  optional BranchContract Branch = 5;
+  int32 Index = 6;
+  float X = 7;
+  float Y = 8;
+  optional int32 AreaId = 9;
+  optional AreaContract Area = 10;
+}
+
+message AreaContract {
+  int32 Id = 1;
+  string Guid = 2;
+  string Title = 3;
+  int32 SectorId = 4;
+  optional SectorContract Sector = 5;
+  int32 BranchId = 6;
+  optional BranchContract Branch = 7;
+  optional int32 LayerId = 8;
+  optional LayerContract Layer = 9;
+  string Color = 10;
+  repeated PointContract Coordinates = 11;
+  string Description = 12;
+  int64 Created = 13;
+  int64 Updated = 14;
+  optional int32 TargetBranchId = 15;
+}
+
+message PointContract {
+  float X = 1;
+  float Y = 2;
+}
+
+message DeviceLocationContract {
+  string Login = 1;
+  repeated LocationContract Locations = 2;
+}
+
+message LocationContract {
+  int64 Timestamp = 1;
+  optional int32 SectorId = 2;
+  optional float X = 3;
+  optional float Y = 4;
+  optional float Z = 5;
+  optional int32 Interval = 6;
+  optional uint32 battery = 7;
+  bool IsMoving = 8;
+  repeated DistanceContract Distances = 9;
+  repeated int32 LocalizationAreas = 10;
+  repeated int32 NoGoAreas = 11;
+}
+
+message DistanceContract {
+  int32 BeaconId = 1;
+  float Distance = 2;
+  int32 RSSI = 3;
+}
+
+message LoginContract {
+  string Login = 1;
+}
+
+message AuthenticationResponseContract {
+  string Client = 1;
+  string Token = 2;
+  uint64 Expiration = 3;
+  uint64 Created = 4;
+  string Branch = 5;
+}
+
+message CredentialContract {
+  string Client = 1;
+  string Login = 2;
+  string Password = 3;
+}
+
+message PostResponseContract {
+  bool Success = 1;
+  string ErrorMessage = 2;
+}
+
+message GpsItemContract {
+  int32 Id = 1;
+  int32 SectorId = 2;
+  optional SectorContract Sector = 3;
+  float X = 4;
+  float Y = 5;
+  double Latitude = 6;
+  double Longitude = 7;
+}
+
+message BarrierContract {
+  int32 X = 1;
+  int32 Y = 2;
+  int32 SectorId = 3;
+  optional SectorContract Sector = 4;
+  int32 BranchId = 5;
+  optional BranchContract Branch = 6;
+}
+
+message BeaconContract {
+  int32 Id = 1;
+  optional int32 SectorId = 2;
+  optional SectorContract Sector = 3;
+  int32 BranchId = 4;
+  optional BranchContract Branch = 5;
+  string Max = 6;
+  optional float X = 7;
+  optional float Y = 8;
+  optional float Z = 9;
+  string Title = 10;
+  bool Active = 11;
+  optional int32 TypeId = 12;
+  bool Position = 14;
+  bool Geofence = 15;
+  optional float GeofenceRange = 16;
+  string Cluster = 17;
+  optional int64 LastTimeOnline = 18;
+  bool UseGps = 19;
+}
+
+message BeaconPositionContract {
+  int32 Id = 1;
+  optional float X = 2;
+  optional float Y = 3;
+}
+
+message SensorContract {
+  int32 Id = 1;
+  string Login = 2;
+  string Title = 3;
+  string Max  = 4;
+  string Note = 5;
+  optional float X = 6;
+  optional float y = 7;
+  optional float Battery = 8;
+  optional int32 SectorId = 9;
+  optional SectorContract Sector = 10;
+  SensorDataContract SensorData = 11;
+  optional int32 AreaId = 12;
+  optional AreaContract Area = 13;
+  string Password = 14;
+}
+
+message SensorDataContract {
+  string Quantity = 1;
+  string Value = 2;
+  string Unit = 3;
+  string DataType = 4;
+  int64 Timestamp = 5;
+  RangeContract Range = 6;
+  int32 Index = 7;
+}
+
+message RangeContract {
+  string Type = 1;
+  repeated RangesContract Ranges = 2;
+}
+
+message RangesContract {
+  string Color = 1;
+  string Value = 2;
+}
