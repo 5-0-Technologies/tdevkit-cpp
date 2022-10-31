@@ -1,4 +1,5 @@
 #include <twinzo/network/qt_client.hpp>
+#include <twinzo/network/exceptions.hpp>
 
 #include <QBuffer>
 
@@ -38,8 +39,6 @@ NetworkResponse QtNetworkClient::request(NetworkMethod method, NetworkRequest& r
             QByteArray(header.first.c_str(), header.first.length()), 
             QByteArray(header.second.c_str(), header.second.length()));
 
-    QEventLoop requestLoop;
-    
     // Copy data to QBuffer (QIODevice) if any is available
     std::unique_ptr<QBuffer> data;
     if (payload != nullptr) {
@@ -50,12 +49,21 @@ NetworkResponse QtNetworkClient::request(NetworkMethod method, NetworkRequest& r
     auto reply = m_manager->sendCustomRequest(
         qRequest, methodMap.at(method).toUtf8(), data.get()
     );
+
+    // Synchronously wait for the network reply
+    QEventLoop requestLoop;
     QObject::connect(reply, &QNetworkReply::finished, &requestLoop, &QEventLoop::quit);
     requestLoop.exec();
 
-    NetworkResponse response = parseQtResponse(reply);
     reply->deleteLater();
-    return response;
+
+    auto reply_err = reply->error();
+    if (reply_err == QNetworkReply::NoError) {
+        return parseQtResponse(reply);
+    }
+    else {
+        throw NetworkException(reply_err, reply->errorString().toStdString());
+    }
 }
 
 NetworkResponse QtNetworkClient::head(NetworkRequest& request){

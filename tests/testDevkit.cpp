@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
   int size = devices.size();
 
   // Choose random device out of the list
-  int rand_id = std::rand() % (devices.size() + 1);
+  int rand_id = std::rand() % (devices.size());
   // Fetch device using the ID
   auto device_by_id = devkit.getDevice(devices.at(rand_id).id());
   std::cout << device_by_id.DebugString() << std::endl;
