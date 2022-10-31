@@ -7,6 +7,7 @@
 */
 
 #include <twinzo/network/qt_client.hpp>
+#include <twinzo/network/exceptions.hpp>
 
 #include <ctype.h>
 #include <QApplication>
@@ -37,33 +38,42 @@ int main(int argc, char *argv[])
 
   client.connect();
 
-  NetworkResponse response = client.get(request);
-  QJsonDocument outDoc = QJsonDocument::fromJson(
-    QByteArray(response.payload.c_str(), response.payload.size())
-  );
-  QJsonObject outObj = outDoc.object();
-  QJsonObject outArgs = outObj["args"].toObject();
-  int outVal = outArgs["testQueryItem"].toString().toInt();
+  try {
+    NetworkResponse response = client.get(request);
 
-  // Assert
-  if (outVal != queryTest)
+    QJsonDocument outDoc = QJsonDocument::fromJson(
+      QByteArray(response.payload.c_str(), response.payload.size())
+    );
+    QJsonObject outObj = outDoc.object();
+    QJsonObject outArgs = outObj["args"].toObject();
+    int outVal = outArgs["testQueryItem"].toString().toInt();
+
+    // Assert
+    if (outVal != queryTest)
+      return 1;    
+  } catch(NetworkException& e) {
     return 1;
+  }
 
   queryTest = QRandomGenerator::global()->generate() % 1000;
   request.query_items.clear();
   request.query_items.push_back(NetworkQuery("testQueryItem", std::to_string(queryTest)));
 
-  response = client.request(NetworkMethod::Get, request);
-  outDoc = QJsonDocument::fromJson(
-    QByteArray(response.payload.c_str(), response.payload.size())
-  );
-  outObj = outDoc.object();
-  outArgs = outObj["args"].toObject();
-  outVal = outArgs["testQueryItem"].toString().toInt();
+  try {
+    NetworkResponse response = client.request(NetworkMethod::Get, request);
+    QJsonDocument outDoc = QJsonDocument::fromJson(
+      QByteArray(response.payload.c_str(), response.payload.size())
+    );
+    QJsonObject outObj = outDoc.object();
+    QJsonObject outArgs = outObj["args"].toObject();
+    int outVal = outArgs["testQueryItem"].toString().toInt();
 
-  // Assert
-  if (outVal != queryTest)
+    // Assert
+    if (outVal != queryTest)
+      return 1;
+  } catch(NetworkException& e) {
     return 1;
+  }
 
   return 0;
 }

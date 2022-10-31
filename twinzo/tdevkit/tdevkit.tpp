@@ -1,7 +1,7 @@
 #pragma once
 
-#include <iostream>
 #include <memory>
+#include <twinzo/network/exceptions.hpp>
 #include <twinzo/tdevkit/tdevkit.hpp>
 
 template <class HttpClient>
@@ -50,6 +50,10 @@ auto tDevkit<HttpClient>::serviceRequest(
 
   NetworkResponse response =
       m_network_client->request(method, request, payload.get());
+
+  if (response.status_code / 100 != 2) {
+    throw ServerResponseException(response.status_code, response.status_line);
+  }
 
   // Return unserialized string if requested
   if constexpr (std::is_same_v<ResponseContract, std::string>) {
