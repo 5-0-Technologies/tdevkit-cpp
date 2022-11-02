@@ -79,8 +79,8 @@ protected:
   auto serviceRequest(
       NetworkMethod method, std::string path, PayloadContract data,
       const std::vector<NetworkHeader>& headers = {},
-      const std::vector<NetworkQuery>& query = {},
-      const std::string& content_type = "application/x-protobuf"
+      const std::vector<NetworkQuery>& query    = {},
+      const std::string& content_type           = "application/x-protobuf"
   ) -> Contract;
 
 private:

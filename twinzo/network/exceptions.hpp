@@ -10,7 +10,9 @@ public:
   ServerResponseException(int status_code_, const char* what_arg)
       : status_code(status_code_), std::runtime_error(what_arg) {}
 
-  int get_status_code() const { return status_code; }
+  int get_status_code() const {
+    return status_code;
+  }
 };
 
 class NetworkException : public std::runtime_error {

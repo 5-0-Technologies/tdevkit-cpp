@@ -4,8 +4,17 @@ AccessModifierOffset: -2
 IndentAccessModifiers: false
 EmptyLineBeforeAccessModifier: LogicalBlock
 
+AlignArrayOfStructures: Left
+AlignConsecutiveAssignments: true
+AlignTrailingComments: true
+
 AlignAfterOpenBracket: BlockIndent
 AllowAllParametersOfDeclarationOnNextLine: true
+AllowShortFunctionsOnASingleLine: Empty
 BinPackParameters: true
 
 BinPackArguments: true
+
+PointerAlignment: Left
+ReferenceAlignment: Left
+SpaceAroundPointerQualifiers: Before

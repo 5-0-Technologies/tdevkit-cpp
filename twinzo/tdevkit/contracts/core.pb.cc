@@ -20,6 +20,20 @@ PROTOBUF_PRAGMA_INIT_SEG
 namespace _pb = ::PROTOBUF_NAMESPACE_ID;
 namespace _pbi = _pb::internal;
 
+PROTOBUF_CONSTEXPR Guid::Guid(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.lo_)*/uint64_t{0u}
+  , /*decltype(_impl_.hi_)*/uint64_t{0u}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct GuidDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GuidDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GuidDefaultTypeInternal() {}
+  union {
+    Guid _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GuidDefaultTypeInternal _Guid_default_instance_;
 PROTOBUF_CONSTEXPR DeviceContract::DeviceContract(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_._has_bits_)*/{}
@@ -96,8 +110,8 @@ PROTOBUF_CONSTEXPR BranchContract::BranchContract(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.sectors_)*/{}
   , /*decltype(_impl_.title_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.guid_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.timezone_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.guid_)*/nullptr
   , /*decltype(_impl_.id_)*/0
   , /*decltype(_impl_.latitude_)*/0
   , /*decltype(_impl_.longtitude_)*/0
@@ -143,10 +157,10 @@ PROTOBUF_CONSTEXPR PathContract::PathContract(
     /*decltype(_impl_._has_bits_)*/{}
   , /*decltype(_impl_._cached_size_)*/{}
   , /*decltype(_impl_.pathpoints_)*/{}
-  , /*decltype(_impl_.guid_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.title_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.color_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.description_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.guid_)*/nullptr
   , /*decltype(_impl_.sector_)*/nullptr
   , /*decltype(_impl_.branch_)*/nullptr
   , /*decltype(_impl_.layer_)*/nullptr
@@ -193,10 +207,10 @@ PROTOBUF_CONSTEXPR AreaContract::AreaContract(
     /*decltype(_impl_._has_bits_)*/{}
   , /*decltype(_impl_._cached_size_)*/{}
   , /*decltype(_impl_.coordinates_)*/{}
-  , /*decltype(_impl_.guid_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.title_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.color_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.description_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.guid_)*/nullptr
   , /*decltype(_impl_.sector_)*/nullptr
   , /*decltype(_impl_.branch_)*/nullptr
   , /*decltype(_impl_.layer_)*/nullptr
@@ -504,11 +518,19 @@ struct RangesContractDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RangesContractDefaultTypeInternal _RangesContract_default_instance_;
-static ::_pb::Metadata file_level_metadata_core_2eproto[23];
+static ::_pb::Metadata file_level_metadata_core_2eproto[24];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_core_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_core_2eproto = nullptr;
 
 const uint32_t TableStruct_core_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::Guid, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::Guid, _impl_.lo_),
+  PROTOBUF_FIELD_OFFSET(::Guid, _impl_.hi_),
   PROTOBUF_FIELD_OFFSET(::DeviceContract, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::DeviceContract, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1001,32 +1023,34 @@ const uint32_t TableStruct_core_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   PROTOBUF_FIELD_OFFSET(::RangesContract, _impl_.value_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 35, -1, sizeof(::DeviceContract)},
-  { 64, 87, -1, sizeof(::SectorContract)},
-  { 104, -1, -1, sizeof(::BranchContract)},
-  { 117, 137, -1, sizeof(::LayerContract)},
-  { 151, 171, -1, sizeof(::PathContract)},
-  { 185, 201, -1, sizeof(::PathPointContract)},
-  { 211, 232, -1, sizeof(::AreaContract)},
-  { 247, -1, -1, sizeof(::PointContract)},
-  { 255, -1, -1, sizeof(::DeviceLocationContract)},
-  { 263, 280, -1, sizeof(::LocationContract)},
-  { 291, -1, -1, sizeof(::DistanceContract)},
-  { 300, -1, -1, sizeof(::LoginContract)},
-  { 307, -1, -1, sizeof(::AuthenticationResponseContract)},
-  { 318, -1, -1, sizeof(::CredentialContract)},
-  { 327, -1, -1, sizeof(::PostResponseContract)},
-  { 335, 348, -1, sizeof(::GpsItemContract)},
-  { 355, 367, -1, sizeof(::BarrierContract)},
-  { 373, 397, -1, sizeof(::BeaconContract)},
-  { 415, 424, -1, sizeof(::BeaconPositionContract)},
-  { 427, 447, -1, sizeof(::SensorContract)},
-  { 461, -1, -1, sizeof(::SensorDataContract)},
-  { 474, -1, -1, sizeof(::RangeContract)},
-  { 482, -1, -1, sizeof(::RangesContract)},
+  { 0, -1, -1, sizeof(::Guid)},
+  { 8, 43, -1, sizeof(::DeviceContract)},
+  { 72, 95, -1, sizeof(::SectorContract)},
+  { 112, -1, -1, sizeof(::BranchContract)},
+  { 125, 145, -1, sizeof(::LayerContract)},
+  { 159, 179, -1, sizeof(::PathContract)},
+  { 193, 209, -1, sizeof(::PathPointContract)},
+  { 219, 240, -1, sizeof(::AreaContract)},
+  { 255, -1, -1, sizeof(::PointContract)},
+  { 263, -1, -1, sizeof(::DeviceLocationContract)},
+  { 271, 288, -1, sizeof(::LocationContract)},
+  { 299, -1, -1, sizeof(::DistanceContract)},
+  { 308, -1, -1, sizeof(::LoginContract)},
+  { 315, -1, -1, sizeof(::AuthenticationResponseContract)},
+  { 326, -1, -1, sizeof(::CredentialContract)},
+  { 335, -1, -1, sizeof(::PostResponseContract)},
+  { 343, 356, -1, sizeof(::GpsItemContract)},
+  { 363, 375, -1, sizeof(::BarrierContract)},
+  { 381, 405, -1, sizeof(::BeaconContract)},
+  { 423, 432, -1, sizeof(::BeaconPositionContract)},
+  { 435, 455, -1, sizeof(::SensorContract)},
+  { 469, -1, -1, sizeof(::SensorDataContract)},
+  { 482, -1, -1, sizeof(::RangeContract)},
+  { 490, -1, -1, sizeof(::RangesContract)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
+  &::_Guid_default_instance_._instance,
   &::_DeviceContract_default_instance_._instance,
   &::_SectorContract_default_instance_._instance,
   &::_BranchContract_default_instance_._instance,
@@ -1053,143 +1077,144 @@ static const ::_pb::Message* const file_default_instances[] = {
 };
 
 const char descriptor_table_protodef_core_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\ncore.proto\"\267\006\n\016DeviceContract\022\n\n\002Id\030\001 "
-  "\001(\005\022\013\n\003Mac\030\002 \001(\t\022\020\n\010BranchId\030\003 \001(\005\022$\n\006Br"
-  "anch\030\004 \001(\0132\017.BranchContractH\000\210\001\001\022\025\n\010Sect"
-  "orId\030\005 \001(\005H\001\210\001\001\022$\n\006Sector\030\006 \001(\0132\017.Sector"
-  "ContractH\002\210\001\001\022\032\n\rValidSectorId\030\007 \001(\005H\003\210\001"
-  "\001\022\r\n\005Title\030\010 \001(\t\022\014\n\004Note\030\t \001(\t\022\033\n\016LastTi"
-  "meOnline\030\n \001(\003H\004\210\001\001\022 \n\023ValidLastTimeOnli"
-  "ne\030\013 \001(\003H\005\210\001\001\022\016\n\001X\030\014 \001(\002H\006\210\001\001\022\016\n\001Y\030\r \001(\002"
-  "H\007\210\001\001\022\023\n\006ValidX\030\016 \001(\002H\010\210\001\001\022\023\n\006ValidY\030\017 \001"
-  "(\002H\t\210\001\001\022\022\n\nAppVersion\030\020 \001(\t\022\020\n\010IsMoving\030"
-  "\021 \001(\010\022\022\n\nFallStatus\030\022 \001(\t\022\024\n\007Battery\030\023 \001"
-  "(\002H\n\210\001\001\022\024\n\014DeviceTypeId\030\024 \001(\005\022\022\n\nDeviceT"
-  "ype\030\025 \001(\t\022\r\n\005Login\030\026 \001(\t\022\020\n\010Position\030\027 \001"
-  "(\010\022\020\n\010Geofence\030\030 \001(\010\022\032\n\rGeofenceRange\030\031 "
-  "\001(\rH\013\210\001\001\022\020\n\010Password\030\032 \001(\t\022\036\n\006Layers\030\033 \003"
-  "(\0132\016.LayerContract\022\024\n\014DeviceStatus\030\034 \001(\t"
-  "\022\026\n\tHeartbeat\030\035 \001(\003H\014\210\001\001B\t\n\007_BranchB\013\n\t_"
-  "SectorIdB\t\n\007_SectorB\020\n\016_ValidSectorIdB\021\n"
-  "\017_LastTimeOnlineB\026\n\024_ValidLastTimeOnline"
-  "B\004\n\002_XB\004\n\002_YB\t\n\007_ValidXB\t\n\007_ValidYB\n\n\010_B"
-  "atteryB\020\n\016_GeofenceRangeB\014\n\n_Heartbeat\"\305"
-  "\003\n\016SectorContract\022\n\n\002Id\030\001 \001(\005\022\014\n\004Guid\030\002 "
-  "\001(\t\022\020\n\010BranchId\030\003 \001(\005\022$\n\006Branch\030\004 \001(\0132\017."
-  "BranchContractH\000\210\001\001\022\r\n\005Title\030\005 \001(\t\022\025\n\rBa"
-  "rrierHeight\030\006 \001(\002\022\024\n\014BarrierWidth\030\007 \001(\002\022"
-  "\024\n\014SectorHeight\030\010 \001(\002\022\023\n\013SectorWidth\030\t \001"
-  "(\002\022\020\n\010Modified\030\n \001(\003\022\"\n\010GpsItems\030\013 \003(\0132\020"
-  ".GpsItemContract\022\034\n\005Areas\030\014 \003(\0132\r.AreaCo"
-  "ntract\022\"\n\010Barriers\030\r \003(\0132\020.BarrierContra"
-  "ct\022 \n\007Beacons\030\016 \003(\0132\017.BeaconContract\022 \n\007"
-  "Sensors\030\017 \003(\0132\017.SensorContract\022\025\n\rConfig"
-  "uration\030\020 \001(\t\022\034\n\005Paths\030\021 \003(\0132\r.PathContr"
-  "actB\t\n\007_Branch\"\223\001\n\016BranchContract\022\n\n\002Id\030"
-  "\001 \001(\005\022\r\n\005Title\030\002 \001(\t\022\014\n\004Guid\030\003 \001(\t\022\020\n\010Ti"
-  "meZone\030\004 \001(\t\022\020\n\010Latitude\030\005 \001(\002\022\022\n\nLongti"
-  "tude\030\006 \001(\002\022 \n\007Sectors\030\007 \003(\0132\017.SectorCont"
-  "ract\"\324\002\n\rLayerContract\022\n\n\002Id\030\001 \001(\005\022\r\n\005Ti"
-  "tle\030\002 \001(\t\022\014\n\004Icon\030\003 \001(\t\022\020\n\010BranchId\030\004 \001("
-  "\005\022$\n\006Branch\030\005 \001(\0132\017.BranchContractH\000\210\001\001\022"
-  "\017\n\007Visible\030\006 \001(\010\022\024\n\014Localization\030\007 \001(\010\022\017"
-  "\n\007Created\030\010 \001(\003\022\017\n\007Updated\030\t \001(\003\022\034\n\005Area"
-  "s\030\n \003(\0132\r.AreaContract\022 \n\007Devices\030\013 \003(\0132"
-  "\017.DeviceContract\022\016\n\006IsNoGo\030\014 \001(\010\022\034\n\005Path"
-  "s\030\r \003(\0132\r.PathContract\022 \n\010Children\030\016 \003(\013"
-  "2\016.LayerContractB\t\n\007_Branch\"\373\002\n\014PathCont"
-  "ract\022\n\n\002Id\030\001 \001(\005\022\014\n\004Guid\030\002 \001(\t\022\r\n\005Title\030"
-  "\003 \001(\t\022\020\n\010SectorId\030\004 \001(\005\022$\n\006Sector\030\005 \001(\0132"
-  "\017.SectorContractH\000\210\001\001\022\020\n\010BranchId\030\006 \001(\005\022"
-  "$\n\006Branch\030\007 \001(\0132\017.BranchContractH\001\210\001\001\022\024\n"
-  "\007LayerId\030\010 \001(\005H\002\210\001\001\022\"\n\005Layer\030\t \001(\0132\016.Lay"
-  "erContractH\003\210\001\001\022\r\n\005Color\030\n \001(\t\022&\n\nPathPo"
-  "ints\030\013 \003(\0132\022.PathPointContract\022\023\n\013Descri"
-  "ption\030\014 \001(\t\022\017\n\007Created\030\r \001(\003\022\017\n\007Updated\030"
-  "\016 \001(\003B\t\n\007_SectorB\t\n\007_BranchB\n\n\010_LayerIdB"
-  "\010\n\006_Layer\"\215\002\n\021PathPointContract\022\n\n\002Id\030\001 "
-  "\001(\005\022\016\n\006PathId\030\002 \001(\005\022 \n\004Path\030\003 \001(\0132\r.Path"
-  "ContractH\000\210\001\001\022\020\n\010BranchId\030\004 \001(\005\022$\n\006Branc"
-  "h\030\005 \001(\0132\017.BranchContractH\001\210\001\001\022\r\n\005Index\030\006"
-  " \001(\005\022\t\n\001X\030\007 \001(\002\022\t\n\001Y\030\010 \001(\002\022\023\n\006AreaId\030\t \001"
-  "(\005H\002\210\001\001\022 \n\004Area\030\n \001(\0132\r.AreaContractH\003\210\001"
-  "\001B\007\n\005_PathB\t\n\007_BranchB\t\n\007_AreaIdB\007\n\005_Are"
-  "a\"\250\003\n\014AreaContract\022\n\n\002Id\030\001 \001(\005\022\014\n\004Guid\030\002"
-  " \001(\t\022\r\n\005Title\030\003 \001(\t\022\020\n\010SectorId\030\004 \001(\005\022$\n"
-  "\006Sector\030\005 \001(\0132\017.SectorContractH\000\210\001\001\022\020\n\010B"
-  "ranchId\030\006 \001(\005\022$\n\006Branch\030\007 \001(\0132\017.BranchCo"
-  "ntractH\001\210\001\001\022\024\n\007LayerId\030\010 \001(\005H\002\210\001\001\022\"\n\005Lay"
-  "er\030\t \001(\0132\016.LayerContractH\003\210\001\001\022\r\n\005Color\030\n"
-  " \001(\t\022#\n\013Coordinates\030\013 \003(\0132\016.PointContrac"
-  "t\022\023\n\013Description\030\014 \001(\t\022\017\n\007Created\030\r \001(\003\022"
-  "\017\n\007Updated\030\016 \001(\003\022\033\n\016TargetBranchId\030\017 \001(\005"
-  "H\004\210\001\001B\t\n\007_SectorB\t\n\007_BranchB\n\n\010_LayerIdB"
-  "\010\n\006_LayerB\021\n\017_TargetBranchId\"%\n\rPointCon"
-  "tract\022\t\n\001X\030\001 \001(\002\022\t\n\001Y\030\002 \001(\002\"M\n\026DeviceLoc"
-  "ationContract\022\r\n\005Login\030\001 \001(\t\022$\n\tLocation"
-  "s\030\002 \003(\0132\021.LocationContract\"\267\002\n\020LocationC"
-  "ontract\022\021\n\tTimestamp\030\001 \001(\003\022\025\n\010SectorId\030\002"
-  " \001(\005H\000\210\001\001\022\016\n\001X\030\003 \001(\002H\001\210\001\001\022\016\n\001Y\030\004 \001(\002H\002\210\001"
-  "\001\022\016\n\001Z\030\005 \001(\002H\003\210\001\001\022\025\n\010Interval\030\006 \001(\005H\004\210\001\001"
-  "\022\024\n\007battery\030\007 \001(\rH\005\210\001\001\022\020\n\010IsMoving\030\010 \001(\010"
-  "\022$\n\tDistances\030\t \003(\0132\021.DistanceContract\022\031"
-  "\n\021LocalizationAreas\030\n \003(\005\022\021\n\tNoGoAreas\030\013"
-  " \003(\005B\013\n\t_SectorIdB\004\n\002_XB\004\n\002_YB\004\n\002_ZB\013\n\t_"
-  "IntervalB\n\n\010_battery\"D\n\020DistanceContract"
-  "\022\020\n\010BeaconId\030\001 \001(\005\022\020\n\010Distance\030\002 \001(\002\022\014\n\004"
-  "RSSI\030\003 \001(\005\"\036\n\rLoginContract\022\r\n\005Login\030\001 \001"
-  "(\t\"t\n\036AuthenticationResponseContract\022\016\n\006"
-  "Client\030\001 \001(\t\022\r\n\005Token\030\002 \001(\t\022\022\n\nExpiratio"
-  "n\030\003 \001(\004\022\017\n\007Created\030\004 \001(\004\022\016\n\006Branch\030\005 \001(\t"
-  "\"E\n\022CredentialContract\022\016\n\006Client\030\001 \001(\t\022\r"
-  "\n\005Login\030\002 \001(\t\022\020\n\010Password\030\003 \001(\t\"=\n\024PostR"
-  "esponseContract\022\017\n\007Success\030\001 \001(\010\022\024\n\014Erro"
-  "rMessage\030\002 \001(\t\"\233\001\n\017GpsItemContract\022\n\n\002Id"
-  "\030\001 \001(\005\022\020\n\010SectorId\030\002 \001(\005\022$\n\006Sector\030\003 \001(\013"
-  "2\017.SectorContractH\000\210\001\001\022\t\n\001X\030\004 \001(\002\022\t\n\001Y\030\005"
-  " \001(\002\022\020\n\010Latitude\030\006 \001(\001\022\021\n\tLongitude\030\007 \001("
-  "\001B\t\n\007_Sector\"\255\001\n\017BarrierContract\022\t\n\001X\030\001 "
-  "\001(\005\022\t\n\001Y\030\002 \001(\005\022\020\n\010SectorId\030\003 \001(\005\022$\n\006Sect"
-  "or\030\004 \001(\0132\017.SectorContractH\000\210\001\001\022\020\n\010Branch"
-  "Id\030\005 \001(\005\022$\n\006Branch\030\006 \001(\0132\017.BranchContrac"
-  "tH\001\210\001\001B\t\n\007_SectorB\t\n\007_Branch\"\345\003\n\016BeaconC"
-  "ontract\022\n\n\002Id\030\001 \001(\005\022\025\n\010SectorId\030\002 \001(\005H\000\210"
-  "\001\001\022$\n\006Sector\030\003 \001(\0132\017.SectorContractH\001\210\001\001"
-  "\022\020\n\010BranchId\030\004 \001(\005\022$\n\006Branch\030\005 \001(\0132\017.Bra"
-  "nchContractH\002\210\001\001\022\013\n\003Max\030\006 \001(\t\022\016\n\001X\030\007 \001(\002"
-  "H\003\210\001\001\022\016\n\001Y\030\010 \001(\002H\004\210\001\001\022\016\n\001Z\030\t \001(\002H\005\210\001\001\022\r\n"
-  "\005Title\030\n \001(\t\022\016\n\006Active\030\013 \001(\010\022\023\n\006TypeId\030\014"
-  " \001(\005H\006\210\001\001\022\020\n\010Position\030\016 \001(\010\022\020\n\010Geofence\030"
-  "\017 \001(\010\022\032\n\rGeofenceRange\030\020 \001(\002H\007\210\001\001\022\017\n\007Clu"
-  "ster\030\021 \001(\t\022\033\n\016LastTimeOnline\030\022 \001(\003H\010\210\001\001\022"
-  "\016\n\006UseGps\030\023 \001(\010B\013\n\t_SectorIdB\t\n\007_SectorB"
-  "\t\n\007_BranchB\004\n\002_XB\004\n\002_YB\004\n\002_ZB\t\n\007_TypeIdB"
-  "\020\n\016_GeofenceRangeB\021\n\017_LastTimeOnline\"P\n\026"
-  "BeaconPositionContract\022\n\n\002Id\030\001 \001(\005\022\016\n\001X\030"
-  "\002 \001(\002H\000\210\001\001\022\016\n\001Y\030\003 \001(\002H\001\210\001\001B\004\n\002_XB\004\n\002_Y\"\376"
-  "\002\n\016SensorContract\022\n\n\002Id\030\001 \001(\005\022\r\n\005Login\030\002"
-  " \001(\t\022\r\n\005Title\030\003 \001(\t\022\013\n\003Max\030\004 \001(\t\022\014\n\004Note"
-  "\030\005 \001(\t\022\016\n\001X\030\006 \001(\002H\000\210\001\001\022\016\n\001y\030\007 \001(\002H\001\210\001\001\022\024"
-  "\n\007Battery\030\010 \001(\002H\002\210\001\001\022\025\n\010SectorId\030\t \001(\005H\003"
-  "\210\001\001\022$\n\006Sector\030\n \001(\0132\017.SectorContractH\004\210\001"
-  "\001\022\'\n\nSensorData\030\013 \001(\0132\023.SensorDataContra"
-  "ct\022\023\n\006AreaId\030\014 \001(\005H\005\210\001\001\022 \n\004Area\030\r \001(\0132\r."
-  "AreaContractH\006\210\001\001\022\020\n\010Password\030\016 \001(\tB\004\n\002_"
-  "XB\004\n\002_yB\n\n\010_BatteryB\013\n\t_SectorIdB\t\n\007_Sec"
-  "torB\t\n\007_AreaIdB\007\n\005_Area\"\226\001\n\022SensorDataCo"
-  "ntract\022\020\n\010Quantity\030\001 \001(\t\022\r\n\005Value\030\002 \001(\t\022"
-  "\014\n\004Unit\030\003 \001(\t\022\020\n\010DataType\030\004 \001(\t\022\021\n\tTimes"
-  "tamp\030\005 \001(\003\022\035\n\005Range\030\006 \001(\0132\016.RangeContrac"
-  "t\022\r\n\005Index\030\007 \001(\005\">\n\rRangeContract\022\014\n\004Typ"
-  "e\030\001 \001(\t\022\037\n\006Ranges\030\002 \003(\0132\017.RangesContract"
-  "\".\n\016RangesContract\022\r\n\005Color\030\001 \001(\t\022\r\n\005Val"
-  "ue\030\002 \001(\tb\006proto3"
+  "\n\ncore.proto\"\036\n\004Guid\022\n\n\002lo\030\001 \001(\006\022\n\n\002hi\030\002"
+  " \001(\006\"\267\006\n\016DeviceContract\022\n\n\002Id\030\001 \001(\005\022\013\n\003M"
+  "ac\030\002 \001(\t\022\020\n\010BranchId\030\003 \001(\005\022$\n\006Branch\030\004 \001"
+  "(\0132\017.BranchContractH\000\210\001\001\022\025\n\010SectorId\030\005 \001"
+  "(\005H\001\210\001\001\022$\n\006Sector\030\006 \001(\0132\017.SectorContract"
+  "H\002\210\001\001\022\032\n\rValidSectorId\030\007 \001(\005H\003\210\001\001\022\r\n\005Tit"
+  "le\030\010 \001(\t\022\014\n\004Note\030\t \001(\t\022\033\n\016LastTimeOnline"
+  "\030\n \001(\003H\004\210\001\001\022 \n\023ValidLastTimeOnline\030\013 \001(\003"
+  "H\005\210\001\001\022\016\n\001X\030\014 \001(\002H\006\210\001\001\022\016\n\001Y\030\r \001(\002H\007\210\001\001\022\023\n"
+  "\006ValidX\030\016 \001(\002H\010\210\001\001\022\023\n\006ValidY\030\017 \001(\002H\t\210\001\001\022"
+  "\022\n\nAppVersion\030\020 \001(\t\022\020\n\010IsMoving\030\021 \001(\010\022\022\n"
+  "\nFallStatus\030\022 \001(\t\022\024\n\007Battery\030\023 \001(\002H\n\210\001\001\022"
+  "\024\n\014DeviceTypeId\030\024 \001(\005\022\022\n\nDeviceType\030\025 \001("
+  "\t\022\r\n\005Login\030\026 \001(\t\022\020\n\010Position\030\027 \001(\010\022\020\n\010Ge"
+  "ofence\030\030 \001(\010\022\032\n\rGeofenceRange\030\031 \001(\rH\013\210\001\001"
+  "\022\020\n\010Password\030\032 \001(\t\022\036\n\006Layers\030\033 \003(\0132\016.Lay"
+  "erContract\022\024\n\014DeviceStatus\030\034 \001(\t\022\026\n\tHear"
+  "tbeat\030\035 \001(\003H\014\210\001\001B\t\n\007_BranchB\013\n\t_SectorId"
+  "B\t\n\007_SectorB\020\n\016_ValidSectorIdB\021\n\017_LastTi"
+  "meOnlineB\026\n\024_ValidLastTimeOnlineB\004\n\002_XB\004"
+  "\n\002_YB\t\n\007_ValidXB\t\n\007_ValidYB\n\n\010_BatteryB\020"
+  "\n\016_GeofenceRangeB\014\n\n_Heartbeat\"\305\003\n\016Secto"
+  "rContract\022\n\n\002Id\030\001 \001(\005\022\014\n\004Guid\030\002 \001(\t\022\020\n\010B"
+  "ranchId\030\003 \001(\005\022$\n\006Branch\030\004 \001(\0132\017.BranchCo"
+  "ntractH\000\210\001\001\022\r\n\005Title\030\005 \001(\t\022\025\n\rBarrierHei"
+  "ght\030\006 \001(\002\022\024\n\014BarrierWidth\030\007 \001(\002\022\024\n\014Secto"
+  "rHeight\030\010 \001(\002\022\023\n\013SectorWidth\030\t \001(\002\022\020\n\010Mo"
+  "dified\030\n \001(\003\022\"\n\010GpsItems\030\013 \003(\0132\020.GpsItem"
+  "Contract\022\034\n\005Areas\030\014 \003(\0132\r.AreaContract\022\""
+  "\n\010Barriers\030\r \003(\0132\020.BarrierContract\022 \n\007Be"
+  "acons\030\016 \003(\0132\017.BeaconContract\022 \n\007Sensors\030"
+  "\017 \003(\0132\017.SensorContract\022\025\n\rConfiguration\030"
+  "\020 \001(\t\022\034\n\005Paths\030\021 \003(\0132\r.PathContractB\t\n\007_"
+  "Branch\"\232\001\n\016BranchContract\022\n\n\002Id\030\001 \001(\005\022\r\n"
+  "\005Title\030\002 \001(\t\022\023\n\004Guid\030\003 \001(\0132\005.Guid\022\020\n\010Tim"
+  "eZone\030\004 \001(\t\022\020\n\010Latitude\030\005 \001(\002\022\022\n\nLongtit"
+  "ude\030\006 \001(\002\022 \n\007Sectors\030\007 \003(\0132\017.SectorContr"
+  "act\"\324\002\n\rLayerContract\022\n\n\002Id\030\001 \001(\005\022\r\n\005Tit"
+  "le\030\002 \001(\t\022\014\n\004Icon\030\003 \001(\t\022\020\n\010BranchId\030\004 \001(\005"
+  "\022$\n\006Branch\030\005 \001(\0132\017.BranchContractH\000\210\001\001\022\017"
+  "\n\007Visible\030\006 \001(\010\022\024\n\014Localization\030\007 \001(\010\022\017\n"
+  "\007Created\030\010 \001(\003\022\017\n\007Updated\030\t \001(\003\022\034\n\005Areas"
+  "\030\n \003(\0132\r.AreaContract\022 \n\007Devices\030\013 \003(\0132\017"
+  ".DeviceContract\022\016\n\006IsNoGo\030\014 \001(\010\022\034\n\005Paths"
+  "\030\r \003(\0132\r.PathContract\022 \n\010Children\030\016 \003(\0132"
+  "\016.LayerContractB\t\n\007_Branch\"\202\003\n\014PathContr"
+  "act\022\n\n\002Id\030\001 \001(\005\022\023\n\004Guid\030\002 \001(\0132\005.Guid\022\r\n\005"
+  "Title\030\003 \001(\t\022\020\n\010SectorId\030\004 \001(\005\022$\n\006Sector\030"
+  "\005 \001(\0132\017.SectorContractH\000\210\001\001\022\020\n\010BranchId\030"
+  "\006 \001(\005\022$\n\006Branch\030\007 \001(\0132\017.BranchContractH\001"
+  "\210\001\001\022\024\n\007LayerId\030\010 \001(\005H\002\210\001\001\022\"\n\005Layer\030\t \001(\013"
+  "2\016.LayerContractH\003\210\001\001\022\r\n\005Color\030\n \001(\t\022&\n\n"
+  "PathPoints\030\013 \003(\0132\022.PathPointContract\022\023\n\013"
+  "Description\030\014 \001(\t\022\017\n\007Created\030\r \001(\003\022\017\n\007Up"
+  "dated\030\016 \001(\003B\t\n\007_SectorB\t\n\007_BranchB\n\n\010_La"
+  "yerIdB\010\n\006_Layer\"\215\002\n\021PathPointContract\022\n\n"
+  "\002Id\030\001 \001(\005\022\016\n\006PathId\030\002 \001(\005\022 \n\004Path\030\003 \001(\0132"
+  "\r.PathContractH\000\210\001\001\022\020\n\010BranchId\030\004 \001(\005\022$\n"
+  "\006Branch\030\005 \001(\0132\017.BranchContractH\001\210\001\001\022\r\n\005I"
+  "ndex\030\006 \001(\005\022\t\n\001X\030\007 \001(\002\022\t\n\001Y\030\010 \001(\002\022\023\n\006Area"
+  "Id\030\t \001(\005H\002\210\001\001\022 \n\004Area\030\n \001(\0132\r.AreaContra"
+  "ctH\003\210\001\001B\007\n\005_PathB\t\n\007_BranchB\t\n\007_AreaIdB\007"
+  "\n\005_Area\"\257\003\n\014AreaContract\022\n\n\002Id\030\001 \001(\005\022\023\n\004"
+  "Guid\030\002 \001(\0132\005.Guid\022\r\n\005Title\030\003 \001(\t\022\020\n\010Sect"
+  "orId\030\004 \001(\005\022$\n\006Sector\030\005 \001(\0132\017.SectorContr"
+  "actH\000\210\001\001\022\020\n\010BranchId\030\006 \001(\005\022$\n\006Branch\030\007 \001"
+  "(\0132\017.BranchContractH\001\210\001\001\022\024\n\007LayerId\030\010 \001("
+  "\005H\002\210\001\001\022\"\n\005Layer\030\t \001(\0132\016.LayerContractH\003\210"
+  "\001\001\022\r\n\005Color\030\n \001(\t\022#\n\013Coordinates\030\013 \003(\0132\016"
+  ".PointContract\022\023\n\013Description\030\014 \001(\t\022\017\n\007C"
+  "reated\030\r \001(\003\022\017\n\007Updated\030\016 \001(\003\022\033\n\016TargetB"
+  "ranchId\030\017 \001(\005H\004\210\001\001B\t\n\007_SectorB\t\n\007_Branch"
+  "B\n\n\010_LayerIdB\010\n\006_LayerB\021\n\017_TargetBranchI"
+  "d\"%\n\rPointContract\022\t\n\001X\030\001 \001(\002\022\t\n\001Y\030\002 \001(\002"
+  "\"M\n\026DeviceLocationContract\022\r\n\005Login\030\001 \001("
+  "\t\022$\n\tLocations\030\002 \003(\0132\021.LocationContract\""
+  "\267\002\n\020LocationContract\022\021\n\tTimestamp\030\001 \001(\003\022"
+  "\025\n\010SectorId\030\002 \001(\005H\000\210\001\001\022\016\n\001X\030\003 \001(\002H\001\210\001\001\022\016"
+  "\n\001Y\030\004 \001(\002H\002\210\001\001\022\016\n\001Z\030\005 \001(\002H\003\210\001\001\022\025\n\010Interv"
+  "al\030\006 \001(\005H\004\210\001\001\022\024\n\007battery\030\007 \001(\rH\005\210\001\001\022\020\n\010I"
+  "sMoving\030\010 \001(\010\022$\n\tDistances\030\t \003(\0132\021.Dista"
+  "nceContract\022\031\n\021LocalizationAreas\030\n \003(\005\022\021"
+  "\n\tNoGoAreas\030\013 \003(\005B\013\n\t_SectorIdB\004\n\002_XB\004\n\002"
+  "_YB\004\n\002_ZB\013\n\t_IntervalB\n\n\010_battery\"D\n\020Dis"
+  "tanceContract\022\020\n\010BeaconId\030\001 \001(\005\022\020\n\010Dista"
+  "nce\030\002 \001(\002\022\014\n\004RSSI\030\003 \001(\005\"\036\n\rLoginContract"
+  "\022\r\n\005Login\030\001 \001(\t\"t\n\036AuthenticationRespons"
+  "eContract\022\016\n\006Client\030\001 \001(\t\022\r\n\005Token\030\002 \001(\t"
+  "\022\022\n\nExpiration\030\003 \001(\004\022\017\n\007Created\030\004 \001(\004\022\016\n"
+  "\006Branch\030\005 \001(\t\"E\n\022CredentialContract\022\016\n\006C"
+  "lient\030\001 \001(\t\022\r\n\005Login\030\002 \001(\t\022\020\n\010Password\030\003"
+  " \001(\t\"=\n\024PostResponseContract\022\017\n\007Success\030"
+  "\001 \001(\010\022\024\n\014ErrorMessage\030\002 \001(\t\"\233\001\n\017GpsItemC"
+  "ontract\022\n\n\002Id\030\001 \001(\005\022\020\n\010SectorId\030\002 \001(\005\022$\n"
+  "\006Sector\030\003 \001(\0132\017.SectorContractH\000\210\001\001\022\t\n\001X"
+  "\030\004 \001(\002\022\t\n\001Y\030\005 \001(\002\022\020\n\010Latitude\030\006 \001(\001\022\021\n\tL"
+  "ongitude\030\007 \001(\001B\t\n\007_Sector\"\255\001\n\017BarrierCon"
+  "tract\022\t\n\001X\030\001 \001(\005\022\t\n\001Y\030\002 \001(\005\022\020\n\010SectorId\030"
+  "\003 \001(\005\022$\n\006Sector\030\004 \001(\0132\017.SectorContractH\000"
+  "\210\001\001\022\020\n\010BranchId\030\005 \001(\005\022$\n\006Branch\030\006 \001(\0132\017."
+  "BranchContractH\001\210\001\001B\t\n\007_SectorB\t\n\007_Branc"
+  "h\"\345\003\n\016BeaconContract\022\n\n\002Id\030\001 \001(\005\022\025\n\010Sect"
+  "orId\030\002 \001(\005H\000\210\001\001\022$\n\006Sector\030\003 \001(\0132\017.Sector"
+  "ContractH\001\210\001\001\022\020\n\010BranchId\030\004 \001(\005\022$\n\006Branc"
+  "h\030\005 \001(\0132\017.BranchContractH\002\210\001\001\022\013\n\003Max\030\006 \001"
+  "(\t\022\016\n\001X\030\007 \001(\002H\003\210\001\001\022\016\n\001Y\030\010 \001(\002H\004\210\001\001\022\016\n\001Z\030"
+  "\t \001(\002H\005\210\001\001\022\r\n\005Title\030\n \001(\t\022\016\n\006Active\030\013 \001("
+  "\010\022\023\n\006TypeId\030\014 \001(\005H\006\210\001\001\022\020\n\010Position\030\016 \001(\010"
+  "\022\020\n\010Geofence\030\017 \001(\010\022\032\n\rGeofenceRange\030\020 \001("
+  "\002H\007\210\001\001\022\017\n\007Cluster\030\021 \001(\t\022\033\n\016LastTimeOnlin"
+  "e\030\022 \001(\003H\010\210\001\001\022\016\n\006UseGps\030\023 \001(\010B\013\n\t_SectorI"
+  "dB\t\n\007_SectorB\t\n\007_BranchB\004\n\002_XB\004\n\002_YB\004\n\002_"
+  "ZB\t\n\007_TypeIdB\020\n\016_GeofenceRangeB\021\n\017_LastT"
+  "imeOnline\"P\n\026BeaconPositionContract\022\n\n\002I"
+  "d\030\001 \001(\005\022\016\n\001X\030\002 \001(\002H\000\210\001\001\022\016\n\001Y\030\003 \001(\002H\001\210\001\001B"
+  "\004\n\002_XB\004\n\002_Y\"\376\002\n\016SensorContract\022\n\n\002Id\030\001 \001"
+  "(\005\022\r\n\005Login\030\002 \001(\t\022\r\n\005Title\030\003 \001(\t\022\013\n\003Max\030"
+  "\004 \001(\t\022\014\n\004Note\030\005 \001(\t\022\016\n\001X\030\006 \001(\002H\000\210\001\001\022\016\n\001y"
+  "\030\007 \001(\002H\001\210\001\001\022\024\n\007Battery\030\010 \001(\002H\002\210\001\001\022\025\n\010Sec"
+  "torId\030\t \001(\005H\003\210\001\001\022$\n\006Sector\030\n \001(\0132\017.Secto"
+  "rContractH\004\210\001\001\022\'\n\nSensorData\030\013 \001(\0132\023.Sen"
+  "sorDataContract\022\023\n\006AreaId\030\014 \001(\005H\005\210\001\001\022 \n\004"
+  "Area\030\r \001(\0132\r.AreaContractH\006\210\001\001\022\020\n\010Passwo"
+  "rd\030\016 \001(\tB\004\n\002_XB\004\n\002_yB\n\n\010_BatteryB\013\n\t_Sec"
+  "torIdB\t\n\007_SectorB\t\n\007_AreaIdB\007\n\005_Area\"\226\001\n"
+  "\022SensorDataContract\022\020\n\010Quantity\030\001 \001(\t\022\r\n"
+  "\005Value\030\002 \001(\t\022\014\n\004Unit\030\003 \001(\t\022\020\n\010DataType\030\004"
+  " \001(\t\022\021\n\tTimestamp\030\005 \001(\003\022\035\n\005Range\030\006 \001(\0132\016"
+  ".RangeContract\022\r\n\005Index\030\007 \001(\005\">\n\rRangeCo"
+  "ntract\022\014\n\004Type\030\001 \001(\t\022\037\n\006Ranges\030\002 \003(\0132\017.R"
+  "angesContract\".\n\016RangesContract\022\r\n\005Color"
+  "\030\001 \001(\t\022\r\n\005Value\030\002 \001(\tb\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_core_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_core_2eproto = {
-    false, false, 5216, descriptor_table_protodef_core_2eproto,
+    false, false, 5269, descriptor_table_protodef_core_2eproto,
     "core.proto",
-    &descriptor_table_core_2eproto_once, nullptr, 0, 23,
+    &descriptor_table_core_2eproto_once, nullptr, 0, 24,
     schemas, file_default_instances, TableStruct_core_2eproto::offsets,
     file_level_metadata_core_2eproto, file_level_enum_descriptors_core_2eproto,
     file_level_service_descriptors_core_2eproto,
@@ -1200,6 +1225,217 @@ PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_core_2ep
 
 // Force running AddDescriptors() at dynamic initialization time.
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_core_2eproto(&descriptor_table_core_2eproto);
+
+// ===================================================================
+
+class Guid::_Internal {
+ public:
+};
+
+Guid::Guid(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:Guid)
+}
+Guid::Guid(const Guid& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Guid* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.lo_){}
+    , decltype(_impl_.hi_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&_impl_.lo_, &from._impl_.lo_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.hi_) -
+    reinterpret_cast<char*>(&_impl_.lo_)) + sizeof(_impl_.hi_));
+  // @@protoc_insertion_point(copy_constructor:Guid)
+}
+
+inline void Guid::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.lo_){uint64_t{0u}}
+    , decltype(_impl_.hi_){uint64_t{0u}}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+Guid::~Guid() {
+  // @@protoc_insertion_point(destructor:Guid)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void Guid::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void Guid::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void Guid::Clear() {
+// @@protoc_insertion_point(message_clear_start:Guid)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.lo_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.hi_) -
+      reinterpret_cast<char*>(&_impl_.lo_)) + sizeof(_impl_.hi_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Guid::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // fixed64 lo = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 9)) {
+          _impl_.lo_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<uint64_t>(ptr);
+          ptr += sizeof(uint64_t);
+        } else
+          goto handle_unusual;
+        continue;
+      // fixed64 hi = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 17)) {
+          _impl_.hi_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<uint64_t>(ptr);
+          ptr += sizeof(uint64_t);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Guid::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:Guid)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // fixed64 lo = 1;
+  if (this->_internal_lo() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFixed64ToArray(1, this->_internal_lo(), target);
+  }
+
+  // fixed64 hi = 2;
+  if (this->_internal_hi() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFixed64ToArray(2, this->_internal_hi(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:Guid)
+  return target;
+}
+
+size_t Guid::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:Guid)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // fixed64 lo = 1;
+  if (this->_internal_lo() != 0) {
+    total_size += 1 + 8;
+  }
+
+  // fixed64 hi = 2;
+  if (this->_internal_hi() != 0) {
+    total_size += 1 + 8;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Guid::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    Guid::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Guid::GetClassData() const { return &_class_data_; }
+
+
+void Guid::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<Guid*>(&to_msg);
+  auto& from = static_cast<const Guid&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:Guid)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_lo() != 0) {
+    _this->_internal_set_lo(from._internal_lo());
+  }
+  if (from._internal_hi() != 0) {
+    _this->_internal_set_hi(from._internal_hi());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Guid::CopyFrom(const Guid& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Guid)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Guid::IsInitialized() const {
+  return true;
+}
+
+void Guid::InternalSwap(Guid* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Guid, _impl_.hi_)
+      + sizeof(Guid::_impl_.hi_)
+      - PROTOBUF_FIELD_OFFSET(Guid, _impl_.lo_)>(
+          reinterpret_cast<char*>(&_impl_.lo_),
+          reinterpret_cast<char*>(&other->_impl_.lo_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Guid::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
+      file_level_metadata_core_2eproto[0]);
+}
 
 // ===================================================================
 
@@ -2442,7 +2678,7 @@ void DeviceContract::InternalSwap(DeviceContract* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DeviceContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[0]);
+      file_level_metadata_core_2eproto[1]);
 }
 
 // ===================================================================
@@ -3230,15 +3466,20 @@ void SectorContract::InternalSwap(SectorContract* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SectorContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[1]);
+      file_level_metadata_core_2eproto[2]);
 }
 
 // ===================================================================
 
 class BranchContract::_Internal {
  public:
+  static const ::Guid& guid(const BranchContract* msg);
 };
 
+const ::Guid&
+BranchContract::_Internal::guid(const BranchContract* msg) {
+  return *msg->_impl_.guid_;
+}
 BranchContract::BranchContract(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -3251,8 +3492,8 @@ BranchContract::BranchContract(const BranchContract& from)
   new (&_impl_) Impl_{
       decltype(_impl_.sectors_){from._impl_.sectors_}
     , decltype(_impl_.title_){}
-    , decltype(_impl_.guid_){}
     , decltype(_impl_.timezone_){}
+    , decltype(_impl_.guid_){nullptr}
     , decltype(_impl_.id_){}
     , decltype(_impl_.latitude_){}
     , decltype(_impl_.longtitude_){}
@@ -3267,14 +3508,6 @@ BranchContract::BranchContract(const BranchContract& from)
     _this->_impl_.title_.Set(from._internal_title(), 
       _this->GetArenaForAllocation());
   }
-  _impl_.guid_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.guid_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_guid().empty()) {
-    _this->_impl_.guid_.Set(from._internal_guid(), 
-      _this->GetArenaForAllocation());
-  }
   _impl_.timezone_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.timezone_.Set("", GetArenaForAllocation());
@@ -3282,6 +3515,9 @@ BranchContract::BranchContract(const BranchContract& from)
   if (!from._internal_timezone().empty()) {
     _this->_impl_.timezone_.Set(from._internal_timezone(), 
       _this->GetArenaForAllocation());
+  }
+  if (from._internal_has_guid()) {
+    _this->_impl_.guid_ = new ::Guid(*from._impl_.guid_);
   }
   ::memcpy(&_impl_.id_, &from._impl_.id_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.longtitude_) -
@@ -3296,8 +3532,8 @@ inline void BranchContract::SharedCtor(
   new (&_impl_) Impl_{
       decltype(_impl_.sectors_){arena}
     , decltype(_impl_.title_){}
-    , decltype(_impl_.guid_){}
     , decltype(_impl_.timezone_){}
+    , decltype(_impl_.guid_){nullptr}
     , decltype(_impl_.id_){0}
     , decltype(_impl_.latitude_){0}
     , decltype(_impl_.longtitude_){0}
@@ -3306,10 +3542,6 @@ inline void BranchContract::SharedCtor(
   _impl_.title_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.title_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.guid_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.guid_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.timezone_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -3330,8 +3562,8 @@ inline void BranchContract::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.sectors_.~RepeatedPtrField();
   _impl_.title_.Destroy();
-  _impl_.guid_.Destroy();
   _impl_.timezone_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.guid_;
 }
 
 void BranchContract::SetCachedSize(int size) const {
@@ -3346,8 +3578,11 @@ void BranchContract::Clear() {
 
   _impl_.sectors_.Clear();
   _impl_.title_.ClearToEmpty();
-  _impl_.guid_.ClearToEmpty();
   _impl_.timezone_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && _impl_.guid_ != nullptr) {
+    delete _impl_.guid_;
+  }
+  _impl_.guid_ = nullptr;
   ::memset(&_impl_.id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.longtitude_) -
       reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.longtitude_));
@@ -3378,13 +3613,11 @@ const char* BranchContract::_InternalParse(const char* ptr, ::_pbi::ParseContext
         } else
           goto handle_unusual;
         continue;
-      // string Guid = 3;
+      // .Guid Guid = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
-          auto str = _internal_mutable_guid();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ctx->ParseMessage(_internal_mutable_guid(), ptr);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "BranchContract.Guid"));
         } else
           goto handle_unusual;
         continue;
@@ -3472,14 +3705,11 @@ uint8_t* BranchContract::_InternalSerialize(
         2, this->_internal_title(), target);
   }
 
-  // string Guid = 3;
-  if (!this->_internal_guid().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_guid().data(), static_cast<int>(this->_internal_guid().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "BranchContract.Guid");
-    target = stream->WriteStringMaybeAliased(
-        3, this->_internal_guid(), target);
+  // .Guid Guid = 3;
+  if (this->_internal_has_guid()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, _Internal::guid(this),
+        _Internal::guid(this).GetCachedSize(), target, stream);
   }
 
   // string TimeZone = 4;
@@ -3550,18 +3780,18 @@ size_t BranchContract::ByteSizeLong() const {
         this->_internal_title());
   }
 
-  // string Guid = 3;
-  if (!this->_internal_guid().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_guid());
-  }
-
   // string TimeZone = 4;
   if (!this->_internal_timezone().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_timezone());
+  }
+
+  // .Guid Guid = 3;
+  if (this->_internal_has_guid()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.guid_);
   }
 
   // int32 Id = 1;
@@ -3609,11 +3839,12 @@ void BranchContract::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const :
   if (!from._internal_title().empty()) {
     _this->_internal_set_title(from._internal_title());
   }
-  if (!from._internal_guid().empty()) {
-    _this->_internal_set_guid(from._internal_guid());
-  }
   if (!from._internal_timezone().empty()) {
     _this->_internal_set_timezone(from._internal_timezone());
+  }
+  if (from._internal_has_guid()) {
+    _this->_internal_mutable_guid()->::Guid::MergeFrom(
+        from._internal_guid());
   }
   if (from._internal_id() != 0) {
     _this->_internal_set_id(from._internal_id());
@@ -3657,25 +3888,21 @@ void BranchContract::InternalSwap(BranchContract* other) {
       &other->_impl_.title_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.guid_, lhs_arena,
-      &other->_impl_.guid_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.timezone_, lhs_arena,
       &other->_impl_.timezone_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(BranchContract, _impl_.longtitude_)
       + sizeof(BranchContract::_impl_.longtitude_)
-      - PROTOBUF_FIELD_OFFSET(BranchContract, _impl_.id_)>(
-          reinterpret_cast<char*>(&_impl_.id_),
-          reinterpret_cast<char*>(&other->_impl_.id_));
+      - PROTOBUF_FIELD_OFFSET(BranchContract, _impl_.guid_)>(
+          reinterpret_cast<char*>(&_impl_.guid_),
+          reinterpret_cast<char*>(&other->_impl_.guid_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata BranchContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[2]);
+      file_level_metadata_core_2eproto[3]);
 }
 
 // ===================================================================
@@ -4297,7 +4524,7 @@ void LayerContract::InternalSwap(LayerContract* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata LayerContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[3]);
+      file_level_metadata_core_2eproto[4]);
 }
 
 // ===================================================================
@@ -4305,6 +4532,7 @@ void LayerContract::InternalSwap(LayerContract* other) {
 class PathContract::_Internal {
  public:
   using HasBits = decltype(std::declval<PathContract>()._impl_._has_bits_);
+  static const ::Guid& guid(const PathContract* msg);
   static const ::SectorContract& sector(const PathContract* msg);
   static void set_has_sector(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
@@ -4322,6 +4550,10 @@ class PathContract::_Internal {
   }
 };
 
+const ::Guid&
+PathContract::_Internal::guid(const PathContract* msg) {
+  return *msg->_impl_.guid_;
+}
 const ::SectorContract&
 PathContract::_Internal::sector(const PathContract* msg) {
   return *msg->_impl_.sector_;
@@ -4347,10 +4579,10 @@ PathContract::PathContract(const PathContract& from)
       decltype(_impl_._has_bits_){from._impl_._has_bits_}
     , /*decltype(_impl_._cached_size_)*/{}
     , decltype(_impl_.pathpoints_){from._impl_.pathpoints_}
-    , decltype(_impl_.guid_){}
     , decltype(_impl_.title_){}
     , decltype(_impl_.color_){}
     , decltype(_impl_.description_){}
+    , decltype(_impl_.guid_){nullptr}
     , decltype(_impl_.sector_){nullptr}
     , decltype(_impl_.branch_){nullptr}
     , decltype(_impl_.layer_){nullptr}
@@ -4362,14 +4594,6 @@ PathContract::PathContract(const PathContract& from)
     , decltype(_impl_.updated_){}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.guid_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.guid_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_guid().empty()) {
-    _this->_impl_.guid_.Set(from._internal_guid(), 
-      _this->GetArenaForAllocation());
-  }
   _impl_.title_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.title_.Set("", GetArenaForAllocation());
@@ -4394,6 +4618,9 @@ PathContract::PathContract(const PathContract& from)
     _this->_impl_.description_.Set(from._internal_description(), 
       _this->GetArenaForAllocation());
   }
+  if (from._internal_has_guid()) {
+    _this->_impl_.guid_ = new ::Guid(*from._impl_.guid_);
+  }
   if (from._internal_has_sector()) {
     _this->_impl_.sector_ = new ::SectorContract(*from._impl_.sector_);
   }
@@ -4417,10 +4644,10 @@ inline void PathContract::SharedCtor(
       decltype(_impl_._has_bits_){}
     , /*decltype(_impl_._cached_size_)*/{}
     , decltype(_impl_.pathpoints_){arena}
-    , decltype(_impl_.guid_){}
     , decltype(_impl_.title_){}
     , decltype(_impl_.color_){}
     , decltype(_impl_.description_){}
+    , decltype(_impl_.guid_){nullptr}
     , decltype(_impl_.sector_){nullptr}
     , decltype(_impl_.branch_){nullptr}
     , decltype(_impl_.layer_){nullptr}
@@ -4431,10 +4658,6 @@ inline void PathContract::SharedCtor(
     , decltype(_impl_.created_){int64_t{0}}
     , decltype(_impl_.updated_){int64_t{0}}
   };
-  _impl_.guid_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.guid_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.title_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.title_.Set("", GetArenaForAllocation());
@@ -4461,10 +4684,10 @@ PathContract::~PathContract() {
 inline void PathContract::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.pathpoints_.~RepeatedPtrField();
-  _impl_.guid_.Destroy();
   _impl_.title_.Destroy();
   _impl_.color_.Destroy();
   _impl_.description_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.guid_;
   if (this != internal_default_instance()) delete _impl_.sector_;
   if (this != internal_default_instance()) delete _impl_.branch_;
   if (this != internal_default_instance()) delete _impl_.layer_;
@@ -4481,10 +4704,13 @@ void PathContract::Clear() {
   (void) cached_has_bits;
 
   _impl_.pathpoints_.Clear();
-  _impl_.guid_.ClearToEmpty();
   _impl_.title_.ClearToEmpty();
   _impl_.color_.ClearToEmpty();
   _impl_.description_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && _impl_.guid_ != nullptr) {
+    delete _impl_.guid_;
+  }
+  _impl_.guid_ = nullptr;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
@@ -4526,13 +4752,11 @@ const char* PathContract::_InternalParse(const char* ptr, ::_pbi::ParseContext* 
         } else
           goto handle_unusual;
         continue;
-      // string Guid = 2;
+      // .Guid Guid = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_guid();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ctx->ParseMessage(_internal_mutable_guid(), ptr);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "PathContract.Guid"));
         } else
           goto handle_unusual;
         continue;
@@ -4680,14 +4904,11 @@ uint8_t* PathContract::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
   }
 
-  // string Guid = 2;
-  if (!this->_internal_guid().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_guid().data(), static_cast<int>(this->_internal_guid().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "PathContract.Guid");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_guid(), target);
+  // .Guid Guid = 2;
+  if (this->_internal_has_guid()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::guid(this),
+        _Internal::guid(this).GetCachedSize(), target, stream);
   }
 
   // string Title = 3;
@@ -4802,13 +5023,6 @@ size_t PathContract::ByteSizeLong() const {
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // string Guid = 2;
-  if (!this->_internal_guid().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_guid());
-  }
-
   // string Title = 3;
   if (!this->_internal_title().empty()) {
     total_size += 1 +
@@ -4828,6 +5042,13 @@ size_t PathContract::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_description());
+  }
+
+  // .Guid Guid = 2;
+  if (this->_internal_has_guid()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.guid_);
   }
 
   cached_has_bits = _impl_._has_bits_[0];
@@ -4903,9 +5124,6 @@ void PathContract::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::P
   (void) cached_has_bits;
 
   _this->_impl_.pathpoints_.MergeFrom(from._impl_.pathpoints_);
-  if (!from._internal_guid().empty()) {
-    _this->_internal_set_guid(from._internal_guid());
-  }
   if (!from._internal_title().empty()) {
     _this->_internal_set_title(from._internal_title());
   }
@@ -4914,6 +5132,10 @@ void PathContract::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::P
   }
   if (!from._internal_description().empty()) {
     _this->_internal_set_description(from._internal_description());
+  }
+  if (from._internal_has_guid()) {
+    _this->_internal_mutable_guid()->::Guid::MergeFrom(
+        from._internal_guid());
   }
   cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000007u) {
@@ -4970,10 +5192,6 @@ void PathContract::InternalSwap(PathContract* other) {
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.pathpoints_.InternalSwap(&other->_impl_.pathpoints_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.guid_, lhs_arena,
-      &other->_impl_.guid_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.title_, lhs_arena,
       &other->_impl_.title_, rhs_arena
   );
@@ -4988,15 +5206,15 @@ void PathContract::InternalSwap(PathContract* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(PathContract, _impl_.updated_)
       + sizeof(PathContract::_impl_.updated_)
-      - PROTOBUF_FIELD_OFFSET(PathContract, _impl_.sector_)>(
-          reinterpret_cast<char*>(&_impl_.sector_),
-          reinterpret_cast<char*>(&other->_impl_.sector_));
+      - PROTOBUF_FIELD_OFFSET(PathContract, _impl_.guid_)>(
+          reinterpret_cast<char*>(&_impl_.guid_),
+          reinterpret_cast<char*>(&other->_impl_.guid_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata PathContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[4]);
+      file_level_metadata_core_2eproto[5]);
 }
 
 // ===================================================================
@@ -5504,7 +5722,7 @@ void PathPointContract::InternalSwap(PathPointContract* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PathPointContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[5]);
+      file_level_metadata_core_2eproto[6]);
 }
 
 // ===================================================================
@@ -5512,6 +5730,7 @@ void PathPointContract::InternalSwap(PathPointContract* other) {
 class AreaContract::_Internal {
  public:
   using HasBits = decltype(std::declval<AreaContract>()._impl_._has_bits_);
+  static const ::Guid& guid(const AreaContract* msg);
   static const ::SectorContract& sector(const AreaContract* msg);
   static void set_has_sector(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
@@ -5532,6 +5751,10 @@ class AreaContract::_Internal {
   }
 };
 
+const ::Guid&
+AreaContract::_Internal::guid(const AreaContract* msg) {
+  return *msg->_impl_.guid_;
+}
 const ::SectorContract&
 AreaContract::_Internal::sector(const AreaContract* msg) {
   return *msg->_impl_.sector_;
@@ -5557,10 +5780,10 @@ AreaContract::AreaContract(const AreaContract& from)
       decltype(_impl_._has_bits_){from._impl_._has_bits_}
     , /*decltype(_impl_._cached_size_)*/{}
     , decltype(_impl_.coordinates_){from._impl_.coordinates_}
-    , decltype(_impl_.guid_){}
     , decltype(_impl_.title_){}
     , decltype(_impl_.color_){}
     , decltype(_impl_.description_){}
+    , decltype(_impl_.guid_){nullptr}
     , decltype(_impl_.sector_){nullptr}
     , decltype(_impl_.branch_){nullptr}
     , decltype(_impl_.layer_){nullptr}
@@ -5573,14 +5796,6 @@ AreaContract::AreaContract(const AreaContract& from)
     , decltype(_impl_.targetbranchid_){}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.guid_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.guid_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_guid().empty()) {
-    _this->_impl_.guid_.Set(from._internal_guid(), 
-      _this->GetArenaForAllocation());
-  }
   _impl_.title_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.title_.Set("", GetArenaForAllocation());
@@ -5605,6 +5820,9 @@ AreaContract::AreaContract(const AreaContract& from)
     _this->_impl_.description_.Set(from._internal_description(), 
       _this->GetArenaForAllocation());
   }
+  if (from._internal_has_guid()) {
+    _this->_impl_.guid_ = new ::Guid(*from._impl_.guid_);
+  }
   if (from._internal_has_sector()) {
     _this->_impl_.sector_ = new ::SectorContract(*from._impl_.sector_);
   }
@@ -5628,10 +5846,10 @@ inline void AreaContract::SharedCtor(
       decltype(_impl_._has_bits_){}
     , /*decltype(_impl_._cached_size_)*/{}
     , decltype(_impl_.coordinates_){arena}
-    , decltype(_impl_.guid_){}
     , decltype(_impl_.title_){}
     , decltype(_impl_.color_){}
     , decltype(_impl_.description_){}
+    , decltype(_impl_.guid_){nullptr}
     , decltype(_impl_.sector_){nullptr}
     , decltype(_impl_.branch_){nullptr}
     , decltype(_impl_.layer_){nullptr}
@@ -5643,10 +5861,6 @@ inline void AreaContract::SharedCtor(
     , decltype(_impl_.updated_){int64_t{0}}
     , decltype(_impl_.targetbranchid_){0}
   };
-  _impl_.guid_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.guid_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.title_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.title_.Set("", GetArenaForAllocation());
@@ -5673,10 +5887,10 @@ AreaContract::~AreaContract() {
 inline void AreaContract::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.coordinates_.~RepeatedPtrField();
-  _impl_.guid_.Destroy();
   _impl_.title_.Destroy();
   _impl_.color_.Destroy();
   _impl_.description_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.guid_;
   if (this != internal_default_instance()) delete _impl_.sector_;
   if (this != internal_default_instance()) delete _impl_.branch_;
   if (this != internal_default_instance()) delete _impl_.layer_;
@@ -5693,10 +5907,13 @@ void AreaContract::Clear() {
   (void) cached_has_bits;
 
   _impl_.coordinates_.Clear();
-  _impl_.guid_.ClearToEmpty();
   _impl_.title_.ClearToEmpty();
   _impl_.color_.ClearToEmpty();
   _impl_.description_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && _impl_.guid_ != nullptr) {
+    delete _impl_.guid_;
+  }
+  _impl_.guid_ = nullptr;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
@@ -5739,13 +5956,11 @@ const char* AreaContract::_InternalParse(const char* ptr, ::_pbi::ParseContext* 
         } else
           goto handle_unusual;
         continue;
-      // string Guid = 2;
+      // .Guid Guid = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_guid();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ctx->ParseMessage(_internal_mutable_guid(), ptr);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "AreaContract.Guid"));
         } else
           goto handle_unusual;
         continue;
@@ -5902,14 +6117,11 @@ uint8_t* AreaContract::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
   }
 
-  // string Guid = 2;
-  if (!this->_internal_guid().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_guid().data(), static_cast<int>(this->_internal_guid().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "AreaContract.Guid");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_guid(), target);
+  // .Guid Guid = 2;
+  if (this->_internal_has_guid()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::guid(this),
+        _Internal::guid(this).GetCachedSize(), target, stream);
   }
 
   // string Title = 3;
@@ -6030,13 +6242,6 @@ size_t AreaContract::ByteSizeLong() const {
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // string Guid = 2;
-  if (!this->_internal_guid().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_guid());
-  }
-
   // string Title = 3;
   if (!this->_internal_title().empty()) {
     total_size += 1 +
@@ -6056,6 +6261,13 @@ size_t AreaContract::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_description());
+  }
+
+  // .Guid Guid = 2;
+  if (this->_internal_has_guid()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.guid_);
   }
 
   cached_has_bits = _impl_._has_bits_[0];
@@ -6136,9 +6348,6 @@ void AreaContract::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::P
   (void) cached_has_bits;
 
   _this->_impl_.coordinates_.MergeFrom(from._impl_.coordinates_);
-  if (!from._internal_guid().empty()) {
-    _this->_internal_set_guid(from._internal_guid());
-  }
   if (!from._internal_title().empty()) {
     _this->_internal_set_title(from._internal_title());
   }
@@ -6147,6 +6356,10 @@ void AreaContract::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::P
   }
   if (!from._internal_description().empty()) {
     _this->_internal_set_description(from._internal_description());
+  }
+  if (from._internal_has_guid()) {
+    _this->_internal_mutable_guid()->::Guid::MergeFrom(
+        from._internal_guid());
   }
   cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000007u) {
@@ -6206,10 +6419,6 @@ void AreaContract::InternalSwap(AreaContract* other) {
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.coordinates_.InternalSwap(&other->_impl_.coordinates_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.guid_, lhs_arena,
-      &other->_impl_.guid_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.title_, lhs_arena,
       &other->_impl_.title_, rhs_arena
   );
@@ -6224,15 +6433,15 @@ void AreaContract::InternalSwap(AreaContract* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(AreaContract, _impl_.targetbranchid_)
       + sizeof(AreaContract::_impl_.targetbranchid_)
-      - PROTOBUF_FIELD_OFFSET(AreaContract, _impl_.sector_)>(
-          reinterpret_cast<char*>(&_impl_.sector_),
-          reinterpret_cast<char*>(&other->_impl_.sector_));
+      - PROTOBUF_FIELD_OFFSET(AreaContract, _impl_.guid_)>(
+          reinterpret_cast<char*>(&_impl_.guid_),
+          reinterpret_cast<char*>(&other->_impl_.guid_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata AreaContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[6]);
+      file_level_metadata_core_2eproto[7]);
 }
 
 // ===================================================================
@@ -6467,7 +6676,7 @@ void PointContract::InternalSwap(PointContract* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PointContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[7]);
+      file_level_metadata_core_2eproto[8]);
 }
 
 // ===================================================================
@@ -6704,7 +6913,7 @@ void DeviceLocationContract::InternalSwap(DeviceLocationContract* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DeviceLocationContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[8]);
+      file_level_metadata_core_2eproto[9]);
 }
 
 // ===================================================================
@@ -7220,7 +7429,7 @@ void LocationContract::InternalSwap(LocationContract* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata LocationContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[9]);
+      file_level_metadata_core_2eproto[10]);
 }
 
 // ===================================================================
@@ -7467,7 +7676,7 @@ void DistanceContract::InternalSwap(DistanceContract* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DistanceContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[10]);
+      file_level_metadata_core_2eproto[11]);
 }
 
 // ===================================================================
@@ -7670,7 +7879,7 @@ void LoginContract::InternalSwap(LoginContract* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata LoginContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[11]);
+      file_level_metadata_core_2eproto[12]);
 }
 
 // ===================================================================
@@ -8033,7 +8242,7 @@ void AuthenticationResponseContract::InternalSwap(AuthenticationResponseContract
 ::PROTOBUF_NAMESPACE_ID::Metadata AuthenticationResponseContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[12]);
+      file_level_metadata_core_2eproto[13]);
 }
 
 // ===================================================================
@@ -8336,7 +8545,7 @@ void CredentialContract::InternalSwap(CredentialContract* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CredentialContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[13]);
+      file_level_metadata_core_2eproto[14]);
 }
 
 // ===================================================================
@@ -8566,7 +8775,7 @@ void PostResponseContract::InternalSwap(PostResponseContract* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PostResponseContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[14]);
+      file_level_metadata_core_2eproto[15]);
 }
 
 // ===================================================================
@@ -8974,7 +9183,7 @@ void GpsItemContract::InternalSwap(GpsItemContract* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GpsItemContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[15]);
+      file_level_metadata_core_2eproto[16]);
 }
 
 // ===================================================================
@@ -9337,7 +9546,7 @@ void BarrierContract::InternalSwap(BarrierContract* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata BarrierContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[16]);
+      file_level_metadata_core_2eproto[17]);
 }
 
 // ===================================================================
@@ -10113,7 +10322,7 @@ void BeaconContract::InternalSwap(BeaconContract* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata BeaconContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[17]);
+      file_level_metadata_core_2eproto[18]);
 }
 
 // ===================================================================
@@ -10374,7 +10583,7 @@ void BeaconPositionContract::InternalSwap(BeaconPositionContract* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata BeaconPositionContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[18]);
+      file_level_metadata_core_2eproto[19]);
 }
 
 // ===================================================================
@@ -11100,7 +11309,7 @@ void SensorContract::InternalSwap(SensorContract* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SensorContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[19]);
+      file_level_metadata_core_2eproto[20]);
 }
 
 // ===================================================================
@@ -11554,7 +11763,7 @@ void SensorDataContract::InternalSwap(SensorDataContract* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SensorDataContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[20]);
+      file_level_metadata_core_2eproto[21]);
 }
 
 // ===================================================================
@@ -11791,7 +12000,7 @@ void RangeContract::InternalSwap(RangeContract* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata RangeContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[21]);
+      file_level_metadata_core_2eproto[22]);
 }
 
 // ===================================================================
@@ -12044,11 +12253,15 @@ void RangesContract::InternalSwap(RangesContract* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata RangesContract::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_core_2eproto_getter, &descriptor_table_core_2eproto_once,
-      file_level_metadata_core_2eproto[22]);
+      file_level_metadata_core_2eproto[23]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
 PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::Guid*
+Arena::CreateMaybeMessage< ::Guid >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::Guid >(arena);
+}
 template<> PROTOBUF_NOINLINE ::DeviceContract*
 Arena::CreateMaybeMessage< ::DeviceContract >(Arena* arena) {
   return Arena::CreateMessageInternal< ::DeviceContract >(arena);
