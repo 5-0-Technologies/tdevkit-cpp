@@ -16,9 +16,9 @@ enum class NetworkMethod {
   Patch   = 9,
 };
 
-using HttpVersion = std::tuple<int, int>;
-using NetworkHeader = std::pair<std::string, std::string>;
-using NetworkQuery = std::pair<std::string, std::string>;
+using HttpVersion    = std::tuple<int, int>;
+using NetworkHeader  = std::pair<std::string, std::string>;
+using NetworkQuery   = std::pair<std::string, std::string>;
 using NetworkPayload = std::string;
 
 struct NetworkResponse {
@@ -42,25 +42,25 @@ protected:
 
   NetworkClient(std::string hostname, int port) {
     m_hostname = hostname;
-    m_port = port;
+    m_port     = port;
   };
-  virtual ~NetworkClient() {};
+  virtual ~NetworkClient(){};
 
-  virtual auto connect() -> void = 0;
-  virtual auto disconnect() -> void = 0;
-  virtual auto timeout(int) -> void = 0;
+  virtual auto connect() -> void      = 0;
+  virtual auto disconnect() -> void   = 0;
+  virtual auto timeout(int) -> void   = 0;
   virtual auto timeout() -> const int = 0;
   virtual auto request(
       NetworkMethod, NetworkRequest&, NetworkPayload* = nullptr
   ) -> NetworkResponse = 0;
 
-  virtual auto head(NetworkRequest&) -> NetworkResponse = 0;
-  virtual auto get(NetworkRequest&) -> NetworkResponse = 0;
-  virtual auto put(NetworkRequest&, NetworkPayload*) -> NetworkResponse = 0;
-  virtual auto post(NetworkRequest&, NetworkPayload*) -> NetworkResponse = 0;
+  virtual auto head(NetworkRequest&) -> NetworkResponse                   = 0;
+  virtual auto get(NetworkRequest&) -> NetworkResponse                    = 0;
+  virtual auto put(NetworkRequest&, NetworkPayload*) -> NetworkResponse   = 0;
+  virtual auto post(NetworkRequest&, NetworkPayload*) -> NetworkResponse  = 0;
   virtual auto patch(NetworkRequest&, NetworkPayload*) -> NetworkResponse = 0;
-  virtual auto trace(NetworkRequest&) -> NetworkResponse = 0;
-  virtual auto options(NetworkRequest&) -> NetworkResponse = 0;
-  virtual auto connect(NetworkRequest&) -> NetworkResponse = 0;
-  virtual auto deleteResource(NetworkRequest&) -> NetworkResponse = 0;
+  virtual auto trace(NetworkRequest&) -> NetworkResponse                  = 0;
+  virtual auto options(NetworkRequest&) -> NetworkResponse                = 0;
+  virtual auto connect(NetworkRequest&) -> NetworkResponse                = 0;
+  virtual auto deleteResource(NetworkRequest&) -> NetworkResponse         = 0;
 };

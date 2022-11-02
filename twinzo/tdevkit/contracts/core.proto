@@ -1,5 +1,10 @@
 syntax = "proto3";
 
+message Guid {
+  fixed64 lo = 1; // the first 8 bytes of the guid (note:crazy-endian)
+  fixed64 hi = 2; // the second 8 bytes of the guid (note:crazy-endian)
+}
+
 message DeviceContract {
   int32 Id = 1;
   string Mac = 2;
@@ -55,7 +60,7 @@ message SectorContract {
 message BranchContract {
   int32 Id = 1;
   string Title = 2;
-  string Guid = 3;
+  Guid Guid = 3;
   string TimeZone = 4;
   float Latitude = 5;
   float Longtitude = 6;
@@ -81,7 +86,7 @@ message LayerContract {
 
 message PathContract {
   int32 Id = 1;
-  string Guid = 2;
+  Guid Guid = 2;
   string Title = 3;
   int32 SectorId = 4;
   optional SectorContract Sector = 5;
@@ -111,7 +116,7 @@ message PathPointContract {
 
 message AreaContract {
   int32 Id = 1;
-  string Guid = 2;
+  Guid Guid = 2;
   string Title = 3;
   int32 SectorId = 4;
   optional SectorContract Sector = 5;

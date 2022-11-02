@@ -77,6 +77,9 @@ extern DistanceContractDefaultTypeInternal _DistanceContract_default_instance_;
 class GpsItemContract;
 struct GpsItemContractDefaultTypeInternal;
 extern GpsItemContractDefaultTypeInternal _GpsItemContract_default_instance_;
+class Guid;
+struct GuidDefaultTypeInternal;
+extern GuidDefaultTypeInternal _Guid_default_instance_;
 class LayerContract;
 struct LayerContractDefaultTypeInternal;
 extern LayerContractDefaultTypeInternal _LayerContract_default_instance_;
@@ -125,6 +128,7 @@ template<> ::DeviceContract* Arena::CreateMaybeMessage<::DeviceContract>(Arena*)
 template<> ::DeviceLocationContract* Arena::CreateMaybeMessage<::DeviceLocationContract>(Arena*);
 template<> ::DistanceContract* Arena::CreateMaybeMessage<::DistanceContract>(Arena*);
 template<> ::GpsItemContract* Arena::CreateMaybeMessage<::GpsItemContract>(Arena*);
+template<> ::Guid* Arena::CreateMaybeMessage<::Guid>(Arena*);
 template<> ::LayerContract* Arena::CreateMaybeMessage<::LayerContract>(Arena*);
 template<> ::LocationContract* Arena::CreateMaybeMessage<::LocationContract>(Arena*);
 template<> ::LoginContract* Arena::CreateMaybeMessage<::LoginContract>(Arena*);
@@ -140,6 +144,165 @@ template<> ::SensorDataContract* Arena::CreateMaybeMessage<::SensorDataContract>
 PROTOBUF_NAMESPACE_CLOSE
 
 // ===================================================================
+
+class Guid final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Guid) */ {
+ public:
+  inline Guid() : Guid(nullptr) {}
+  ~Guid() override;
+  explicit PROTOBUF_CONSTEXPR Guid(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Guid(const Guid& from);
+  Guid(Guid&& from) noexcept
+    : Guid() {
+    *this = ::std::move(from);
+  }
+
+  inline Guid& operator=(const Guid& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Guid& operator=(Guid&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Guid& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Guid* internal_default_instance() {
+    return reinterpret_cast<const Guid*>(
+               &_Guid_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(Guid& a, Guid& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Guid* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Guid* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Guid* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Guid>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Guid& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const Guid& from) {
+    Guid::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Guid* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "Guid";
+  }
+  protected:
+  explicit Guid(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kLoFieldNumber = 1,
+    kHiFieldNumber = 2,
+  };
+  // fixed64 lo = 1;
+  void clear_lo();
+  uint64_t lo() const;
+  void set_lo(uint64_t value);
+  private:
+  uint64_t _internal_lo() const;
+  void _internal_set_lo(uint64_t value);
+  public:
+
+  // fixed64 hi = 2;
+  void clear_hi();
+  uint64_t hi() const;
+  void set_hi(uint64_t value);
+  private:
+  uint64_t _internal_hi() const;
+  void _internal_set_hi(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:Guid)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    uint64_t lo_;
+    uint64_t hi_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_core_2eproto;
+};
+// -------------------------------------------------------------------
 
 class DeviceContract final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:DeviceContract) */ {
@@ -189,7 +352,7 @@ class DeviceContract final :
                &_DeviceContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    1;
 
   friend void swap(DeviceContract& a, DeviceContract& b) {
     a.Swap(&b);
@@ -762,7 +925,7 @@ class SectorContract final :
                &_SectorContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    2;
 
   friend void swap(SectorContract& a, SectorContract& b) {
     a.Swap(&b);
@@ -1165,7 +1328,7 @@ class BranchContract final :
                &_BranchContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   friend void swap(BranchContract& a, BranchContract& b) {
     a.Swap(&b);
@@ -1240,8 +1403,8 @@ class BranchContract final :
   enum : int {
     kSectorsFieldNumber = 7,
     kTitleFieldNumber = 2,
-    kGuidFieldNumber = 3,
     kTimeZoneFieldNumber = 4,
+    kGuidFieldNumber = 3,
     kIdFieldNumber = 1,
     kLatitudeFieldNumber = 5,
     kLongtitudeFieldNumber = 6,
@@ -1278,20 +1441,6 @@ class BranchContract final :
   std::string* _internal_mutable_title();
   public:
 
-  // string Guid = 3;
-  void clear_guid();
-  const std::string& guid() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_guid(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_guid();
-  PROTOBUF_NODISCARD std::string* release_guid();
-  void set_allocated_guid(std::string* guid);
-  private:
-  const std::string& _internal_guid() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_guid(const std::string& value);
-  std::string* _internal_mutable_guid();
-  public:
-
   // string TimeZone = 4;
   void clear_timezone();
   const std::string& timezone() const;
@@ -1305,6 +1454,24 @@ class BranchContract final :
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_timezone(const std::string& value);
   std::string* _internal_mutable_timezone();
   public:
+
+  // .Guid Guid = 3;
+  bool has_guid() const;
+  private:
+  bool _internal_has_guid() const;
+  public:
+  void clear_guid();
+  const ::Guid& guid() const;
+  PROTOBUF_NODISCARD ::Guid* release_guid();
+  ::Guid* mutable_guid();
+  void set_allocated_guid(::Guid* guid);
+  private:
+  const ::Guid& _internal_guid() const;
+  ::Guid* _internal_mutable_guid();
+  public:
+  void unsafe_arena_set_allocated_guid(
+      ::Guid* guid);
+  ::Guid* unsafe_arena_release_guid();
 
   // int32 Id = 1;
   void clear_id();
@@ -1343,8 +1510,8 @@ class BranchContract final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::SectorContract > sectors_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr title_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr guid_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr timezone_;
+    ::Guid* guid_;
     int32_t id_;
     float latitude_;
     float longtitude_;
@@ -1403,7 +1570,7 @@ class LayerContract final :
                &_LayerContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   friend void swap(LayerContract& a, LayerContract& b) {
     a.Swap(&b);
@@ -1750,7 +1917,7 @@ class PathContract final :
                &_PathContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   friend void swap(PathContract& a, PathContract& b) {
     a.Swap(&b);
@@ -1824,10 +1991,10 @@ class PathContract final :
 
   enum : int {
     kPathPointsFieldNumber = 11,
-    kGuidFieldNumber = 2,
     kTitleFieldNumber = 3,
     kColorFieldNumber = 10,
     kDescriptionFieldNumber = 12,
+    kGuidFieldNumber = 2,
     kSectorFieldNumber = 5,
     kBranchFieldNumber = 7,
     kLayerFieldNumber = 9,
@@ -1855,20 +2022,6 @@ class PathContract final :
   ::PathPointContract* add_pathpoints();
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PathPointContract >&
       pathpoints() const;
-
-  // string Guid = 2;
-  void clear_guid();
-  const std::string& guid() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_guid(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_guid();
-  PROTOBUF_NODISCARD std::string* release_guid();
-  void set_allocated_guid(std::string* guid);
-  private:
-  const std::string& _internal_guid() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_guid(const std::string& value);
-  std::string* _internal_mutable_guid();
-  public:
 
   // string Title = 3;
   void clear_title();
@@ -1911,6 +2064,24 @@ class PathContract final :
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_description(const std::string& value);
   std::string* _internal_mutable_description();
   public:
+
+  // .Guid Guid = 2;
+  bool has_guid() const;
+  private:
+  bool _internal_has_guid() const;
+  public:
+  void clear_guid();
+  const ::Guid& guid() const;
+  PROTOBUF_NODISCARD ::Guid* release_guid();
+  ::Guid* mutable_guid();
+  void set_allocated_guid(::Guid* guid);
+  private:
+  const ::Guid& _internal_guid() const;
+  ::Guid* _internal_mutable_guid();
+  public:
+  void unsafe_arena_set_allocated_guid(
+      ::Guid* guid);
+  ::Guid* unsafe_arena_release_guid();
 
   // optional .SectorContract Sector = 5;
   bool has_sector() const;
@@ -2035,10 +2206,10 @@ class PathContract final :
     ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PathPointContract > pathpoints_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr guid_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr title_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr color_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr description_;
+    ::Guid* guid_;
     ::SectorContract* sector_;
     ::BranchContract* branch_;
     ::LayerContract* layer_;
@@ -2102,7 +2273,7 @@ class PathPointContract final :
                &_PathPointContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    6;
 
   friend void swap(PathPointContract& a, PathPointContract& b) {
     a.Swap(&b);
@@ -2381,7 +2552,7 @@ class AreaContract final :
                &_AreaContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    7;
 
   friend void swap(AreaContract& a, AreaContract& b) {
     a.Swap(&b);
@@ -2455,10 +2626,10 @@ class AreaContract final :
 
   enum : int {
     kCoordinatesFieldNumber = 11,
-    kGuidFieldNumber = 2,
     kTitleFieldNumber = 3,
     kColorFieldNumber = 10,
     kDescriptionFieldNumber = 12,
+    kGuidFieldNumber = 2,
     kSectorFieldNumber = 5,
     kBranchFieldNumber = 7,
     kLayerFieldNumber = 9,
@@ -2487,20 +2658,6 @@ class AreaContract final :
   ::PointContract* add_coordinates();
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PointContract >&
       coordinates() const;
-
-  // string Guid = 2;
-  void clear_guid();
-  const std::string& guid() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_guid(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_guid();
-  PROTOBUF_NODISCARD std::string* release_guid();
-  void set_allocated_guid(std::string* guid);
-  private:
-  const std::string& _internal_guid() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_guid(const std::string& value);
-  std::string* _internal_mutable_guid();
-  public:
 
   // string Title = 3;
   void clear_title();
@@ -2543,6 +2700,24 @@ class AreaContract final :
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_description(const std::string& value);
   std::string* _internal_mutable_description();
   public:
+
+  // .Guid Guid = 2;
+  bool has_guid() const;
+  private:
+  bool _internal_has_guid() const;
+  public:
+  void clear_guid();
+  const ::Guid& guid() const;
+  PROTOBUF_NODISCARD ::Guid* release_guid();
+  ::Guid* mutable_guid();
+  void set_allocated_guid(::Guid* guid);
+  private:
+  const ::Guid& _internal_guid() const;
+  ::Guid* _internal_mutable_guid();
+  public:
+  void unsafe_arena_set_allocated_guid(
+      ::Guid* guid);
+  ::Guid* unsafe_arena_release_guid();
 
   // optional .SectorContract Sector = 5;
   bool has_sector() const;
@@ -2680,10 +2855,10 @@ class AreaContract final :
     ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PointContract > coordinates_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr guid_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr title_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr color_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr description_;
+    ::Guid* guid_;
     ::SectorContract* sector_;
     ::BranchContract* branch_;
     ::LayerContract* layer_;
@@ -2748,7 +2923,7 @@ class PointContract final :
                &_PointContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    8;
 
   friend void swap(PointContract& a, PointContract& b) {
     a.Swap(&b);
@@ -2907,7 +3082,7 @@ class DeviceLocationContract final :
                &_DeviceLocationContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    9;
 
   friend void swap(DeviceLocationContract& a, DeviceLocationContract& b) {
     a.Swap(&b);
@@ -3080,7 +3255,7 @@ class LocationContract final :
                &_LocationContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    10;
 
   friend void swap(LocationContract& a, LocationContract& b) {
     a.Swap(&b);
@@ -3400,7 +3575,7 @@ class DistanceContract final :
                &_DistanceContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    11;
 
   friend void swap(DistanceContract& a, DistanceContract& b) {
     a.Swap(&b);
@@ -3570,7 +3745,7 @@ class LoginContract final :
                &_LoginContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    12;
 
   friend void swap(LoginContract& a, LoginContract& b) {
     a.Swap(&b);
@@ -3723,7 +3898,7 @@ class AuthenticationResponseContract final :
                &_AuthenticationResponseContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    13;
 
   friend void swap(AuthenticationResponseContract& a, AuthenticationResponseContract& b) {
     a.Swap(&b);
@@ -3930,7 +4105,7 @@ class CredentialContract final :
                &_CredentialContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    14;
 
   friend void swap(CredentialContract& a, CredentialContract& b) {
     a.Swap(&b);
@@ -4115,7 +4290,7 @@ class PostResponseContract final :
                &_PostResponseContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    15;
 
   friend void swap(PostResponseContract& a, PostResponseContract& b) {
     a.Swap(&b);
@@ -4279,7 +4454,7 @@ class GpsItemContract final :
                &_GpsItemContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    16;
 
   friend void swap(GpsItemContract& a, GpsItemContract& b) {
     a.Swap(&b);
@@ -4503,7 +4678,7 @@ class BarrierContract final :
                &_BarrierContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    17;
 
   friend void swap(BarrierContract& a, BarrierContract& b) {
     a.Swap(&b);
@@ -4725,7 +4900,7 @@ class BeaconContract final :
                &_BeaconContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    18;
 
   friend void swap(BeaconContract& a, BeaconContract& b) {
     a.Swap(&b);
@@ -5122,7 +5297,7 @@ class BeaconPositionContract final :
                &_BeaconPositionContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    19;
 
   friend void swap(BeaconPositionContract& a, BeaconPositionContract& b) {
     a.Swap(&b);
@@ -5301,7 +5476,7 @@ class SensorContract final :
                &_SensorContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    20;
 
   friend void swap(SensorContract& a, SensorContract& b) {
     a.Swap(&b);
@@ -5665,7 +5840,7 @@ class SensorDataContract final :
                &_SensorDataContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    21;
 
   friend void swap(SensorDataContract& a, SensorDataContract& b) {
     a.Swap(&b);
@@ -5908,7 +6083,7 @@ class RangeContract final :
                &_RangeContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    22;
 
   friend void swap(RangeContract& a, RangeContract& b) {
     a.Swap(&b);
@@ -6081,7 +6256,7 @@ class RangesContract final :
                &_RangesContract_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    23;
 
   friend void swap(RangesContract& a, RangesContract& b) {
     a.Swap(&b);
@@ -6209,6 +6384,50 @@ class RangesContract final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// Guid
+
+// fixed64 lo = 1;
+inline void Guid::clear_lo() {
+  _impl_.lo_ = uint64_t{0u};
+}
+inline uint64_t Guid::_internal_lo() const {
+  return _impl_.lo_;
+}
+inline uint64_t Guid::lo() const {
+  // @@protoc_insertion_point(field_get:Guid.lo)
+  return _internal_lo();
+}
+inline void Guid::_internal_set_lo(uint64_t value) {
+  
+  _impl_.lo_ = value;
+}
+inline void Guid::set_lo(uint64_t value) {
+  _internal_set_lo(value);
+  // @@protoc_insertion_point(field_set:Guid.lo)
+}
+
+// fixed64 hi = 2;
+inline void Guid::clear_hi() {
+  _impl_.hi_ = uint64_t{0u};
+}
+inline uint64_t Guid::_internal_hi() const {
+  return _impl_.hi_;
+}
+inline uint64_t Guid::hi() const {
+  // @@protoc_insertion_point(field_get:Guid.hi)
+  return _internal_hi();
+}
+inline void Guid::_internal_set_hi(uint64_t value) {
+  
+  _impl_.hi_ = value;
+}
+inline void Guid::set_hi(uint64_t value) {
+  _internal_set_hi(value);
+  // @@protoc_insertion_point(field_set:Guid.hi)
+}
+
+// -------------------------------------------------------------------
+
 // DeviceContract
 
 // int32 Id = 1;
@@ -8007,53 +8226,93 @@ inline void BranchContract::set_allocated_title(std::string* title) {
   // @@protoc_insertion_point(field_set_allocated:BranchContract.Title)
 }
 
-// string Guid = 3;
-inline void BranchContract::clear_guid() {
-  _impl_.guid_.ClearToEmpty();
+// .Guid Guid = 3;
+inline bool BranchContract::_internal_has_guid() const {
+  return this != internal_default_instance() && _impl_.guid_ != nullptr;
 }
-inline const std::string& BranchContract::guid() const {
+inline bool BranchContract::has_guid() const {
+  return _internal_has_guid();
+}
+inline void BranchContract::clear_guid() {
+  if (GetArenaForAllocation() == nullptr && _impl_.guid_ != nullptr) {
+    delete _impl_.guid_;
+  }
+  _impl_.guid_ = nullptr;
+}
+inline const ::Guid& BranchContract::_internal_guid() const {
+  const ::Guid* p = _impl_.guid_;
+  return p != nullptr ? *p : reinterpret_cast<const ::Guid&>(
+      ::_Guid_default_instance_);
+}
+inline const ::Guid& BranchContract::guid() const {
   // @@protoc_insertion_point(field_get:BranchContract.Guid)
   return _internal_guid();
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void BranchContract::set_guid(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.guid_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:BranchContract.Guid)
-}
-inline std::string* BranchContract::mutable_guid() {
-  std::string* _s = _internal_mutable_guid();
-  // @@protoc_insertion_point(field_mutable:BranchContract.Guid)
-  return _s;
-}
-inline const std::string& BranchContract::_internal_guid() const {
-  return _impl_.guid_.Get();
-}
-inline void BranchContract::_internal_set_guid(const std::string& value) {
-  
-  _impl_.guid_.Set(value, GetArenaForAllocation());
-}
-inline std::string* BranchContract::_internal_mutable_guid() {
-  
-  return _impl_.guid_.Mutable(GetArenaForAllocation());
-}
-inline std::string* BranchContract::release_guid() {
-  // @@protoc_insertion_point(field_release:BranchContract.Guid)
-  return _impl_.guid_.Release();
-}
-inline void BranchContract::set_allocated_guid(std::string* guid) {
-  if (guid != nullptr) {
+inline void BranchContract::unsafe_arena_set_allocated_guid(
+    ::Guid* guid) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.guid_);
+  }
+  _impl_.guid_ = guid;
+  if (guid) {
     
   } else {
     
   }
-  _impl_.guid_.SetAllocated(guid, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.guid_.IsDefault()) {
-    _impl_.guid_.Set("", GetArenaForAllocation());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:BranchContract.Guid)
+}
+inline ::Guid* BranchContract::release_guid() {
+  
+  ::Guid* temp = _impl_.guid_;
+  _impl_.guid_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::Guid* BranchContract::unsafe_arena_release_guid() {
+  // @@protoc_insertion_point(field_release:BranchContract.Guid)
+  
+  ::Guid* temp = _impl_.guid_;
+  _impl_.guid_ = nullptr;
+  return temp;
+}
+inline ::Guid* BranchContract::_internal_mutable_guid() {
+  
+  if (_impl_.guid_ == nullptr) {
+    auto* p = CreateMaybeMessage<::Guid>(GetArenaForAllocation());
+    _impl_.guid_ = p;
+  }
+  return _impl_.guid_;
+}
+inline ::Guid* BranchContract::mutable_guid() {
+  ::Guid* _msg = _internal_mutable_guid();
+  // @@protoc_insertion_point(field_mutable:BranchContract.Guid)
+  return _msg;
+}
+inline void BranchContract::set_allocated_guid(::Guid* guid) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.guid_;
+  }
+  if (guid) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(guid);
+    if (message_arena != submessage_arena) {
+      guid = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, guid, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.guid_ = guid;
   // @@protoc_insertion_point(field_set_allocated:BranchContract.Guid)
 }
 
@@ -8705,53 +8964,93 @@ inline void PathContract::set_id(int32_t value) {
   // @@protoc_insertion_point(field_set:PathContract.Id)
 }
 
-// string Guid = 2;
-inline void PathContract::clear_guid() {
-  _impl_.guid_.ClearToEmpty();
+// .Guid Guid = 2;
+inline bool PathContract::_internal_has_guid() const {
+  return this != internal_default_instance() && _impl_.guid_ != nullptr;
 }
-inline const std::string& PathContract::guid() const {
+inline bool PathContract::has_guid() const {
+  return _internal_has_guid();
+}
+inline void PathContract::clear_guid() {
+  if (GetArenaForAllocation() == nullptr && _impl_.guid_ != nullptr) {
+    delete _impl_.guid_;
+  }
+  _impl_.guid_ = nullptr;
+}
+inline const ::Guid& PathContract::_internal_guid() const {
+  const ::Guid* p = _impl_.guid_;
+  return p != nullptr ? *p : reinterpret_cast<const ::Guid&>(
+      ::_Guid_default_instance_);
+}
+inline const ::Guid& PathContract::guid() const {
   // @@protoc_insertion_point(field_get:PathContract.Guid)
   return _internal_guid();
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void PathContract::set_guid(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.guid_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:PathContract.Guid)
-}
-inline std::string* PathContract::mutable_guid() {
-  std::string* _s = _internal_mutable_guid();
-  // @@protoc_insertion_point(field_mutable:PathContract.Guid)
-  return _s;
-}
-inline const std::string& PathContract::_internal_guid() const {
-  return _impl_.guid_.Get();
-}
-inline void PathContract::_internal_set_guid(const std::string& value) {
-  
-  _impl_.guid_.Set(value, GetArenaForAllocation());
-}
-inline std::string* PathContract::_internal_mutable_guid() {
-  
-  return _impl_.guid_.Mutable(GetArenaForAllocation());
-}
-inline std::string* PathContract::release_guid() {
-  // @@protoc_insertion_point(field_release:PathContract.Guid)
-  return _impl_.guid_.Release();
-}
-inline void PathContract::set_allocated_guid(std::string* guid) {
-  if (guid != nullptr) {
+inline void PathContract::unsafe_arena_set_allocated_guid(
+    ::Guid* guid) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.guid_);
+  }
+  _impl_.guid_ = guid;
+  if (guid) {
     
   } else {
     
   }
-  _impl_.guid_.SetAllocated(guid, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.guid_.IsDefault()) {
-    _impl_.guid_.Set("", GetArenaForAllocation());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PathContract.Guid)
+}
+inline ::Guid* PathContract::release_guid() {
+  
+  ::Guid* temp = _impl_.guid_;
+  _impl_.guid_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::Guid* PathContract::unsafe_arena_release_guid() {
+  // @@protoc_insertion_point(field_release:PathContract.Guid)
+  
+  ::Guid* temp = _impl_.guid_;
+  _impl_.guid_ = nullptr;
+  return temp;
+}
+inline ::Guid* PathContract::_internal_mutable_guid() {
+  
+  if (_impl_.guid_ == nullptr) {
+    auto* p = CreateMaybeMessage<::Guid>(GetArenaForAllocation());
+    _impl_.guid_ = p;
+  }
+  return _impl_.guid_;
+}
+inline ::Guid* PathContract::mutable_guid() {
+  ::Guid* _msg = _internal_mutable_guid();
+  // @@protoc_insertion_point(field_mutable:PathContract.Guid)
+  return _msg;
+}
+inline void PathContract::set_allocated_guid(::Guid* guid) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.guid_;
+  }
+  if (guid) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(guid);
+    if (message_arena != submessage_arena) {
+      guid = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, guid, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.guid_ = guid;
   // @@protoc_insertion_point(field_set_allocated:PathContract.Guid)
 }
 
@@ -9769,53 +10068,93 @@ inline void AreaContract::set_id(int32_t value) {
   // @@protoc_insertion_point(field_set:AreaContract.Id)
 }
 
-// string Guid = 2;
-inline void AreaContract::clear_guid() {
-  _impl_.guid_.ClearToEmpty();
+// .Guid Guid = 2;
+inline bool AreaContract::_internal_has_guid() const {
+  return this != internal_default_instance() && _impl_.guid_ != nullptr;
 }
-inline const std::string& AreaContract::guid() const {
+inline bool AreaContract::has_guid() const {
+  return _internal_has_guid();
+}
+inline void AreaContract::clear_guid() {
+  if (GetArenaForAllocation() == nullptr && _impl_.guid_ != nullptr) {
+    delete _impl_.guid_;
+  }
+  _impl_.guid_ = nullptr;
+}
+inline const ::Guid& AreaContract::_internal_guid() const {
+  const ::Guid* p = _impl_.guid_;
+  return p != nullptr ? *p : reinterpret_cast<const ::Guid&>(
+      ::_Guid_default_instance_);
+}
+inline const ::Guid& AreaContract::guid() const {
   // @@protoc_insertion_point(field_get:AreaContract.Guid)
   return _internal_guid();
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void AreaContract::set_guid(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.guid_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:AreaContract.Guid)
-}
-inline std::string* AreaContract::mutable_guid() {
-  std::string* _s = _internal_mutable_guid();
-  // @@protoc_insertion_point(field_mutable:AreaContract.Guid)
-  return _s;
-}
-inline const std::string& AreaContract::_internal_guid() const {
-  return _impl_.guid_.Get();
-}
-inline void AreaContract::_internal_set_guid(const std::string& value) {
-  
-  _impl_.guid_.Set(value, GetArenaForAllocation());
-}
-inline std::string* AreaContract::_internal_mutable_guid() {
-  
-  return _impl_.guid_.Mutable(GetArenaForAllocation());
-}
-inline std::string* AreaContract::release_guid() {
-  // @@protoc_insertion_point(field_release:AreaContract.Guid)
-  return _impl_.guid_.Release();
-}
-inline void AreaContract::set_allocated_guid(std::string* guid) {
-  if (guid != nullptr) {
+inline void AreaContract::unsafe_arena_set_allocated_guid(
+    ::Guid* guid) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.guid_);
+  }
+  _impl_.guid_ = guid;
+  if (guid) {
     
   } else {
     
   }
-  _impl_.guid_.SetAllocated(guid, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.guid_.IsDefault()) {
-    _impl_.guid_.Set("", GetArenaForAllocation());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:AreaContract.Guid)
+}
+inline ::Guid* AreaContract::release_guid() {
+  
+  ::Guid* temp = _impl_.guid_;
+  _impl_.guid_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::Guid* AreaContract::unsafe_arena_release_guid() {
+  // @@protoc_insertion_point(field_release:AreaContract.Guid)
+  
+  ::Guid* temp = _impl_.guid_;
+  _impl_.guid_ = nullptr;
+  return temp;
+}
+inline ::Guid* AreaContract::_internal_mutable_guid() {
+  
+  if (_impl_.guid_ == nullptr) {
+    auto* p = CreateMaybeMessage<::Guid>(GetArenaForAllocation());
+    _impl_.guid_ = p;
+  }
+  return _impl_.guid_;
+}
+inline ::Guid* AreaContract::mutable_guid() {
+  ::Guid* _msg = _internal_mutable_guid();
+  // @@protoc_insertion_point(field_mutable:AreaContract.Guid)
+  return _msg;
+}
+inline void AreaContract::set_allocated_guid(::Guid* guid) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.guid_;
+  }
+  if (guid) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(guid);
+    if (message_arena != submessage_arena) {
+      guid = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, guid, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.guid_ = guid;
   // @@protoc_insertion_point(field_set_allocated:AreaContract.Guid)
 }
 
@@ -13866,6 +14205,8 @@ inline void RangesContract::set_allocated_value(std::string* value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

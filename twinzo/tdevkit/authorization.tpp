@@ -6,7 +6,7 @@ auto tDevkit<HttpClient>::setAuthHeaders(
 ) -> void {
   m_client_guid = client_guid;
   m_branch_guid = branch_guid;
-  m_token = token;
+  m_token       = token;
 }
 
 template <class HttpClient>

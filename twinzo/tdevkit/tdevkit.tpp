@@ -25,7 +25,8 @@ auto tDevkit<HttpClient>::serviceRequest(
   std::vector<NetworkHeader> static_headers = {
       std::make_pair("Client", m_client_guid),
       std::make_pair("Branch", m_branch_guid), std::make_pair("Token", m_token),
-      std::make_pair("Content-Type", content_type), std::make_pair("Accept", content_type)};
+      std::make_pair("Content-Type", content_type),
+      std::make_pair("Accept", content_type)};
 
   // Prepare request
   NetworkRequest request;
@@ -62,8 +63,14 @@ auto tDevkit<HttpClient>::serviceRequest(
   // Parse payload from the response if type other than void* is given
   else if constexpr (!std::is_same_v<ResponseContract, void>) {
     ResponseContract contract;
-    // TODO: error handling
-    contract.ParseFromString(response.payload);
+
+    // Do not parse payload into a contract if it is empty
+    // Note: this can happen with any contract whose contents are either
+    // all optional, or repeated
+    if (response.payload.size() > 0) {
+      // TODO: error handling
+      contract.ParseFromString(response.payload);
+    }
 
     return contract;
   }

@@ -1,21 +1,21 @@
-#include <twinzo/network/network_client.hpp>
 #include <string>
+#include <twinzo/network/network_client.hpp>
 
 class MockNetworkClient : protected NetworkClient {
 public:
   MockNetworkClient(std::string hostname, int port)
-    : NetworkClient(hostname, port) {}
+      : NetworkClient(hostname, port) {}
   ~MockNetworkClient() {}
 
   auto connect() -> void {}
   auto disconnect() -> void {}
   auto timeout(int timeout) -> void {}
-  auto timeout() -> const int { return 0; }
+  auto timeout() -> const int {
+    return 0;
+  }
 
-  auto request(
-    NetworkMethod, NetworkRequest&, NetworkPayload*
-  ) -> NetworkResponse
-  {
+  auto request(NetworkMethod, NetworkRequest&, NetworkPayload*)
+      -> NetworkResponse {
     return NetworkResponse();
   }
 

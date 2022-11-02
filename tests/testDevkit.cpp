@@ -1,8 +1,7 @@
 // #include <tDevkit/mock-network-client/MockNetworkClient.hpp>
+#include <QApplication>
 #include <twinzo/network/qt_client.hpp>
 #include <twinzo/tdevkit/tdevkit.hpp>
-
-#include <QApplication>
 
 int main(int argc, char *argv[]) {
   // Initialize QT application
@@ -50,8 +49,10 @@ int main(int argc, char *argv[]) {
   auto device_by_login = devkit.getDevice(devices.at(rand_id).login());
   std::cout << device_by_login.DebugString() << std::endl;
 
-
-
+  // Fetch Areas
+  auto areas = devkit.getAreas();
+  std::cout << "Received " << areas.size() << " areas" << std::endl;
+  // TODO: validate
 
   devkit.deleteCurrentToken();
   // TODO: validate
