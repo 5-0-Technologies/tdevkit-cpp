@@ -210,7 +210,7 @@ message BeaconContract {
   optional SectorContract Sector = 3;
   int32 BranchId = 4;
   optional BranchContract Branch = 5;
-  string Max = 6;
+  string Mac = 6;
   optional float X = 7;
   optional float Y = 8;
   optional float Z = 9;
@@ -235,14 +235,14 @@ message SensorContract {
   int32 Id = 1;
   string Login = 2;
   string Title = 3;
-  string Max  = 4;
+  string Mac  = 4;
   string Note = 5;
   optional float X = 6;
   optional float y = 7;
   optional float Battery = 8;
   optional int32 SectorId = 9;
   optional SectorContract Sector = 10;
-  SensorDataContract SensorData = 11;
+  repeated SensorDataContract SensorData = 11;
   optional int32 AreaId = 12;
   optional AreaContract Area = 13;
   string Password = 14;
@@ -256,6 +256,25 @@ message SensorDataContract {
   int64 Timestamp = 5;
   RangeContract Range = 6;
   int32 Index = 7;
+}
+
+message SensorBatchContract {
+  string Login = 1;
+  repeated SensorDataBatchContract SensorData = 2;
+}
+
+message SensorDataBatchContract {
+  int64 Timestamp = 1;
+  string Quantity = 2;
+  string Value = 3;
+  string Unit = 4;
+  string DataType = 5;
+  optional bool ValueOK = 6;
+}
+
+message SensorAppInfoContract {
+  string Version = 1;
+  int64 Size = 2;
 }
 
 message RangeContract {

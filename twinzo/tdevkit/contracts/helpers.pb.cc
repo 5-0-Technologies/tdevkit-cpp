@@ -98,7 +98,59 @@ struct AreaContractListDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AreaContractListDefaultTypeInternal _AreaContractList_default_instance_;
-static ::_pb::Metadata file_level_metadata_helpers_2eproto[6];
+PROTOBUF_CONSTEXPR SensorContractList::SensorContractList(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.contracts_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct SensorContractListDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SensorContractListDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SensorContractListDefaultTypeInternal() {}
+  union {
+    SensorContractList _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SensorContractListDefaultTypeInternal _SensorContractList_default_instance_;
+PROTOBUF_CONSTEXPR SensorDataContractList::SensorDataContractList(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.contracts_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct SensorDataContractListDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SensorDataContractListDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SensorDataContractListDefaultTypeInternal() {}
+  union {
+    SensorDataContractList _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SensorDataContractListDefaultTypeInternal _SensorDataContractList_default_instance_;
+PROTOBUF_CONSTEXPR SensorBatchContractList::SensorBatchContractList(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.contracts_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct SensorBatchContractListDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SensorBatchContractListDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SensorBatchContractListDefaultTypeInternal() {}
+  union {
+    SensorBatchContractList _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SensorBatchContractListDefaultTypeInternal _SensorBatchContractList_default_instance_;
+PROTOBUF_CONSTEXPR SensorDataBatchContractList::SensorDataBatchContractList(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.contracts_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct SensorDataBatchContractListDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SensorDataBatchContractListDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SensorDataBatchContractListDefaultTypeInternal() {}
+  union {
+    SensorDataBatchContractList _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SensorDataBatchContractListDefaultTypeInternal _SensorDataBatchContractList_default_instance_;
+static ::_pb::Metadata file_level_metadata_helpers_2eproto[10];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_helpers_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_helpers_2eproto = nullptr;
 
@@ -145,6 +197,34 @@ const uint32_t TableStruct_helpers_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::AreaContractList, _impl_.contracts_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::SensorContractList, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::SensorContractList, _impl_.contracts_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::SensorDataContractList, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::SensorDataContractList, _impl_.contracts_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::SensorBatchContractList, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::SensorBatchContractList, _impl_.contracts_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::SensorDataBatchContractList, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::SensorDataBatchContractList, _impl_.contracts_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::DeviceContractList)},
@@ -153,6 +233,10 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 21, -1, -1, sizeof(::DistanceContractList)},
   { 28, -1, -1, sizeof(::LayerContractList)},
   { 35, -1, -1, sizeof(::AreaContractList)},
+  { 42, -1, -1, sizeof(::SensorContractList)},
+  { 49, -1, -1, sizeof(::SensorDataContractList)},
+  { 56, -1, -1, sizeof(::SensorBatchContractList)},
+  { 63, -1, -1, sizeof(::SensorDataBatchContractList)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -162,6 +246,10 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::_DistanceContractList_default_instance_._instance,
   &::_LayerContractList_default_instance_._instance,
   &::_AreaContractList_default_instance_._instance,
+  &::_SensorContractList_default_instance_._instance,
+  &::_SensorDataContractList_default_instance_._instance,
+  &::_SensorBatchContractList_default_instance_._instance,
+  &::_SensorDataBatchContractList_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_helpers_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -174,17 +262,23 @@ const char descriptor_table_protodef_helpers_2eproto[] PROTOBUF_SECTION_VARIABLE
   "tList\022$\n\tcontracts\030\001 \003(\0132\021.DistanceContr"
   "act\"6\n\021LayerContractList\022!\n\tcontracts\030\001 "
   "\003(\0132\016.LayerContract\"4\n\020AreaContractList\022"
-  " \n\tcontracts\030\001 \003(\0132\r.AreaContractb\006proto"
-  "3"
+  " \n\tcontracts\030\001 \003(\0132\r.AreaContract\"8\n\022Sen"
+  "sorContractList\022\"\n\tcontracts\030\001 \003(\0132\017.Sen"
+  "sorContract\"@\n\026SensorDataContractList\022&\n"
+  "\tcontracts\030\001 \003(\0132\023.SensorDataContract\"B\n"
+  "\027SensorBatchContractList\022\'\n\tcontracts\030\001 "
+  "\003(\0132\024.SensorBatchContract\"J\n\033SensorDataB"
+  "atchContractList\022+\n\tcontracts\030\001 \003(\0132\030.Se"
+  "nsorDataBatchContractb\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_helpers_2eproto_deps[1] = {
   &::descriptor_table_core_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_helpers_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_helpers_2eproto = {
-    false, false, 401, descriptor_table_protodef_helpers_2eproto,
+    false, false, 669, descriptor_table_protodef_helpers_2eproto,
     "helpers.proto",
-    &descriptor_table_helpers_2eproto_once, descriptor_table_helpers_2eproto_deps, 1, 6,
+    &descriptor_table_helpers_2eproto_once, descriptor_table_helpers_2eproto_deps, 1, 10,
     schemas, file_default_instances, TableStruct_helpers_2eproto::offsets,
     file_level_metadata_helpers_2eproto, file_level_enum_descriptors_helpers_2eproto,
     file_level_service_descriptors_helpers_2eproto,
@@ -1324,6 +1418,758 @@ void AreaContractList::InternalSwap(AreaContractList* other) {
       file_level_metadata_helpers_2eproto[5]);
 }
 
+// ===================================================================
+
+class SensorContractList::_Internal {
+ public:
+};
+
+void SensorContractList::clear_contracts() {
+  _impl_.contracts_.Clear();
+}
+SensorContractList::SensorContractList(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:SensorContractList)
+}
+SensorContractList::SensorContractList(const SensorContractList& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  SensorContractList* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.contracts_){from._impl_.contracts_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:SensorContractList)
+}
+
+inline void SensorContractList::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.contracts_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+SensorContractList::~SensorContractList() {
+  // @@protoc_insertion_point(destructor:SensorContractList)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void SensorContractList::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.contracts_.~RepeatedPtrField();
+}
+
+void SensorContractList::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void SensorContractList::Clear() {
+// @@protoc_insertion_point(message_clear_start:SensorContractList)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.contracts_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* SensorContractList::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated .SensorContract contracts = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_contracts(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* SensorContractList::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:SensorContractList)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .SensorContract contracts = 1;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_contracts_size()); i < n; i++) {
+    const auto& repfield = this->_internal_contracts(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:SensorContractList)
+  return target;
+}
+
+size_t SensorContractList::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:SensorContractList)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .SensorContract contracts = 1;
+  total_size += 1UL * this->_internal_contracts_size();
+  for (const auto& msg : this->_impl_.contracts_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SensorContractList::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    SensorContractList::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SensorContractList::GetClassData() const { return &_class_data_; }
+
+
+void SensorContractList::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<SensorContractList*>(&to_msg);
+  auto& from = static_cast<const SensorContractList&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:SensorContractList)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.contracts_.MergeFrom(from._impl_.contracts_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SensorContractList::CopyFrom(const SensorContractList& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:SensorContractList)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SensorContractList::IsInitialized() const {
+  return true;
+}
+
+void SensorContractList::InternalSwap(SensorContractList* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.contracts_.InternalSwap(&other->_impl_.contracts_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SensorContractList::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_helpers_2eproto_getter, &descriptor_table_helpers_2eproto_once,
+      file_level_metadata_helpers_2eproto[6]);
+}
+
+// ===================================================================
+
+class SensorDataContractList::_Internal {
+ public:
+};
+
+void SensorDataContractList::clear_contracts() {
+  _impl_.contracts_.Clear();
+}
+SensorDataContractList::SensorDataContractList(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:SensorDataContractList)
+}
+SensorDataContractList::SensorDataContractList(const SensorDataContractList& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  SensorDataContractList* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.contracts_){from._impl_.contracts_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:SensorDataContractList)
+}
+
+inline void SensorDataContractList::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.contracts_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+SensorDataContractList::~SensorDataContractList() {
+  // @@protoc_insertion_point(destructor:SensorDataContractList)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void SensorDataContractList::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.contracts_.~RepeatedPtrField();
+}
+
+void SensorDataContractList::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void SensorDataContractList::Clear() {
+// @@protoc_insertion_point(message_clear_start:SensorDataContractList)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.contracts_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* SensorDataContractList::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated .SensorDataContract contracts = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_contracts(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* SensorDataContractList::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:SensorDataContractList)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .SensorDataContract contracts = 1;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_contracts_size()); i < n; i++) {
+    const auto& repfield = this->_internal_contracts(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:SensorDataContractList)
+  return target;
+}
+
+size_t SensorDataContractList::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:SensorDataContractList)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .SensorDataContract contracts = 1;
+  total_size += 1UL * this->_internal_contracts_size();
+  for (const auto& msg : this->_impl_.contracts_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SensorDataContractList::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    SensorDataContractList::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SensorDataContractList::GetClassData() const { return &_class_data_; }
+
+
+void SensorDataContractList::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<SensorDataContractList*>(&to_msg);
+  auto& from = static_cast<const SensorDataContractList&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:SensorDataContractList)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.contracts_.MergeFrom(from._impl_.contracts_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SensorDataContractList::CopyFrom(const SensorDataContractList& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:SensorDataContractList)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SensorDataContractList::IsInitialized() const {
+  return true;
+}
+
+void SensorDataContractList::InternalSwap(SensorDataContractList* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.contracts_.InternalSwap(&other->_impl_.contracts_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SensorDataContractList::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_helpers_2eproto_getter, &descriptor_table_helpers_2eproto_once,
+      file_level_metadata_helpers_2eproto[7]);
+}
+
+// ===================================================================
+
+class SensorBatchContractList::_Internal {
+ public:
+};
+
+void SensorBatchContractList::clear_contracts() {
+  _impl_.contracts_.Clear();
+}
+SensorBatchContractList::SensorBatchContractList(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:SensorBatchContractList)
+}
+SensorBatchContractList::SensorBatchContractList(const SensorBatchContractList& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  SensorBatchContractList* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.contracts_){from._impl_.contracts_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:SensorBatchContractList)
+}
+
+inline void SensorBatchContractList::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.contracts_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+SensorBatchContractList::~SensorBatchContractList() {
+  // @@protoc_insertion_point(destructor:SensorBatchContractList)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void SensorBatchContractList::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.contracts_.~RepeatedPtrField();
+}
+
+void SensorBatchContractList::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void SensorBatchContractList::Clear() {
+// @@protoc_insertion_point(message_clear_start:SensorBatchContractList)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.contracts_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* SensorBatchContractList::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated .SensorBatchContract contracts = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_contracts(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* SensorBatchContractList::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:SensorBatchContractList)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .SensorBatchContract contracts = 1;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_contracts_size()); i < n; i++) {
+    const auto& repfield = this->_internal_contracts(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:SensorBatchContractList)
+  return target;
+}
+
+size_t SensorBatchContractList::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:SensorBatchContractList)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .SensorBatchContract contracts = 1;
+  total_size += 1UL * this->_internal_contracts_size();
+  for (const auto& msg : this->_impl_.contracts_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SensorBatchContractList::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    SensorBatchContractList::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SensorBatchContractList::GetClassData() const { return &_class_data_; }
+
+
+void SensorBatchContractList::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<SensorBatchContractList*>(&to_msg);
+  auto& from = static_cast<const SensorBatchContractList&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:SensorBatchContractList)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.contracts_.MergeFrom(from._impl_.contracts_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SensorBatchContractList::CopyFrom(const SensorBatchContractList& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:SensorBatchContractList)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SensorBatchContractList::IsInitialized() const {
+  return true;
+}
+
+void SensorBatchContractList::InternalSwap(SensorBatchContractList* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.contracts_.InternalSwap(&other->_impl_.contracts_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SensorBatchContractList::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_helpers_2eproto_getter, &descriptor_table_helpers_2eproto_once,
+      file_level_metadata_helpers_2eproto[8]);
+}
+
+// ===================================================================
+
+class SensorDataBatchContractList::_Internal {
+ public:
+};
+
+void SensorDataBatchContractList::clear_contracts() {
+  _impl_.contracts_.Clear();
+}
+SensorDataBatchContractList::SensorDataBatchContractList(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:SensorDataBatchContractList)
+}
+SensorDataBatchContractList::SensorDataBatchContractList(const SensorDataBatchContractList& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  SensorDataBatchContractList* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.contracts_){from._impl_.contracts_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:SensorDataBatchContractList)
+}
+
+inline void SensorDataBatchContractList::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.contracts_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+SensorDataBatchContractList::~SensorDataBatchContractList() {
+  // @@protoc_insertion_point(destructor:SensorDataBatchContractList)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void SensorDataBatchContractList::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.contracts_.~RepeatedPtrField();
+}
+
+void SensorDataBatchContractList::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void SensorDataBatchContractList::Clear() {
+// @@protoc_insertion_point(message_clear_start:SensorDataBatchContractList)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.contracts_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* SensorDataBatchContractList::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated .SensorDataBatchContract contracts = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_contracts(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* SensorDataBatchContractList::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:SensorDataBatchContractList)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .SensorDataBatchContract contracts = 1;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_contracts_size()); i < n; i++) {
+    const auto& repfield = this->_internal_contracts(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:SensorDataBatchContractList)
+  return target;
+}
+
+size_t SensorDataBatchContractList::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:SensorDataBatchContractList)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .SensorDataBatchContract contracts = 1;
+  total_size += 1UL * this->_internal_contracts_size();
+  for (const auto& msg : this->_impl_.contracts_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SensorDataBatchContractList::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    SensorDataBatchContractList::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SensorDataBatchContractList::GetClassData() const { return &_class_data_; }
+
+
+void SensorDataBatchContractList::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<SensorDataBatchContractList*>(&to_msg);
+  auto& from = static_cast<const SensorDataBatchContractList&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:SensorDataBatchContractList)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.contracts_.MergeFrom(from._impl_.contracts_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SensorDataBatchContractList::CopyFrom(const SensorDataBatchContractList& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:SensorDataBatchContractList)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SensorDataBatchContractList::IsInitialized() const {
+  return true;
+}
+
+void SensorDataBatchContractList::InternalSwap(SensorDataBatchContractList* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.contracts_.InternalSwap(&other->_impl_.contracts_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SensorDataBatchContractList::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_helpers_2eproto_getter, &descriptor_table_helpers_2eproto_once,
+      file_level_metadata_helpers_2eproto[9]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 PROTOBUF_NAMESPACE_OPEN
 template<> PROTOBUF_NOINLINE ::DeviceContractList*
@@ -1349,6 +2195,22 @@ Arena::CreateMaybeMessage< ::LayerContractList >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::AreaContractList*
 Arena::CreateMaybeMessage< ::AreaContractList >(Arena* arena) {
   return Arena::CreateMessageInternal< ::AreaContractList >(arena);
+}
+template<> PROTOBUF_NOINLINE ::SensorContractList*
+Arena::CreateMaybeMessage< ::SensorContractList >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::SensorContractList >(arena);
+}
+template<> PROTOBUF_NOINLINE ::SensorDataContractList*
+Arena::CreateMaybeMessage< ::SensorDataContractList >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::SensorDataContractList >(arena);
+}
+template<> PROTOBUF_NOINLINE ::SensorBatchContractList*
+Arena::CreateMaybeMessage< ::SensorBatchContractList >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::SensorBatchContractList >(arena);
+}
+template<> PROTOBUF_NOINLINE ::SensorDataBatchContractList*
+Arena::CreateMaybeMessage< ::SensorDataBatchContractList >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::SensorDataBatchContractList >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

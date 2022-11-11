@@ -53,7 +53,7 @@ auto tDevkit<HttpClient>::updateDevice(const DeviceContract &device)
 
 template <class HttpClient>
 auto tDevkit<HttpClient>::deleteDevice(const int &id) -> void {
-  this->serviceRequest<DeviceContract, void *>(
+  this->serviceRequest<void, void *>(
       NetworkMethod::Delete, "/api/v3/devices/" + std::to_string(id), nullptr
   );
 }
