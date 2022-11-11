@@ -82,7 +82,7 @@ public:
   auto getSensorData(
       const int& id, std::vector<std::string>& quantities, const int64_t& start,
       const int64_t& stop, const std::string& aggregation = "mean"
-  ) -> std::vector<SensorDataContract>;
+  ) -> std::vector<SensorDataContract> = delete;
   auto addSensor(const SensorContract& sensor) -> SensorContract;
   /** 
    * Not implemented
