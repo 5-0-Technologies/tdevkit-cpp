@@ -2,6 +2,8 @@
 #include <twinzo/network/exceptions.hpp>
 #include <twinzo/network/qt_client.hpp>
 
+#include <iostream>
+
 QtNetworkClient::QtNetworkClient(std::string hostname, int port)
     : NetworkClient(hostname, port) {
   m_manager = new QNetworkAccessManager();
@@ -64,6 +66,7 @@ NetworkResponse QtNetworkClient::request(
   if (reply_err == QNetworkReply::NoError) {
     return parseQtResponse(reply);
   } else {
+    std::cout << reply->readAll().toStdString() << std::endl;
     throw NetworkException(reply_err, reply->errorString().toStdString());
   }
 }

@@ -11,14 +11,14 @@ int main(int argc, char *argv[]) {
   // use current time as seed for random generator
   std::srand(std::time(nullptr));
 
-  tDevkit<QtNetworkClient> devkit("https://portal.twinzo.eu", 443);
+  tDevkit<QtNetworkClient> devkit("https://develop.portal.twinzo.eu", 443);
 
   AuthenticationResponseContract auth_response;
 
   auto credentials = CredentialContract();
-  credentials.set_client("twinzo");
-  credentials.set_login("tDevkit-cpp");
-  credentials.set_password("tDevkit-cpp");
+  credentials.set_client("Infotech");
+  credentials.set_login("tDevkit-cpp-sensor");
+  credentials.set_password("tDevkit-cpp-sensor");
 
   auth_response = devkit.authenticate(credentials);
   // DEBUG
@@ -38,7 +38,6 @@ int main(int argc, char *argv[]) {
   // TODO: validate
 
   int rand = std::rand();
-  int size = devices.size();
 
   // Choose random device out of the list
   int rand_id = std::rand() % (devices.size());
@@ -53,6 +52,50 @@ int main(int argc, char *argv[]) {
   auto areas = devkit.getAreas();
   std::cout << "Received " << areas.size() << " areas" << std::endl;
   // TODO: validate
+
+  // Fetch Sensors
+  auto sensors = devkit.getSensors();
+  std::cout << "Received " << sensors.size() << " sensors" << std::endl;
+
+  // Choose random device out of the list
+  rand_id = 0;
+  // Reroll if sensor has a colon in the login (long-standing API issue)
+  while (sensors.at(rand_id).login().find(':') != std::string::npos)
+    rand_id = std::rand() % (sensors.size());
+  // Fetch device using the ID
+  auto sensor_by_id = devkit.getSensor(sensors.at(rand_id).id());
+  std::cout << sensor_by_id.DebugString() << std::endl;
+  // Fetch device using the login
+  auto sensor_by_login = devkit.getSensor(sensors.at(rand_id).login());
+  std::cout << sensor_by_login.DebugString() << std::endl;
+
+  SensorContract sensor;
+  sensor.set_login("tDevkit-test");
+  sensor.set_title("tDevkit-test");
+  sensor.set_mac("00:00:00:00:00:00");
+
+  sensor = devkit.addSensor(sensor);
+  std::cout << "Sensor created successfully:\n"
+            << sensor.DebugString() << std::endl;
+
+  SensorDataBatchContract data;
+  data.set_quantity("Q");
+  data.set_value("V");
+  data.set_unit("U");
+  data.set_datatype("String");
+
+  devkit.addSensorData({data});
+  std::cout << "Sensor data added successfully" << std::endl;
+
+  SensorBatchContract contract;
+  contract.set_login("tDevkit-test");
+  // Hacky solution, not advised in production
+  *contract.mutable_sensordata()->Add() = data;
+  devkit.addSensorData({contract});
+  std::cout << "Batch sensor data added successfully" << std::endl;
+
+  devkit.deleteSensor(sensor.id());
+  std::cout << "Sensor deleted successfully" << std::endl;
 
   devkit.deleteCurrentToken();
   // TODO: validate

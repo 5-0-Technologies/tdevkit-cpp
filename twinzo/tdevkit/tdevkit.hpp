@@ -70,6 +70,35 @@ public:
   auto addLocalizationData(const std::vector<LocationContract>& locations)
       -> void;
 
+  /* Sensors */
+  auto getSensors(const std::vector<NetworkQuery>& query = {})
+      -> std::vector<SensorContract>;
+  auto getSensor(const int& id, const std::vector<NetworkQuery>& query = {})
+      -> SensorContract;
+  auto getSensor(
+      const std::string& login, const std::vector<NetworkQuery>& query = {}
+  ) -> SensorContract;
+  /** Not implemented */
+  auto getSensorData(
+      const int& id, std::vector<std::string>& quantities, const int64_t& start,
+      const int64_t& stop, const std::string& aggregation = "mean"
+  ) -> std::vector<SensorDataContract>;
+  auto addSensor(const SensorContract& sensor) -> SensorContract;
+  /** 
+   * Not implemented
+   * Doesn't work due to issues with partial protobuf deserialization
+   * on the server side (Invalid wire-type error)
+   */
+  auto updateSensor(const SensorContract& sensor) -> void = delete;
+  auto deleteSensor(const int& id) -> void;
+  auto addSensorData(const std::vector<SensorBatchContract>& batch_data)
+      -> void;
+  auto addSensorData(const std::vector<SensorDataBatchContract>& sensor_data)
+      -> void;
+  auto getSensorAppInfo() -> SensorAppInfoContract;
+  /** Not implemented */
+  auto getSensorAppFile() -> void = delete;
+
 protected:
   std::string m_client_guid;
   std::string m_branch_guid;
@@ -95,3 +124,4 @@ private:
 #include <twinzo/tdevkit/configuration.tpp>
 #include <twinzo/tdevkit/devices.tpp>
 #include <twinzo/tdevkit/layers.tpp>
+#include <twinzo/tdevkit/sensors.tpp>
