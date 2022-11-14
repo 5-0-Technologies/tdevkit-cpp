@@ -52,7 +52,7 @@ auto tDevkit<HttpClient>::addSensorData(
     const std::vector<SensorBatchContract>& data
 ) -> void {
   SensorBatchContractList contract;
-  contract.mutable_contracts()->Add(data.begin(), data.end());
+  contract.mutable_contracts()->Assign(data.begin(), data.end());
 
   return this->serviceRequest<void, SensorBatchContractList>(
       NetworkMethod::Post, "/api/v3/sensors/batch", contract
@@ -64,7 +64,7 @@ auto tDevkit<HttpClient>::addSensorData(
     const std::vector<SensorDataBatchContract>& batch_data
 ) -> void {
   SensorDataBatchContractList contract;
-  contract.mutable_contracts()->Add(batch_data.begin(), batch_data.end());
+  contract.mutable_contracts()->Assign(batch_data.begin(), batch_data.end());
 
   return this->serviceRequest<void, SensorDataBatchContractList>(
       NetworkMethod::Post, "/api/v3/sensors/sensor-data", contract
