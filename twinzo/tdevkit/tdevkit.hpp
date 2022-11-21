@@ -10,6 +10,18 @@
 template <class HttpClient>
 class tDevkit {
 public:
+  std::string hostname;
+  int port;
+
+  std::string client;
+  std::string login;
+  std::string password;
+
+  std::string client_guid;
+  std::string branch_guid;
+  std::string token;
+  std::string api_key;
+
   tDevkit(std::string hostname, int port);
   ~tDevkit();
 
@@ -29,6 +41,7 @@ public:
       -> AuthenticationResponseContract const;
   auto authenticate(std::string client, std::string login, std::string password)
       -> AuthenticationResponseContract const;
+  auto authenticate() -> AuthenticationResponseContract const;
 
   /* Configuration */
   auto getBranchConfiguration(const std::string& key) -> std::string;
@@ -84,7 +97,7 @@ public:
       const int64_t& stop, const std::string& aggregation = "mean"
   ) -> std::vector<SensorDataContract> = delete;
   auto addSensor(const SensorContract& sensor) -> SensorContract;
-  /** 
+  /**
    * Not implemented
    * Doesn't work due to issues with partial protobuf deserialization
    * on the server side (Invalid wire-type error)
@@ -100,10 +113,6 @@ public:
   auto getSensorAppFile() -> void = delete;
 
 protected:
-  std::string m_client_guid;
-  std::string m_branch_guid;
-  std::string m_token;
-
   template <class Contract, class PayloadContract>
   auto serviceRequest(
       NetworkMethod method, std::string path, PayloadContract data,
