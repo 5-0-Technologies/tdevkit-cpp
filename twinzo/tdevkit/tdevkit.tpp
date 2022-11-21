@@ -6,6 +6,9 @@
 
 template <class HttpClient>
 tDevkit<HttpClient>::tDevkit(std::string hostname, int port) {
+  this->m_hostname = hostname;
+  this->m_port = port;
+
   m_network_client = std::make_unique<HttpClient>(hostname, port);
   m_network_client->connect();
 }
@@ -23,8 +26,10 @@ auto tDevkit<HttpClient>::serviceRequest(
     const std::vector<NetworkQuery>& query, const std::string& content_type
 ) -> ResponseContract {
   std::vector<NetworkHeader> static_headers = {
-      std::make_pair("Client", m_client_guid),
-      std::make_pair("Branch", m_branch_guid), std::make_pair("Token", m_token),
+      std::make_pair("Client", this->client_guid),
+      std::make_pair("Branch", this->branch_guid),
+      std::make_pair("Token", this->token),
+      std::make_pair("Api-Key", this->api_key),
       std::make_pair("Content-Type", content_type),
       std::make_pair("Accept", content_type)};
 

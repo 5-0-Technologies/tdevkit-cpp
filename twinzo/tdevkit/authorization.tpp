@@ -4,9 +4,9 @@ template <class HttpClient>
 auto tDevkit<HttpClient>::setAuthHeaders(
     std::string client_guid, std::string branch_guid, std::string token
 ) -> void {
-  m_client_guid = client_guid;
-  m_branch_guid = branch_guid;
-  m_token       = token;
+  this->client_guid = client_guid;
+  this->branch_guid = branch_guid;
+  this->token       = token;
 }
 
 template <class HttpClient>
@@ -46,6 +46,11 @@ template <class HttpClient>
 auto tDevkit<HttpClient>::authenticate(
     std::string client, std::string login, std::string password
 ) -> AuthenticationResponseContract const {
+  // Save login credentials
+  this->client   = client;
+  this->login    = login;
+  this->password = password;
+
   // Construct credentials from provided arguments
   auto credentials = CredentialContract();
   credentials.set_client(client);
@@ -53,4 +58,10 @@ auto tDevkit<HttpClient>::authenticate(
   credentials.set_password(password);
 
   return authenticate(credentials);
+}
+
+template <class HttpClient>
+auto tDevkit<HttpClient>::authenticate()
+    -> AuthenticationResponseContract const {
+  return this->authenticate(this->client, this->login, this->password);
 }
