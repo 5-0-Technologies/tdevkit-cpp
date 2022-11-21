@@ -10,9 +10,6 @@
 template <class HttpClient>
 class tDevkit {
 public:
-  std::string hostname;
-  int port;
-
   std::string client;
   std::string login;
   std::string password;
@@ -113,6 +110,9 @@ public:
   auto getSensorAppFile() -> void = delete;
 
 protected:
+  std::string m_hostname;
+  int m_port;
+
   template <class Contract, class PayloadContract>
   auto serviceRequest(
       NetworkMethod method, std::string path, PayloadContract data,

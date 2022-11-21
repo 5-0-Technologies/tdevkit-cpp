@@ -6,6 +6,9 @@
 
 template <class HttpClient>
 tDevkit<HttpClient>::tDevkit(std::string hostname, int port) {
+  this->m_hostname = hostname;
+  this->m_port = port;
+
   m_network_client = std::make_unique<HttpClient>(hostname, port);
   m_network_client->connect();
 }

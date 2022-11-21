@@ -55,3 +55,9 @@ add_executable(testDevkit
 )
 target_link_libraries(testDevkit tDevkit QtNetworkClient)
 add_test(NAME testDevkit COMMAND testDevkit)
+
+add_executable(testApiKey
+  testApiKey.cpp
+)
+target_link_libraries(testApiKey tDevkit QtNetworkClient)
+add_test(NAME testApiKey COMMAND testApiKey)
