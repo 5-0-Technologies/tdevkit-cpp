@@ -43,7 +43,6 @@ PROTOBUF_CONSTEXPR DeviceContract::DeviceContract(
   , /*decltype(_impl_.title_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.note_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.appversion_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.fallstatus_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.devicetype_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.login_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.password_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
@@ -60,13 +59,14 @@ PROTOBUF_CONSTEXPR DeviceContract::DeviceContract(
   , /*decltype(_impl_.y_)*/0
   , /*decltype(_impl_.validx_)*/0
   , /*decltype(_impl_.validy_)*/0
+  , /*decltype(_impl_.fallstatus_)*/0
   , /*decltype(_impl_.battery_)*/0
   , /*decltype(_impl_.devicetypeid_)*/0
   , /*decltype(_impl_.ismoving_)*/false
   , /*decltype(_impl_.position_)*/false
   , /*decltype(_impl_.geofence_)*/false
-  , /*decltype(_impl_.geofencerange_)*/0u
-  , /*decltype(_impl_.heartbeat_)*/int64_t{0}} {}
+  , /*decltype(_impl_.heartbeat_)*/int64_t{0}
+  , /*decltype(_impl_.geofencerange_)*/0u} {}
 struct DeviceContractDefaultTypeInternal {
   PROTOBUF_CONSTEXPR DeviceContractDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -566,7 +566,7 @@ struct RangesContractDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RangesContractDefaultTypeInternal _RangesContract_default_instance_;
 static ::_pb::Metadata file_level_metadata_core_2eproto[27];
-static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_core_2eproto = nullptr;
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_core_2eproto[1];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_core_2eproto = nullptr;
 
 const uint32_t TableStruct_core_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
@@ -637,11 +637,11 @@ const uint32_t TableStruct_core_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   ~0u,
   ~0u,
   ~0u,
-  11,
-  ~0u,
-  ~0u,
-  ~0u,
   12,
+  ~0u,
+  ~0u,
+  ~0u,
+  11,
   PROTOBUF_FIELD_OFFSET(::SectorContract, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::SectorContract, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1165,7 +1165,7 @@ static const ::_pb::Message* const file_default_instances[] = {
 
 const char descriptor_table_protodef_core_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\ncore.proto\"\036\n\004Guid\022\n\n\002lo\030\001 \001(\006\022\n\n\002hi\030\002"
-  " \001(\006\"\267\006\n\016DeviceContract\022\n\n\002Id\030\001 \001(\005\022\013\n\003M"
+  " \001(\006\"\302\006\n\016DeviceContract\022\n\n\002Id\030\001 \001(\005\022\013\n\003M"
   "ac\030\002 \001(\t\022\020\n\010BranchId\030\003 \001(\005\022$\n\006Branch\030\004 \001"
   "(\0132\017.BranchContractH\000\210\001\001\022\025\n\010SectorId\030\005 \001"
   "(\005H\001\210\001\001\022$\n\006Sector\030\006 \001(\0132\017.SectorContract"
@@ -1174,139 +1174,143 @@ const char descriptor_table_protodef_core_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
   "\030\n \001(\003H\004\210\001\001\022 \n\023ValidLastTimeOnline\030\013 \001(\003"
   "H\005\210\001\001\022\016\n\001X\030\014 \001(\002H\006\210\001\001\022\016\n\001Y\030\r \001(\002H\007\210\001\001\022\023\n"
   "\006ValidX\030\016 \001(\002H\010\210\001\001\022\023\n\006ValidY\030\017 \001(\002H\t\210\001\001\022"
-  "\022\n\nAppVersion\030\020 \001(\t\022\020\n\010IsMoving\030\021 \001(\010\022\022\n"
-  "\nFallStatus\030\022 \001(\t\022\024\n\007Battery\030\023 \001(\002H\n\210\001\001\022"
-  "\024\n\014DeviceTypeId\030\024 \001(\005\022\022\n\nDeviceType\030\025 \001("
-  "\t\022\r\n\005Login\030\026 \001(\t\022\020\n\010Position\030\027 \001(\010\022\020\n\010Ge"
-  "ofence\030\030 \001(\010\022\032\n\rGeofenceRange\030\031 \001(\rH\013\210\001\001"
-  "\022\020\n\010Password\030\032 \001(\t\022\036\n\006Layers\030\033 \003(\0132\016.Lay"
-  "erContract\022\024\n\014DeviceStatus\030\034 \001(\t\022\026\n\tHear"
-  "tbeat\030\035 \001(\003H\014\210\001\001B\t\n\007_BranchB\013\n\t_SectorId"
-  "B\t\n\007_SectorB\020\n\016_ValidSectorIdB\021\n\017_LastTi"
-  "meOnlineB\026\n\024_ValidLastTimeOnlineB\004\n\002_XB\004"
-  "\n\002_YB\t\n\007_ValidXB\t\n\007_ValidYB\n\n\010_BatteryB\020"
-  "\n\016_GeofenceRangeB\014\n\n_Heartbeat\"\305\003\n\016Secto"
-  "rContract\022\n\n\002Id\030\001 \001(\005\022\014\n\004Guid\030\002 \001(\t\022\020\n\010B"
-  "ranchId\030\003 \001(\005\022$\n\006Branch\030\004 \001(\0132\017.BranchCo"
-  "ntractH\000\210\001\001\022\r\n\005Title\030\005 \001(\t\022\025\n\rBarrierHei"
-  "ght\030\006 \001(\002\022\024\n\014BarrierWidth\030\007 \001(\002\022\024\n\014Secto"
-  "rHeight\030\010 \001(\002\022\023\n\013SectorWidth\030\t \001(\002\022\020\n\010Mo"
-  "dified\030\n \001(\003\022\"\n\010GpsItems\030\013 \003(\0132\020.GpsItem"
-  "Contract\022\034\n\005Areas\030\014 \003(\0132\r.AreaContract\022\""
-  "\n\010Barriers\030\r \003(\0132\020.BarrierContract\022 \n\007Be"
-  "acons\030\016 \003(\0132\017.BeaconContract\022 \n\007Sensors\030"
-  "\017 \003(\0132\017.SensorContract\022\025\n\rConfiguration\030"
-  "\020 \001(\t\022\034\n\005Paths\030\021 \003(\0132\r.PathContractB\t\n\007_"
-  "Branch\"\232\001\n\016BranchContract\022\n\n\002Id\030\001 \001(\005\022\r\n"
-  "\005Title\030\002 \001(\t\022\023\n\004Guid\030\003 \001(\0132\005.Guid\022\020\n\010Tim"
-  "eZone\030\004 \001(\t\022\020\n\010Latitude\030\005 \001(\002\022\022\n\nLongtit"
-  "ude\030\006 \001(\002\022 \n\007Sectors\030\007 \003(\0132\017.SectorContr"
-  "act\"\324\002\n\rLayerContract\022\n\n\002Id\030\001 \001(\005\022\r\n\005Tit"
-  "le\030\002 \001(\t\022\014\n\004Icon\030\003 \001(\t\022\020\n\010BranchId\030\004 \001(\005"
-  "\022$\n\006Branch\030\005 \001(\0132\017.BranchContractH\000\210\001\001\022\017"
-  "\n\007Visible\030\006 \001(\010\022\024\n\014Localization\030\007 \001(\010\022\017\n"
-  "\007Created\030\010 \001(\003\022\017\n\007Updated\030\t \001(\003\022\034\n\005Areas"
-  "\030\n \003(\0132\r.AreaContract\022 \n\007Devices\030\013 \003(\0132\017"
-  ".DeviceContract\022\016\n\006IsNoGo\030\014 \001(\010\022\034\n\005Paths"
-  "\030\r \003(\0132\r.PathContract\022 \n\010Children\030\016 \003(\0132"
-  "\016.LayerContractB\t\n\007_Branch\"\202\003\n\014PathContr"
-  "act\022\n\n\002Id\030\001 \001(\005\022\023\n\004Guid\030\002 \001(\0132\005.Guid\022\r\n\005"
-  "Title\030\003 \001(\t\022\020\n\010SectorId\030\004 \001(\005\022$\n\006Sector\030"
-  "\005 \001(\0132\017.SectorContractH\000\210\001\001\022\020\n\010BranchId\030"
-  "\006 \001(\005\022$\n\006Branch\030\007 \001(\0132\017.BranchContractH\001"
-  "\210\001\001\022\024\n\007LayerId\030\010 \001(\005H\002\210\001\001\022\"\n\005Layer\030\t \001(\013"
-  "2\016.LayerContractH\003\210\001\001\022\r\n\005Color\030\n \001(\t\022&\n\n"
-  "PathPoints\030\013 \003(\0132\022.PathPointContract\022\023\n\013"
-  "Description\030\014 \001(\t\022\017\n\007Created\030\r \001(\003\022\017\n\007Up"
-  "dated\030\016 \001(\003B\t\n\007_SectorB\t\n\007_BranchB\n\n\010_La"
-  "yerIdB\010\n\006_Layer\"\215\002\n\021PathPointContract\022\n\n"
-  "\002Id\030\001 \001(\005\022\016\n\006PathId\030\002 \001(\005\022 \n\004Path\030\003 \001(\0132"
-  "\r.PathContractH\000\210\001\001\022\020\n\010BranchId\030\004 \001(\005\022$\n"
-  "\006Branch\030\005 \001(\0132\017.BranchContractH\001\210\001\001\022\r\n\005I"
-  "ndex\030\006 \001(\005\022\t\n\001X\030\007 \001(\002\022\t\n\001Y\030\010 \001(\002\022\023\n\006Area"
-  "Id\030\t \001(\005H\002\210\001\001\022 \n\004Area\030\n \001(\0132\r.AreaContra"
-  "ctH\003\210\001\001B\007\n\005_PathB\t\n\007_BranchB\t\n\007_AreaIdB\007"
-  "\n\005_Area\"\257\003\n\014AreaContract\022\n\n\002Id\030\001 \001(\005\022\023\n\004"
-  "Guid\030\002 \001(\0132\005.Guid\022\r\n\005Title\030\003 \001(\t\022\020\n\010Sect"
-  "orId\030\004 \001(\005\022$\n\006Sector\030\005 \001(\0132\017.SectorContr"
-  "actH\000\210\001\001\022\020\n\010BranchId\030\006 \001(\005\022$\n\006Branch\030\007 \001"
-  "(\0132\017.BranchContractH\001\210\001\001\022\024\n\007LayerId\030\010 \001("
-  "\005H\002\210\001\001\022\"\n\005Layer\030\t \001(\0132\016.LayerContractH\003\210"
-  "\001\001\022\r\n\005Color\030\n \001(\t\022#\n\013Coordinates\030\013 \003(\0132\016"
-  ".PointContract\022\023\n\013Description\030\014 \001(\t\022\017\n\007C"
-  "reated\030\r \001(\003\022\017\n\007Updated\030\016 \001(\003\022\033\n\016TargetB"
-  "ranchId\030\017 \001(\005H\004\210\001\001B\t\n\007_SectorB\t\n\007_Branch"
-  "B\n\n\010_LayerIdB\010\n\006_LayerB\021\n\017_TargetBranchI"
-  "d\"%\n\rPointContract\022\t\n\001X\030\001 \001(\002\022\t\n\001Y\030\002 \001(\002"
-  "\"M\n\026DeviceLocationContract\022\r\n\005Login\030\001 \001("
-  "\t\022$\n\tLocations\030\002 \003(\0132\021.LocationContract\""
-  "\267\002\n\020LocationContract\022\021\n\tTimestamp\030\001 \001(\003\022"
-  "\025\n\010SectorId\030\002 \001(\005H\000\210\001\001\022\016\n\001X\030\003 \001(\002H\001\210\001\001\022\016"
-  "\n\001Y\030\004 \001(\002H\002\210\001\001\022\016\n\001Z\030\005 \001(\002H\003\210\001\001\022\025\n\010Interv"
-  "al\030\006 \001(\005H\004\210\001\001\022\024\n\007battery\030\007 \001(\rH\005\210\001\001\022\020\n\010I"
-  "sMoving\030\010 \001(\010\022$\n\tDistances\030\t \003(\0132\021.Dista"
-  "nceContract\022\031\n\021LocalizationAreas\030\n \003(\005\022\021"
-  "\n\tNoGoAreas\030\013 \003(\005B\013\n\t_SectorIdB\004\n\002_XB\004\n\002"
-  "_YB\004\n\002_ZB\013\n\t_IntervalB\n\n\010_battery\"D\n\020Dis"
-  "tanceContract\022\020\n\010BeaconId\030\001 \001(\005\022\020\n\010Dista"
-  "nce\030\002 \001(\002\022\014\n\004RSSI\030\003 \001(\005\"\036\n\rLoginContract"
-  "\022\r\n\005Login\030\001 \001(\t\"t\n\036AuthenticationRespons"
-  "eContract\022\016\n\006Client\030\001 \001(\t\022\r\n\005Token\030\002 \001(\t"
-  "\022\022\n\nExpiration\030\003 \001(\004\022\017\n\007Created\030\004 \001(\004\022\016\n"
-  "\006Branch\030\005 \001(\t\"E\n\022CredentialContract\022\016\n\006C"
-  "lient\030\001 \001(\t\022\r\n\005Login\030\002 \001(\t\022\020\n\010Password\030\003"
-  " \001(\t\"=\n\024PostResponseContract\022\017\n\007Success\030"
-  "\001 \001(\010\022\024\n\014ErrorMessage\030\002 \001(\t\"\233\001\n\017GpsItemC"
-  "ontract\022\n\n\002Id\030\001 \001(\005\022\020\n\010SectorId\030\002 \001(\005\022$\n"
-  "\006Sector\030\003 \001(\0132\017.SectorContractH\000\210\001\001\022\t\n\001X"
-  "\030\004 \001(\002\022\t\n\001Y\030\005 \001(\002\022\020\n\010Latitude\030\006 \001(\001\022\021\n\tL"
-  "ongitude\030\007 \001(\001B\t\n\007_Sector\"\255\001\n\017BarrierCon"
-  "tract\022\t\n\001X\030\001 \001(\005\022\t\n\001Y\030\002 \001(\005\022\020\n\010SectorId\030"
-  "\003 \001(\005\022$\n\006Sector\030\004 \001(\0132\017.SectorContractH\000"
-  "\210\001\001\022\020\n\010BranchId\030\005 \001(\005\022$\n\006Branch\030\006 \001(\0132\017."
-  "BranchContractH\001\210\001\001B\t\n\007_SectorB\t\n\007_Branc"
-  "h\"\345\003\n\016BeaconContract\022\n\n\002Id\030\001 \001(\005\022\025\n\010Sect"
-  "orId\030\002 \001(\005H\000\210\001\001\022$\n\006Sector\030\003 \001(\0132\017.Sector"
-  "ContractH\001\210\001\001\022\020\n\010BranchId\030\004 \001(\005\022$\n\006Branc"
-  "h\030\005 \001(\0132\017.BranchContractH\002\210\001\001\022\013\n\003Mac\030\006 \001"
-  "(\t\022\016\n\001X\030\007 \001(\002H\003\210\001\001\022\016\n\001Y\030\010 \001(\002H\004\210\001\001\022\016\n\001Z\030"
-  "\t \001(\002H\005\210\001\001\022\r\n\005Title\030\n \001(\t\022\016\n\006Active\030\013 \001("
-  "\010\022\023\n\006TypeId\030\014 \001(\005H\006\210\001\001\022\020\n\010Position\030\016 \001(\010"
-  "\022\020\n\010Geofence\030\017 \001(\010\022\032\n\rGeofenceRange\030\020 \001("
-  "\002H\007\210\001\001\022\017\n\007Cluster\030\021 \001(\t\022\033\n\016LastTimeOnlin"
-  "e\030\022 \001(\003H\010\210\001\001\022\016\n\006UseGps\030\023 \001(\010B\013\n\t_SectorI"
-  "dB\t\n\007_SectorB\t\n\007_BranchB\004\n\002_XB\004\n\002_YB\004\n\002_"
-  "ZB\t\n\007_TypeIdB\020\n\016_GeofenceRangeB\021\n\017_LastT"
-  "imeOnline\"P\n\026BeaconPositionContract\022\n\n\002I"
-  "d\030\001 \001(\005\022\016\n\001X\030\002 \001(\002H\000\210\001\001\022\016\n\001Y\030\003 \001(\002H\001\210\001\001B"
-  "\004\n\002_XB\004\n\002_Y\"\376\002\n\016SensorContract\022\n\n\002Id\030\001 \001"
-  "(\005\022\r\n\005Login\030\002 \001(\t\022\r\n\005Title\030\003 \001(\t\022\013\n\003Mac\030"
-  "\004 \001(\t\022\014\n\004Note\030\005 \001(\t\022\016\n\001X\030\006 \001(\002H\000\210\001\001\022\016\n\001y"
-  "\030\007 \001(\002H\001\210\001\001\022\024\n\007Battery\030\010 \001(\002H\002\210\001\001\022\025\n\010Sec"
-  "torId\030\t \001(\005H\003\210\001\001\022$\n\006Sector\030\n \001(\0132\017.Secto"
-  "rContractH\004\210\001\001\022\'\n\nSensorData\030\013 \003(\0132\023.Sen"
-  "sorDataContract\022\023\n\006AreaId\030\014 \001(\005H\005\210\001\001\022 \n\004"
-  "Area\030\r \001(\0132\r.AreaContractH\006\210\001\001\022\020\n\010Passwo"
-  "rd\030\016 \001(\tB\004\n\002_XB\004\n\002_yB\n\n\010_BatteryB\013\n\t_Sec"
-  "torIdB\t\n\007_SectorB\t\n\007_AreaIdB\007\n\005_Area\"\226\001\n"
-  "\022SensorDataContract\022\020\n\010Quantity\030\001 \001(\t\022\r\n"
-  "\005Value\030\002 \001(\t\022\014\n\004Unit\030\003 \001(\t\022\020\n\010DataType\030\004"
-  " \001(\t\022\021\n\tTimestamp\030\005 \001(\003\022\035\n\005Range\030\006 \001(\0132\016"
-  ".RangeContract\022\r\n\005Index\030\007 \001(\005\"R\n\023SensorB"
-  "atchContract\022\r\n\005Login\030\001 \001(\t\022,\n\nSensorDat"
-  "a\030\002 \003(\0132\030.SensorDataBatchContract\"\217\001\n\027Se"
-  "nsorDataBatchContract\022\021\n\tTimestamp\030\001 \001(\003"
-  "\022\020\n\010Quantity\030\002 \001(\t\022\r\n\005Value\030\003 \001(\t\022\014\n\004Uni"
-  "t\030\004 \001(\t\022\020\n\010DataType\030\005 \001(\t\022\024\n\007ValueOK\030\006 \001"
-  "(\010H\000\210\001\001B\n\n\010_ValueOK\"6\n\025SensorAppInfoCont"
-  "ract\022\017\n\007Version\030\001 \001(\t\022\014\n\004Size\030\002 \001(\003\">\n\rR"
-  "angeContract\022\014\n\004Type\030\001 \001(\t\022\037\n\006Ranges\030\002 \003"
-  "(\0132\017.RangesContract\".\n\016RangesContract\022\r\n"
-  "\005Color\030\001 \001(\t\022\r\n\005Value\030\002 \001(\tb\006proto3"
+  "\022\n\nAppVersion\030\020 \001(\t\022\020\n\010IsMoving\030\021 \001(\010\022\035\n"
+  "\nFallStatus\030\022 \001(\0162\t.FallType\022\024\n\007Battery\030"
+  "\023 \001(\002H\n\210\001\001\022\024\n\014DeviceTypeId\030\024 \001(\005\022\022\n\nDevi"
+  "ceType\030\025 \001(\t\022\r\n\005Login\030\026 \001(\t\022\020\n\010Position\030"
+  "\027 \001(\010\022\020\n\010Geofence\030\030 \001(\010\022\032\n\rGeofenceRange"
+  "\030\031 \001(\rH\013\210\001\001\022\020\n\010Password\030\032 \001(\t\022\036\n\006Layers\030"
+  "\033 \003(\0132\016.LayerContract\022\024\n\014DeviceStatus\030\034 "
+  "\001(\t\022\026\n\tHeartbeat\030\035 \001(\003H\014\210\001\001B\t\n\007_BranchB\013"
+  "\n\t_SectorIdB\t\n\007_SectorB\020\n\016_ValidSectorId"
+  "B\021\n\017_LastTimeOnlineB\026\n\024_ValidLastTimeOnl"
+  "ineB\004\n\002_XB\004\n\002_YB\t\n\007_ValidXB\t\n\007_ValidYB\n\n"
+  "\010_BatteryB\020\n\016_GeofenceRangeB\014\n\n_Heartbea"
+  "t\"\305\003\n\016SectorContract\022\n\n\002Id\030\001 \001(\005\022\014\n\004Guid"
+  "\030\002 \001(\t\022\020\n\010BranchId\030\003 \001(\005\022$\n\006Branch\030\004 \001(\013"
+  "2\017.BranchContractH\000\210\001\001\022\r\n\005Title\030\005 \001(\t\022\025\n"
+  "\rBarrierHeight\030\006 \001(\002\022\024\n\014BarrierWidth\030\007 \001"
+  "(\002\022\024\n\014SectorHeight\030\010 \001(\002\022\023\n\013SectorWidth\030"
+  "\t \001(\002\022\020\n\010Modified\030\n \001(\003\022\"\n\010GpsItems\030\013 \003("
+  "\0132\020.GpsItemContract\022\034\n\005Areas\030\014 \003(\0132\r.Are"
+  "aContract\022\"\n\010Barriers\030\r \003(\0132\020.BarrierCon"
+  "tract\022 \n\007Beacons\030\016 \003(\0132\017.BeaconContract\022"
+  " \n\007Sensors\030\017 \003(\0132\017.SensorContract\022\025\n\rCon"
+  "figuration\030\020 \001(\t\022\034\n\005Paths\030\021 \003(\0132\r.PathCo"
+  "ntractB\t\n\007_Branch\"\232\001\n\016BranchContract\022\n\n\002"
+  "Id\030\001 \001(\005\022\r\n\005Title\030\002 \001(\t\022\023\n\004Guid\030\003 \001(\0132\005."
+  "Guid\022\020\n\010TimeZone\030\004 \001(\t\022\020\n\010Latitude\030\005 \001(\002"
+  "\022\022\n\nLongtitude\030\006 \001(\002\022 \n\007Sectors\030\007 \003(\0132\017."
+  "SectorContract\"\324\002\n\rLayerContract\022\n\n\002Id\030\001"
+  " \001(\005\022\r\n\005Title\030\002 \001(\t\022\014\n\004Icon\030\003 \001(\t\022\020\n\010Bra"
+  "nchId\030\004 \001(\005\022$\n\006Branch\030\005 \001(\0132\017.BranchCont"
+  "ractH\000\210\001\001\022\017\n\007Visible\030\006 \001(\010\022\024\n\014Localizati"
+  "on\030\007 \001(\010\022\017\n\007Created\030\010 \001(\003\022\017\n\007Updated\030\t \001"
+  "(\003\022\034\n\005Areas\030\n \003(\0132\r.AreaContract\022 \n\007Devi"
+  "ces\030\013 \003(\0132\017.DeviceContract\022\016\n\006IsNoGo\030\014 \001"
+  "(\010\022\034\n\005Paths\030\r \003(\0132\r.PathContract\022 \n\010Chil"
+  "dren\030\016 \003(\0132\016.LayerContractB\t\n\007_Branch\"\202\003"
+  "\n\014PathContract\022\n\n\002Id\030\001 \001(\005\022\023\n\004Guid\030\002 \001(\013"
+  "2\005.Guid\022\r\n\005Title\030\003 \001(\t\022\020\n\010SectorId\030\004 \001(\005"
+  "\022$\n\006Sector\030\005 \001(\0132\017.SectorContractH\000\210\001\001\022\020"
+  "\n\010BranchId\030\006 \001(\005\022$\n\006Branch\030\007 \001(\0132\017.Branc"
+  "hContractH\001\210\001\001\022\024\n\007LayerId\030\010 \001(\005H\002\210\001\001\022\"\n\005"
+  "Layer\030\t \001(\0132\016.LayerContractH\003\210\001\001\022\r\n\005Colo"
+  "r\030\n \001(\t\022&\n\nPathPoints\030\013 \003(\0132\022.PathPointC"
+  "ontract\022\023\n\013Description\030\014 \001(\t\022\017\n\007Created\030"
+  "\r \001(\003\022\017\n\007Updated\030\016 \001(\003B\t\n\007_SectorB\t\n\007_Br"
+  "anchB\n\n\010_LayerIdB\010\n\006_Layer\"\215\002\n\021PathPoint"
+  "Contract\022\n\n\002Id\030\001 \001(\005\022\016\n\006PathId\030\002 \001(\005\022 \n\004"
+  "Path\030\003 \001(\0132\r.PathContractH\000\210\001\001\022\020\n\010Branch"
+  "Id\030\004 \001(\005\022$\n\006Branch\030\005 \001(\0132\017.BranchContrac"
+  "tH\001\210\001\001\022\r\n\005Index\030\006 \001(\005\022\t\n\001X\030\007 \001(\002\022\t\n\001Y\030\010 "
+  "\001(\002\022\023\n\006AreaId\030\t \001(\005H\002\210\001\001\022 \n\004Area\030\n \001(\0132\r"
+  ".AreaContractH\003\210\001\001B\007\n\005_PathB\t\n\007_BranchB\t"
+  "\n\007_AreaIdB\007\n\005_Area\"\257\003\n\014AreaContract\022\n\n\002I"
+  "d\030\001 \001(\005\022\023\n\004Guid\030\002 \001(\0132\005.Guid\022\r\n\005Title\030\003 "
+  "\001(\t\022\020\n\010SectorId\030\004 \001(\005\022$\n\006Sector\030\005 \001(\0132\017."
+  "SectorContractH\000\210\001\001\022\020\n\010BranchId\030\006 \001(\005\022$\n"
+  "\006Branch\030\007 \001(\0132\017.BranchContractH\001\210\001\001\022\024\n\007L"
+  "ayerId\030\010 \001(\005H\002\210\001\001\022\"\n\005Layer\030\t \001(\0132\016.Layer"
+  "ContractH\003\210\001\001\022\r\n\005Color\030\n \001(\t\022#\n\013Coordina"
+  "tes\030\013 \003(\0132\016.PointContract\022\023\n\013Description"
+  "\030\014 \001(\t\022\017\n\007Created\030\r \001(\003\022\017\n\007Updated\030\016 \001(\003"
+  "\022\033\n\016TargetBranchId\030\017 \001(\005H\004\210\001\001B\t\n\007_Sector"
+  "B\t\n\007_BranchB\n\n\010_LayerIdB\010\n\006_LayerB\021\n\017_Ta"
+  "rgetBranchId\"%\n\rPointContract\022\t\n\001X\030\001 \001(\002"
+  "\022\t\n\001Y\030\002 \001(\002\"M\n\026DeviceLocationContract\022\r\n"
+  "\005Login\030\001 \001(\t\022$\n\tLocations\030\002 \003(\0132\021.Locati"
+  "onContract\"\267\002\n\020LocationContract\022\021\n\tTimes"
+  "tamp\030\001 \001(\003\022\025\n\010SectorId\030\002 \001(\005H\000\210\001\001\022\016\n\001X\030\003"
+  " \001(\002H\001\210\001\001\022\016\n\001Y\030\004 \001(\002H\002\210\001\001\022\016\n\001Z\030\005 \001(\002H\003\210\001"
+  "\001\022\025\n\010Interval\030\006 \001(\005H\004\210\001\001\022\024\n\007battery\030\007 \001("
+  "\rH\005\210\001\001\022\020\n\010IsMoving\030\010 \001(\010\022$\n\tDistances\030\t "
+  "\003(\0132\021.DistanceContract\022\031\n\021LocalizationAr"
+  "eas\030\n \003(\005\022\021\n\tNoGoAreas\030\013 \003(\005B\013\n\t_SectorI"
+  "dB\004\n\002_XB\004\n\002_YB\004\n\002_ZB\013\n\t_IntervalB\n\n\010_bat"
+  "tery\"D\n\020DistanceContract\022\020\n\010BeaconId\030\001 \001"
+  "(\005\022\020\n\010Distance\030\002 \001(\002\022\014\n\004RSSI\030\003 \001(\005\"\036\n\rLo"
+  "ginContract\022\r\n\005Login\030\001 \001(\t\"t\n\036Authentica"
+  "tionResponseContract\022\016\n\006Client\030\001 \001(\t\022\r\n\005"
+  "Token\030\002 \001(\t\022\022\n\nExpiration\030\003 \001(\004\022\017\n\007Creat"
+  "ed\030\004 \001(\004\022\016\n\006Branch\030\005 \001(\t\"E\n\022CredentialCo"
+  "ntract\022\016\n\006Client\030\001 \001(\t\022\r\n\005Login\030\002 \001(\t\022\020\n"
+  "\010Password\030\003 \001(\t\"=\n\024PostResponseContract\022"
+  "\017\n\007Success\030\001 \001(\010\022\024\n\014ErrorMessage\030\002 \001(\t\"\233"
+  "\001\n\017GpsItemContract\022\n\n\002Id\030\001 \001(\005\022\020\n\010Sector"
+  "Id\030\002 \001(\005\022$\n\006Sector\030\003 \001(\0132\017.SectorContrac"
+  "tH\000\210\001\001\022\t\n\001X\030\004 \001(\002\022\t\n\001Y\030\005 \001(\002\022\020\n\010Latitude"
+  "\030\006 \001(\001\022\021\n\tLongitude\030\007 \001(\001B\t\n\007_Sector\"\255\001\n"
+  "\017BarrierContract\022\t\n\001X\030\001 \001(\005\022\t\n\001Y\030\002 \001(\005\022\020"
+  "\n\010SectorId\030\003 \001(\005\022$\n\006Sector\030\004 \001(\0132\017.Secto"
+  "rContractH\000\210\001\001\022\020\n\010BranchId\030\005 \001(\005\022$\n\006Bran"
+  "ch\030\006 \001(\0132\017.BranchContractH\001\210\001\001B\t\n\007_Secto"
+  "rB\t\n\007_Branch\"\345\003\n\016BeaconContract\022\n\n\002Id\030\001 "
+  "\001(\005\022\025\n\010SectorId\030\002 \001(\005H\000\210\001\001\022$\n\006Sector\030\003 \001"
+  "(\0132\017.SectorContractH\001\210\001\001\022\020\n\010BranchId\030\004 \001"
+  "(\005\022$\n\006Branch\030\005 \001(\0132\017.BranchContractH\002\210\001\001"
+  "\022\013\n\003Mac\030\006 \001(\t\022\016\n\001X\030\007 \001(\002H\003\210\001\001\022\016\n\001Y\030\010 \001(\002"
+  "H\004\210\001\001\022\016\n\001Z\030\t \001(\002H\005\210\001\001\022\r\n\005Title\030\n \001(\t\022\016\n\006"
+  "Active\030\013 \001(\010\022\023\n\006TypeId\030\014 \001(\005H\006\210\001\001\022\020\n\010Pos"
+  "ition\030\016 \001(\010\022\020\n\010Geofence\030\017 \001(\010\022\032\n\rGeofenc"
+  "eRange\030\020 \001(\002H\007\210\001\001\022\017\n\007Cluster\030\021 \001(\t\022\033\n\016La"
+  "stTimeOnline\030\022 \001(\003H\010\210\001\001\022\016\n\006UseGps\030\023 \001(\010B"
+  "\013\n\t_SectorIdB\t\n\007_SectorB\t\n\007_BranchB\004\n\002_X"
+  "B\004\n\002_YB\004\n\002_ZB\t\n\007_TypeIdB\020\n\016_GeofenceRang"
+  "eB\021\n\017_LastTimeOnline\"P\n\026BeaconPositionCo"
+  "ntract\022\n\n\002Id\030\001 \001(\005\022\016\n\001X\030\002 \001(\002H\000\210\001\001\022\016\n\001Y\030"
+  "\003 \001(\002H\001\210\001\001B\004\n\002_XB\004\n\002_Y\"\376\002\n\016SensorContrac"
+  "t\022\n\n\002Id\030\001 \001(\005\022\r\n\005Login\030\002 \001(\t\022\r\n\005Title\030\003 "
+  "\001(\t\022\013\n\003Mac\030\004 \001(\t\022\014\n\004Note\030\005 \001(\t\022\016\n\001X\030\006 \001("
+  "\002H\000\210\001\001\022\016\n\001y\030\007 \001(\002H\001\210\001\001\022\024\n\007Battery\030\010 \001(\002H"
+  "\002\210\001\001\022\025\n\010SectorId\030\t \001(\005H\003\210\001\001\022$\n\006Sector\030\n "
+  "\001(\0132\017.SectorContractH\004\210\001\001\022\'\n\nSensorData\030"
+  "\013 \003(\0132\023.SensorDataContract\022\023\n\006AreaId\030\014 \001"
+  "(\005H\005\210\001\001\022 \n\004Area\030\r \001(\0132\r.AreaContractH\006\210\001"
+  "\001\022\020\n\010Password\030\016 \001(\tB\004\n\002_XB\004\n\002_yB\n\n\010_Batt"
+  "eryB\013\n\t_SectorIdB\t\n\007_SectorB\t\n\007_AreaIdB\007"
+  "\n\005_Area\"\226\001\n\022SensorDataContract\022\020\n\010Quanti"
+  "ty\030\001 \001(\t\022\r\n\005Value\030\002 \001(\t\022\014\n\004Unit\030\003 \001(\t\022\020\n"
+  "\010DataType\030\004 \001(\t\022\021\n\tTimestamp\030\005 \001(\003\022\035\n\005Ra"
+  "nge\030\006 \001(\0132\016.RangeContract\022\r\n\005Index\030\007 \001(\005"
+  "\"R\n\023SensorBatchContract\022\r\n\005Login\030\001 \001(\t\022,"
+  "\n\nSensorData\030\002 \003(\0132\030.SensorDataBatchCont"
+  "ract\"\217\001\n\027SensorDataBatchContract\022\021\n\tTime"
+  "stamp\030\001 \001(\003\022\020\n\010Quantity\030\002 \001(\t\022\r\n\005Value\030\003"
+  " \001(\t\022\014\n\004Unit\030\004 \001(\t\022\020\n\010DataType\030\005 \001(\t\022\024\n\007"
+  "ValueOK\030\006 \001(\010H\000\210\001\001B\n\n\010_ValueOK\"6\n\025Sensor"
+  "AppInfoContract\022\017\n\007Version\030\001 \001(\t\022\014\n\004Size"
+  "\030\002 \001(\003\">\n\rRangeContract\022\014\n\004Type\030\001 \001(\t\022\037\n"
+  "\006Ranges\030\002 \003(\0132\017.RangesContract\".\n\016Ranges"
+  "Contract\022\r\n\005Color\030\001 \001(\t\022\r\n\005Value\030\002 \001(\t*|"
+  "\n\010FallType\022\006\n\002OK\020\000\022\013\n\007MANDOWN\020\001\022\022\n\016MANDO"
+  "WNCONTROL\020\002\022\023\n\017MANDOWNPOSITIVE\020\003\022\023\n\017MAND"
+  "OWNNEGATIVE\020\004\022\035\n\031MANDOWNNEGATIVEAFTERLIM"
+  "IT\020\005b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_core_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_core_2eproto = {
-    false, false, 5555, descriptor_table_protodef_core_2eproto,
+    false, false, 5692, descriptor_table_protodef_core_2eproto,
     "core.proto",
     &descriptor_table_core_2eproto_once, nullptr, 0, 27,
     schemas, file_default_instances, TableStruct_core_2eproto::offsets,
@@ -1319,6 +1323,24 @@ PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_core_2ep
 
 // Force running AddDescriptors() at dynamic initialization time.
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_core_2eproto(&descriptor_table_core_2eproto);
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* FallType_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_core_2eproto);
+  return file_level_enum_descriptors_core_2eproto[0];
+}
+bool FallType_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+      return true;
+    default:
+      return false;
+  }
+}
+
 
 // ===================================================================
 
@@ -1572,10 +1594,10 @@ class DeviceContract::_Internal {
     (*has_bits)[0] |= 1024u;
   }
   static void set_has_geofencerange(HasBits* has_bits) {
-    (*has_bits)[0] |= 2048u;
+    (*has_bits)[0] |= 4096u;
   }
   static void set_has_heartbeat(HasBits* has_bits) {
-    (*has_bits)[0] |= 4096u;
+    (*has_bits)[0] |= 2048u;
   }
 };
 
@@ -1604,7 +1626,6 @@ DeviceContract::DeviceContract(const DeviceContract& from)
     , decltype(_impl_.title_){}
     , decltype(_impl_.note_){}
     , decltype(_impl_.appversion_){}
-    , decltype(_impl_.fallstatus_){}
     , decltype(_impl_.devicetype_){}
     , decltype(_impl_.login_){}
     , decltype(_impl_.password_){}
@@ -1621,13 +1642,14 @@ DeviceContract::DeviceContract(const DeviceContract& from)
     , decltype(_impl_.y_){}
     , decltype(_impl_.validx_){}
     , decltype(_impl_.validy_){}
+    , decltype(_impl_.fallstatus_){}
     , decltype(_impl_.battery_){}
     , decltype(_impl_.devicetypeid_){}
     , decltype(_impl_.ismoving_){}
     , decltype(_impl_.position_){}
     , decltype(_impl_.geofence_){}
-    , decltype(_impl_.geofencerange_){}
-    , decltype(_impl_.heartbeat_){}};
+    , decltype(_impl_.heartbeat_){}
+    , decltype(_impl_.geofencerange_){}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.mac_.InitDefault();
@@ -1660,14 +1682,6 @@ DeviceContract::DeviceContract(const DeviceContract& from)
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_appversion().empty()) {
     _this->_impl_.appversion_.Set(from._internal_appversion(), 
-      _this->GetArenaForAllocation());
-  }
-  _impl_.fallstatus_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.fallstatus_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_fallstatus().empty()) {
-    _this->_impl_.fallstatus_.Set(from._internal_fallstatus(), 
       _this->GetArenaForAllocation());
   }
   _impl_.devicetype_.InitDefault();
@@ -1709,8 +1723,8 @@ DeviceContract::DeviceContract(const DeviceContract& from)
     _this->_impl_.sector_ = new ::SectorContract(*from._impl_.sector_);
   }
   ::memcpy(&_impl_.id_, &from._impl_.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.heartbeat_) -
-    reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.heartbeat_));
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.geofencerange_) -
+    reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.geofencerange_));
   // @@protoc_insertion_point(copy_constructor:DeviceContract)
 }
 
@@ -1726,7 +1740,6 @@ inline void DeviceContract::SharedCtor(
     , decltype(_impl_.title_){}
     , decltype(_impl_.note_){}
     , decltype(_impl_.appversion_){}
-    , decltype(_impl_.fallstatus_){}
     , decltype(_impl_.devicetype_){}
     , decltype(_impl_.login_){}
     , decltype(_impl_.password_){}
@@ -1743,13 +1756,14 @@ inline void DeviceContract::SharedCtor(
     , decltype(_impl_.y_){0}
     , decltype(_impl_.validx_){0}
     , decltype(_impl_.validy_){0}
+    , decltype(_impl_.fallstatus_){0}
     , decltype(_impl_.battery_){0}
     , decltype(_impl_.devicetypeid_){0}
     , decltype(_impl_.ismoving_){false}
     , decltype(_impl_.position_){false}
     , decltype(_impl_.geofence_){false}
-    , decltype(_impl_.geofencerange_){0u}
     , decltype(_impl_.heartbeat_){int64_t{0}}
+    , decltype(_impl_.geofencerange_){0u}
   };
   _impl_.mac_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -1766,10 +1780,6 @@ inline void DeviceContract::SharedCtor(
   _impl_.appversion_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.appversion_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.fallstatus_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.fallstatus_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.devicetype_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -1805,7 +1815,6 @@ inline void DeviceContract::SharedDtor() {
   _impl_.title_.Destroy();
   _impl_.note_.Destroy();
   _impl_.appversion_.Destroy();
-  _impl_.fallstatus_.Destroy();
   _impl_.devicetype_.Destroy();
   _impl_.login_.Destroy();
   _impl_.password_.Destroy();
@@ -1829,7 +1838,6 @@ void DeviceContract::Clear() {
   _impl_.title_.ClearToEmpty();
   _impl_.note_.ClearToEmpty();
   _impl_.appversion_.ClearToEmpty();
-  _impl_.fallstatus_.ClearToEmpty();
   _impl_.devicetype_.ClearToEmpty();
   _impl_.login_.ClearToEmpty();
   _impl_.password_.ClearToEmpty();
@@ -1853,18 +1861,20 @@ void DeviceContract::Clear() {
         reinterpret_cast<char*>(&_impl_.y_) -
         reinterpret_cast<char*>(&_impl_.sectorid_)) + sizeof(_impl_.y_));
   }
-  if (cached_has_bits & 0x00000700u) {
+  if (cached_has_bits & 0x00000300u) {
     ::memset(&_impl_.validx_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&_impl_.battery_) -
-        reinterpret_cast<char*>(&_impl_.validx_)) + sizeof(_impl_.battery_));
+        reinterpret_cast<char*>(&_impl_.validy_) -
+        reinterpret_cast<char*>(&_impl_.validx_)) + sizeof(_impl_.validy_));
   }
+  _impl_.fallstatus_ = 0;
+  _impl_.battery_ = 0;
   ::memset(&_impl_.devicetypeid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.geofence_) -
       reinterpret_cast<char*>(&_impl_.devicetypeid_)) + sizeof(_impl_.geofence_));
   if (cached_has_bits & 0x00001800u) {
-    ::memset(&_impl_.geofencerange_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&_impl_.heartbeat_) -
-        reinterpret_cast<char*>(&_impl_.geofencerange_)) + sizeof(_impl_.heartbeat_));
+    ::memset(&_impl_.heartbeat_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.geofencerange_) -
+        reinterpret_cast<char*>(&_impl_.heartbeat_)) + sizeof(_impl_.geofencerange_));
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -2029,13 +2039,12 @@ const char* DeviceContract::_InternalParse(const char* ptr, ::_pbi::ParseContext
         } else
           goto handle_unusual;
         continue;
-      // string FallStatus = 18;
+      // .FallType FallStatus = 18;
       case 18:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 146)) {
-          auto str = _internal_mutable_fallstatus();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 144)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "DeviceContract.FallStatus"));
+          _internal_set_fallstatus(static_cast<::FallType>(val));
         } else
           goto handle_unusual;
         continue;
@@ -2293,14 +2302,11 @@ uint8_t* DeviceContract::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteBoolToArray(17, this->_internal_ismoving(), target);
   }
 
-  // string FallStatus = 18;
-  if (!this->_internal_fallstatus().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_fallstatus().data(), static_cast<int>(this->_internal_fallstatus().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "DeviceContract.FallStatus");
-    target = stream->WriteStringMaybeAliased(
-        18, this->_internal_fallstatus(), target);
+  // .FallType FallStatus = 18;
+  if (this->_internal_fallstatus() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+      18, this->_internal_fallstatus(), target);
   }
 
   // optional float Battery = 19;
@@ -2438,13 +2444,6 @@ size_t DeviceContract::ByteSizeLong() const {
         this->_internal_appversion());
   }
 
-  // string FallStatus = 18;
-  if (!this->_internal_fallstatus().empty()) {
-    total_size += 2 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_fallstatus());
-  }
-
   // string DeviceType = 21;
   if (!this->_internal_devicetype().empty()) {
     total_size += 2 +
@@ -2532,7 +2531,7 @@ size_t DeviceContract::ByteSizeLong() const {
     }
 
   }
-  if (cached_has_bits & 0x00000700u) {
+  if (cached_has_bits & 0x00000300u) {
     // optional float ValidX = 14;
     if (cached_has_bits & 0x00000100u) {
       total_size += 1 + 4;
@@ -2543,12 +2542,18 @@ size_t DeviceContract::ByteSizeLong() const {
       total_size += 1 + 4;
     }
 
-    // optional float Battery = 19;
-    if (cached_has_bits & 0x00000400u) {
-      total_size += 2 + 4;
-    }
-
   }
+  // .FallType FallStatus = 18;
+  if (this->_internal_fallstatus() != 0) {
+    total_size += 2 +
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_fallstatus());
+  }
+
+  // optional float Battery = 19;
+  if (cached_has_bits & 0x00000400u) {
+    total_size += 2 + 4;
+  }
+
   // int32 DeviceTypeId = 20;
   if (this->_internal_devicetypeid() != 0) {
     total_size += 2 +
@@ -2572,18 +2577,18 @@ size_t DeviceContract::ByteSizeLong() const {
   }
 
   if (cached_has_bits & 0x00001800u) {
-    // optional uint32 GeofenceRange = 25;
-    if (cached_has_bits & 0x00000800u) {
-      total_size += 2 +
-        ::_pbi::WireFormatLite::UInt32Size(
-          this->_internal_geofencerange());
-    }
-
     // optional int64 Heartbeat = 29;
-    if (cached_has_bits & 0x00001000u) {
+    if (cached_has_bits & 0x00000800u) {
       total_size += 2 +
         ::_pbi::WireFormatLite::Int64Size(
           this->_internal_heartbeat());
+    }
+
+    // optional uint32 GeofenceRange = 25;
+    if (cached_has_bits & 0x00001000u) {
+      total_size += 2 +
+        ::_pbi::WireFormatLite::UInt32Size(
+          this->_internal_geofencerange());
     }
 
   }
@@ -2617,9 +2622,6 @@ void DeviceContract::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const :
   }
   if (!from._internal_appversion().empty()) {
     _this->_internal_set_appversion(from._internal_appversion());
-  }
-  if (!from._internal_fallstatus().empty()) {
-    _this->_internal_set_fallstatus(from._internal_fallstatus());
   }
   if (!from._internal_devicetype().empty()) {
     _this->_internal_set_devicetype(from._internal_devicetype());
@@ -2671,17 +2673,20 @@ void DeviceContract::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const :
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  if (cached_has_bits & 0x00000700u) {
+  if (cached_has_bits & 0x00000300u) {
     if (cached_has_bits & 0x00000100u) {
       _this->_impl_.validx_ = from._impl_.validx_;
     }
     if (cached_has_bits & 0x00000200u) {
       _this->_impl_.validy_ = from._impl_.validy_;
     }
-    if (cached_has_bits & 0x00000400u) {
-      _this->_impl_.battery_ = from._impl_.battery_;
-    }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
+  }
+  if (from._internal_fallstatus() != 0) {
+    _this->_internal_set_fallstatus(from._internal_fallstatus());
+  }
+  if (cached_has_bits & 0x00000400u) {
+    _this->_internal_set_battery(from._internal_battery());
   }
   if (from._internal_devicetypeid() != 0) {
     _this->_internal_set_devicetypeid(from._internal_devicetypeid());
@@ -2697,10 +2702,10 @@ void DeviceContract::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const :
   }
   if (cached_has_bits & 0x00001800u) {
     if (cached_has_bits & 0x00000800u) {
-      _this->_impl_.geofencerange_ = from._impl_.geofencerange_;
+      _this->_impl_.heartbeat_ = from._impl_.heartbeat_;
     }
     if (cached_has_bits & 0x00001000u) {
-      _this->_impl_.heartbeat_ = from._impl_.heartbeat_;
+      _this->_impl_.geofencerange_ = from._impl_.geofencerange_;
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
@@ -2742,10 +2747,6 @@ void DeviceContract::InternalSwap(DeviceContract* other) {
       &other->_impl_.appversion_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.fallstatus_, lhs_arena,
-      &other->_impl_.fallstatus_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.devicetype_, lhs_arena,
       &other->_impl_.devicetype_, rhs_arena
   );
@@ -2762,8 +2763,8 @@ void DeviceContract::InternalSwap(DeviceContract* other) {
       &other->_impl_.devicestatus_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(DeviceContract, _impl_.heartbeat_)
-      + sizeof(DeviceContract::_impl_.heartbeat_)
+      PROTOBUF_FIELD_OFFSET(DeviceContract, _impl_.geofencerange_)
+      + sizeof(DeviceContract::_impl_.geofencerange_)
       - PROTOBUF_FIELD_OFFSET(DeviceContract, _impl_.branch_)>(
           reinterpret_cast<char*>(&_impl_.branch_),
           reinterpret_cast<char*>(&other->_impl_.branch_));

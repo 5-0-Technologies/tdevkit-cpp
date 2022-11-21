@@ -1,5 +1,14 @@
 syntax = "proto3";
 
+enum FallType {
+  OK = 0;
+  MANDOWN = 1;
+  MANDOWNCONTROL = 2;
+  MANDOWNPOSITIVE = 3;
+  MANDOWNNEGATIVE = 4;
+  MANDOWNNEGATIVEAFTERLIMIT = 5;
+}
+
 message Guid {
   fixed64 lo = 1; // the first 8 bytes of the guid (note:crazy-endian)
   fixed64 hi = 2; // the second 8 bytes of the guid (note:crazy-endian)
@@ -23,7 +32,7 @@ message DeviceContract {
   optional float ValidY = 15;
   string AppVersion = 16;
   bool IsMoving = 17;
-  string FallStatus = 18;
+  FallType FallStatus = 18;
   optional float Battery = 19;
   int32 DeviceTypeId = 20;
   string DeviceType = 21;

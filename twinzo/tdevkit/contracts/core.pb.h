@@ -29,6 +29,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -155,6 +156,35 @@ template<> ::SensorDataBatchContract* Arena::CreateMaybeMessage<::SensorDataBatc
 template<> ::SensorDataContract* Arena::CreateMaybeMessage<::SensorDataContract>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 
+enum FallType : int {
+  OK = 0,
+  MANDOWN = 1,
+  MANDOWNCONTROL = 2,
+  MANDOWNPOSITIVE = 3,
+  MANDOWNNEGATIVE = 4,
+  MANDOWNNEGATIVEAFTERLIMIT = 5,
+  FallType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  FallType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool FallType_IsValid(int value);
+constexpr FallType FallType_MIN = OK;
+constexpr FallType FallType_MAX = MANDOWNNEGATIVEAFTERLIMIT;
+constexpr int FallType_ARRAYSIZE = FallType_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* FallType_descriptor();
+template<typename T>
+inline const std::string& FallType_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, FallType>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function FallType_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    FallType_descriptor(), enum_t_value);
+}
+inline bool FallType_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, FallType* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<FallType>(
+    FallType_descriptor(), name, value);
+}
 // ===================================================================
 
 class Guid final :
@@ -442,7 +472,6 @@ class DeviceContract final :
     kTitleFieldNumber = 8,
     kNoteFieldNumber = 9,
     kAppVersionFieldNumber = 16,
-    kFallStatusFieldNumber = 18,
     kDeviceTypeFieldNumber = 21,
     kLoginFieldNumber = 22,
     kPasswordFieldNumber = 26,
@@ -459,13 +488,14 @@ class DeviceContract final :
     kYFieldNumber = 13,
     kValidXFieldNumber = 14,
     kValidYFieldNumber = 15,
+    kFallStatusFieldNumber = 18,
     kBatteryFieldNumber = 19,
     kDeviceTypeIdFieldNumber = 20,
     kIsMovingFieldNumber = 17,
     kPositionFieldNumber = 23,
     kGeofenceFieldNumber = 24,
-    kGeofenceRangeFieldNumber = 25,
     kHeartbeatFieldNumber = 29,
+    kGeofenceRangeFieldNumber = 25,
   };
   // repeated .LayerContract Layers = 27;
   int layers_size() const;
@@ -539,20 +569,6 @@ class DeviceContract final :
   const std::string& _internal_appversion() const;
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_appversion(const std::string& value);
   std::string* _internal_mutable_appversion();
-  public:
-
-  // string FallStatus = 18;
-  void clear_fallstatus();
-  const std::string& fallstatus() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_fallstatus(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_fallstatus();
-  PROTOBUF_NODISCARD std::string* release_fallstatus();
-  void set_allocated_fallstatus(std::string* fallstatus);
-  private:
-  const std::string& _internal_fallstatus() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_fallstatus(const std::string& value);
-  std::string* _internal_mutable_fallstatus();
   public:
 
   // string DeviceType = 21;
@@ -769,6 +785,15 @@ class DeviceContract final :
   void _internal_set_validy(float value);
   public:
 
+  // .FallType FallStatus = 18;
+  void clear_fallstatus();
+  ::FallType fallstatus() const;
+  void set_fallstatus(::FallType value);
+  private:
+  ::FallType _internal_fallstatus() const;
+  void _internal_set_fallstatus(::FallType value);
+  public:
+
   // optional float Battery = 19;
   bool has_battery() const;
   private:
@@ -818,19 +843,6 @@ class DeviceContract final :
   void _internal_set_geofence(bool value);
   public:
 
-  // optional uint32 GeofenceRange = 25;
-  bool has_geofencerange() const;
-  private:
-  bool _internal_has_geofencerange() const;
-  public:
-  void clear_geofencerange();
-  uint32_t geofencerange() const;
-  void set_geofencerange(uint32_t value);
-  private:
-  uint32_t _internal_geofencerange() const;
-  void _internal_set_geofencerange(uint32_t value);
-  public:
-
   // optional int64 Heartbeat = 29;
   bool has_heartbeat() const;
   private:
@@ -842,6 +854,19 @@ class DeviceContract final :
   private:
   int64_t _internal_heartbeat() const;
   void _internal_set_heartbeat(int64_t value);
+  public:
+
+  // optional uint32 GeofenceRange = 25;
+  bool has_geofencerange() const;
+  private:
+  bool _internal_has_geofencerange() const;
+  public:
+  void clear_geofencerange();
+  uint32_t geofencerange() const;
+  void set_geofencerange(uint32_t value);
+  private:
+  uint32_t _internal_geofencerange() const;
+  void _internal_set_geofencerange(uint32_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:DeviceContract)
@@ -859,7 +884,6 @@ class DeviceContract final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr title_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr note_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr appversion_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr fallstatus_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr devicetype_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr login_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr password_;
@@ -876,13 +900,14 @@ class DeviceContract final :
     float y_;
     float validx_;
     float validy_;
+    int fallstatus_;
     float battery_;
     int32_t devicetypeid_;
     bool ismoving_;
     bool position_;
     bool geofence_;
-    uint32_t geofencerange_;
     int64_t heartbeat_;
+    uint32_t geofencerange_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_core_2eproto;
@@ -7671,54 +7696,24 @@ inline void DeviceContract::set_ismoving(bool value) {
   // @@protoc_insertion_point(field_set:DeviceContract.IsMoving)
 }
 
-// string FallStatus = 18;
+// .FallType FallStatus = 18;
 inline void DeviceContract::clear_fallstatus() {
-  _impl_.fallstatus_.ClearToEmpty();
+  _impl_.fallstatus_ = 0;
 }
-inline const std::string& DeviceContract::fallstatus() const {
+inline ::FallType DeviceContract::_internal_fallstatus() const {
+  return static_cast< ::FallType >(_impl_.fallstatus_);
+}
+inline ::FallType DeviceContract::fallstatus() const {
   // @@protoc_insertion_point(field_get:DeviceContract.FallStatus)
   return _internal_fallstatus();
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void DeviceContract::set_fallstatus(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.fallstatus_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+inline void DeviceContract::_internal_set_fallstatus(::FallType value) {
+  
+  _impl_.fallstatus_ = value;
+}
+inline void DeviceContract::set_fallstatus(::FallType value) {
+  _internal_set_fallstatus(value);
   // @@protoc_insertion_point(field_set:DeviceContract.FallStatus)
-}
-inline std::string* DeviceContract::mutable_fallstatus() {
-  std::string* _s = _internal_mutable_fallstatus();
-  // @@protoc_insertion_point(field_mutable:DeviceContract.FallStatus)
-  return _s;
-}
-inline const std::string& DeviceContract::_internal_fallstatus() const {
-  return _impl_.fallstatus_.Get();
-}
-inline void DeviceContract::_internal_set_fallstatus(const std::string& value) {
-  
-  _impl_.fallstatus_.Set(value, GetArenaForAllocation());
-}
-inline std::string* DeviceContract::_internal_mutable_fallstatus() {
-  
-  return _impl_.fallstatus_.Mutable(GetArenaForAllocation());
-}
-inline std::string* DeviceContract::release_fallstatus() {
-  // @@protoc_insertion_point(field_release:DeviceContract.FallStatus)
-  return _impl_.fallstatus_.Release();
-}
-inline void DeviceContract::set_allocated_fallstatus(std::string* fallstatus) {
-  if (fallstatus != nullptr) {
-    
-  } else {
-    
-  }
-  _impl_.fallstatus_.SetAllocated(fallstatus, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.fallstatus_.IsDefault()) {
-    _impl_.fallstatus_.Set("", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:DeviceContract.FallStatus)
 }
 
 // optional float Battery = 19;
@@ -7911,7 +7906,7 @@ inline void DeviceContract::set_geofence(bool value) {
 
 // optional uint32 GeofenceRange = 25;
 inline bool DeviceContract::_internal_has_geofencerange() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000800u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00001000u) != 0;
   return value;
 }
 inline bool DeviceContract::has_geofencerange() const {
@@ -7919,7 +7914,7 @@ inline bool DeviceContract::has_geofencerange() const {
 }
 inline void DeviceContract::clear_geofencerange() {
   _impl_.geofencerange_ = 0u;
-  _impl_._has_bits_[0] &= ~0x00000800u;
+  _impl_._has_bits_[0] &= ~0x00001000u;
 }
 inline uint32_t DeviceContract::_internal_geofencerange() const {
   return _impl_.geofencerange_;
@@ -7929,7 +7924,7 @@ inline uint32_t DeviceContract::geofencerange() const {
   return _internal_geofencerange();
 }
 inline void DeviceContract::_internal_set_geofencerange(uint32_t value) {
-  _impl_._has_bits_[0] |= 0x00000800u;
+  _impl_._has_bits_[0] |= 0x00001000u;
   _impl_.geofencerange_ = value;
 }
 inline void DeviceContract::set_geofencerange(uint32_t value) {
@@ -8079,7 +8074,7 @@ inline void DeviceContract::set_allocated_devicestatus(std::string* devicestatus
 
 // optional int64 Heartbeat = 29;
 inline bool DeviceContract::_internal_has_heartbeat() const {
-  bool value = (_impl_._has_bits_[0] & 0x00001000u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000800u) != 0;
   return value;
 }
 inline bool DeviceContract::has_heartbeat() const {
@@ -8087,7 +8082,7 @@ inline bool DeviceContract::has_heartbeat() const {
 }
 inline void DeviceContract::clear_heartbeat() {
   _impl_.heartbeat_ = int64_t{0};
-  _impl_._has_bits_[0] &= ~0x00001000u;
+  _impl_._has_bits_[0] &= ~0x00000800u;
 }
 inline int64_t DeviceContract::_internal_heartbeat() const {
   return _impl_.heartbeat_;
@@ -8097,7 +8092,7 @@ inline int64_t DeviceContract::heartbeat() const {
   return _internal_heartbeat();
 }
 inline void DeviceContract::_internal_set_heartbeat(int64_t value) {
-  _impl_._has_bits_[0] |= 0x00001000u;
+  _impl_._has_bits_[0] |= 0x00000800u;
   _impl_.heartbeat_ = value;
 }
 inline void DeviceContract::set_heartbeat(int64_t value) {
@@ -15207,6 +15202,16 @@ inline void RangesContract::set_allocated_value(std::string* value) {
 
 // @@protoc_insertion_point(namespace_scope)
 
+
+PROTOBUF_NAMESPACE_OPEN
+
+template <> struct is_proto_enum< ::FallType> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::FallType>() {
+  return ::FallType_descriptor();
+}
+
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 

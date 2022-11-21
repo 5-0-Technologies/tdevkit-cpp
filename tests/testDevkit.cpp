@@ -30,6 +30,11 @@ int main(int argc, char *argv[]) {
   std::cout << auth_response.DebugString() << std::endl;
   // TODO: validate
 
+  // Get our device's info
+  auto device_info = devkit.getDevice("tDevkit-cpp-device");
+  // DEBUG
+  std::cout << device_info.DebugString() << std::endl;
+
   auto devices = devkit.getDevices();
   // DEBUG
   for (auto device : devices) {
@@ -52,6 +57,26 @@ int main(int argc, char *argv[]) {
   auto areas = devkit.getAreas();
   std::cout << "Received " << areas.size() << " areas" << std::endl;
   // TODO: validate
+
+  // Add device
+  DeviceContract device;
+  device.set_login("tDevkit-cpp-test");
+  device.set_branchid(device_info.branchid());
+  device.set_sectorid(device_info.sectorid());
+  device.set_title("tDevkit-cpp-test");
+  device.set_ismoving(false);
+  device.set_fallstatus(FallType::OK);
+  device.set_devicetypeid(4);
+  device.set_position(false);
+  device.set_geofence(false);
+
+  auto new_device = devkit.addDevice(device);
+  std::cout << "Sensor created successfully:\n"
+            << new_device.DebugString() << std::endl;
+
+  // Delete device
+  devkit.deleteDevice(new_device.id());
+  std::cout << "Device deleted successfully" << std::endl;
 
   // Fetch Sensors
   auto sensors = devkit.getSensors();
